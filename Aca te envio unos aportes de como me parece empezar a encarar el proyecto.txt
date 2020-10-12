@@ -1,0 +1,119 @@
+En el html la idea es crear todo el esqueleto osea los divs con id vacios y que se vayan cargando mediante javascript
+por ejemplo el div con id mostrarReporteInmueble va estar creado pero siempre va estar vacio y la unica funcion que lo va usar con
+innerHTML diferente de vacio es la que se ejecuta cuando el user es admin en ese caso de muestra lo que corresponda. 
+si se usa otro usuario se ejecuta una funcion que lo haga sea mostrarReporteInmueble.innerHTML va ser = ""; 
+ADEMAS en el html van a estar creados todos los botones(ejemplo registro,acceso,mostrar mas en muebles, el campo de texto para modificar el precio del dolar que solo el admin puede cambiar etc)
+y campos de texto selects, etc, pero escondidos de forma que no se vean
+y se van activar y desactivar tambien mediante js
+
+
+Al comenzar se carga por default en usuario visitante
+
+var user = "0"  ///(no se si va en variable o un array o va en un objeto o va en vaya a saber que, es como para tener un indicador de en que usuario estamos) 
+var precioDolar = numero; /// es importante declararla global.
+
+
+login()   //// esta funcion se llama cuando se hace click en el boton "acceder" (se debe tener usuario y contraseña en ambos campos)
+{ 	
+   /// se recibe usr y paswrd si son validos pasan 2 cosas 1)llama a funcion ingreso 2) var user = "lo que sea que logeo". sino valida muestra error.
+	ingreso(user)
+}
+
+cerrarSession()
+{
+setea var user = "0" o visitante o como lo llamemos
+ingreso;
+}
+
+function ingreso(tipodeusuario)
+{
+(ejemplo:
+si tipodeusuario === huesped..... tal cosa)
+
+//// (ingreso toma un segun o un swith o pueden ser 4 if) lo importante de la idea es que sea 1 por usuario
+/// lo que va entre parentesis (husped)(visitante) va ser lo que este en la variable user que indica quien es el que esta viendo la pagina.
+para todos los casos (expecto visitante) botones de login (acceso y registro quedan desactivados o desaparecen y aparece el boton cerrar sesion que llama a la funcion cerrar sesion)
+	---si usuario es visitante---
+	verMuebles(visitante)  (en caso huesped va surgir el boton ver mas pero se ve en funcion verMuebles y se plantea una funcion hacerReserva)
+	elegirMoneda(visitante)
+	puedeBuscar(visitante)
+	puedeOrdenar(visitante)
+	verReservas(visitante)
+	registraInmueble(visitante)
+	reporteInmueble(visitante)
+	
+	---si usuario es anfitrion---
+	verMuebles(anfitrion)
+	elegirMoneda(anfitrion)
+	puedeBuscar(anfitrion)
+	puedeOrdenar(anfitrion)
+	verReservas(anfitrion)
+	registraInmueble(anfitrion)
+	reporteInmueble(anfitrion)
+	
+	---si usuario es admin---
+	verMuebles(admin)
+	elegirMoneda(admin)
+	puedeBuscar(admin)
+	puedeOrdenar(admin)
+	verReservas(admin)
+	registraInmueble(admin)
+	reporteInmueble(anfitrion)
+	
+	---si usuario es huesped---
+	verMuebles(huesped)
+	elegirMoneda(huesped)
+	puedeBuscar(huesped)
+	puedeOrdenar(huesped)
+	verReservas(huesped)
+	registraInmueble(huesped)
+	reporteInmueble(huesped)
+
+}
+
+function verMuebles(usuario)
+{
+si usuario es visitante
+se hace un ordenamiento con sort de los elementos de muebles como lo pide iniciarlmente
+
+se muestra el boton de ordenar con las selecciones que indican de mayor a menor etc.
+
+se vuelve hacer ordenamiento segun lo que se le indique mediante el select atravez del boton de ordenar
+
+boton ver mas queda desabilitado/oculto ///// El boton por mas que no se use siempre se debe desabilitar para evitar alguna convinacion de cambios de usuario que pueda dejarlo activado.
+
+mensaje = //// va depender de si es array indexado o no, si usamos for, for in etc pero ta toma cada elemento de muebles 
+extrae titulo,descripcion, etc, y solo 1 foto por ser visitante y lo ingresa dentro de un div y repite lo mismo con todos los elementos
+
+document...mostrarMuebles...innerhtml = "mensaje"
+
+similar para los demas usuarios..
+
+//Nota el boton de buscar va desencadenar una funcion que tambien va actuar sobre el document....id mostrarMuebles...innerhtml 
+
+}
+
+
+function elegirMoneda(usuario)
+{
+if usuario === admin
+document...id ingresar cotizacion....  es visible el campo de texto y se debe hacer lo mismo para el boton
+el campo de texto de debe validar etc.
+el select uyu o usd (puede ir oculto o no dependiendo de lo que se pida en la letra no me quedo claro)
+
+if usuario === visitante
+campo de texto ingresar cotizacion oculto
+boton de ingresar cotizacion oculto
+se muestra el select de UYU o USD
+
+}
+
+
+
+
+
+
+
+
+
+
