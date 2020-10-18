@@ -109,7 +109,7 @@ si tipodeusuario === huesped..... tal cosa)
 /// lo que va entre parentesis (husped)(visitante) va ser lo que este en la variable user que indica quien es el que esta viendo la pagina.
 para todos los casos (expecto visitante) botones de login (acceso y registro quedan desactivados o desaparecen y aparece el boton cerrar sesion que llama a la funcion cerrar sesion)
 	---si usuario es visitante---
-	verMuebles(visitante)  (en caso huesped va surgir el boton ver mas pero se ve en funcion verMuebles y se plantea una funcion hacerReserva)
+	verInmuebles(visitante)  (en caso huesped va surgir el boton ver mas pero se ve en funcion verMuebles y se plantea una funcion hacerReserva)
 	elegirMoneda(visitante)
 	puedeBuscar(visitante)
 	puedeOrdenar(visitante)
@@ -118,7 +118,7 @@ para todos los casos (expecto visitante) botones de login (acceso y registro que
 	reporteInmueble(visitante)
 	
 	---si usuario es anfitrion---
-	verMuebles(anfitrion)
+	verInmuebles(anfitrion)
 	elegirMoneda(anfitrion)
 	puedeBuscar(anfitrion)
 	puedeOrdenar(anfitrion)
@@ -127,7 +127,7 @@ para todos los casos (expecto visitante) botones de login (acceso y registro que
 	reporteInmueble(anfitrion)
 	
 	---si usuario es admin---
-	verMuebles(admin)
+	verInmuebles(admin)
 	elegirMoneda(admin)
 	puedeBuscar(admin)
 	puedeOrdenar(admin)
@@ -136,7 +136,7 @@ para todos los casos (expecto visitante) botones de login (acceso y registro que
 	reporteInmueble(anfitrion)
 	
 	---si usuario es huesped---
-	verMuebles(huesped)
+	verInmuebles(huesped)
 	elegirMoneda(huesped)
 	puedeBuscar(huesped)
 	puedeOrdenar(huesped)
