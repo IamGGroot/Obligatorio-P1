@@ -74,22 +74,25 @@ Confirmar Contraseña<input type="password" style="display: block; width: 200px;
 </div>
 <!----FIN BARRA COTIZACIONES ORDENAMIENTOS Y BUSQUEDA ---->
 <!---INICIO AQUI SE DESPLIEGAN LOS INMUEBLES -->
+
+
 <div id="divInmuebles">
-    </div>
+</div>
 <!---FIN DE AQUI SE DESPILIEGAN LOS INMUEBLES-->
 <!---INICIO INTERACCIONES CON LOS INMUEBLES -->
 <br>
 <div id="divVerMas">
 <input type="button" id="btnVerMas" style="display: block;" value="Ver más">
-<input type="button" id="btnSigFoto" value="Ver siguiente">
-<input type="button" id="btnAntFoto" value="Ver anterior">
+<input type="button" id="btnSigFoto" onclick="cambiarImgSig" value="Ver siguiente">
+<input type="button" id="btnAntFoto" onclick="cambiarImgAnt" value="Ver anterior">
 </div>
 
 <div id="divReserva">
 <input type="text" style="display: inline; width: 200px;" id="txtDiasReserva" placeholder="Ingrese numero dias de reserva">
 <input type="button" id="btnConfirmarReserva" value="Confirmar Reserva">
 <input type="button" id="btnConsultarReserva" value="Consultar Reserva ">
-<div id="txtConsultarReserva"></div><!--ESTE DIV SE HABILITA SI EL INMUEBLE NO TIENE CALIFICACION-->
+</div>
+<div id="divCalificarReserva"><!--ESTE DIV SE HABILITA SI EL INMUEBLE NO TIENE CALIFICACION-->
 <input type="text" style="display: inline; width: 200px;" id="txtCalificarReserva" placeholder="Ingrese numero 1-5">
 <input type="button" id="btnCalificarReserva" value="Calificar Reserva">
 </div>
