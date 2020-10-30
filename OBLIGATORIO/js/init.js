@@ -1,9 +1,13 @@
-document.querySelector("#btnAcceso").addEventListener("click", ingreso);
-document.querySelector("#selLogin").addEventListener("change", ingreso); // Cuando el select de tipo de usuario cambia ejecuta ingreso()
-ingreso();
-function ingreso() {
-    let tipoUsuario = document.querySelector("#selLogin").value;  // Toma el valor del select tipo de usuario y lo guarda en la variable tipoUsuario.
 
+
+
+
+ // document.querySelector("#selLogin").addEventListener("change", ingreso); // Cuando el select de tipo de usuario cambia ejecuta ingreso()
+ingreso("Visitante");
+
+function ingreso(tipoUsuario) {
+   // let tipoUsuario = document.querySelector("#selLogin").value;  // Toma el valor del select tipo de usuario y lo guarda en la variable tipoUsuario.
+console.log(tipoUsuario);
     mostrarInmueblesListadosYCalificaciones(tipoUsuario); // 
     mostrarInmueblesListadosVerMas(tipoUsuario); // 
     mostrarInmueblesPorPropiedad(tipoUsuario); // 
@@ -292,4 +296,5 @@ function mostrarRelizarCalificacion(user) {
         document.querySelector("#divCalificarReserva").style.display = "none";
     }
 }
+console.log("javascript 2/3 cargado")
 
