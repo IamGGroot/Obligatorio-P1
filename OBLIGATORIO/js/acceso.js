@@ -1,35 +1,85 @@
+eventos();
+
 let listaUsuarios = new Array;
-let listaPrecarga = [{ nombre: "agu22", clave: "bsadfklj123", tipo: "Huesped" },
-{ nombre: "Almicar", clave: "Almicar99", tipo: "Huesped" },
-{ nombre: "Camila", clave: "Camilita123", tipo: "Anfitrion" },
-{ nombre: "Esteban", clave: "Quitoroto", tipo: "Huesped" },
-{ nombre: "Dardo", clave: "YMariaElena", tipo: "Huesped" },
-{ nombre: "admin", clave: "1234", tipo: "Administrador" },
-{ nombre: "Pepe", clave: "EncimaDeRacing", tipo: "Anfitrion" },
-{ nombre: "Homero", clave: "Marge", tipo: "Anfitrion" },
-{ nombre: "Roberto", clave: "unmillondeamigos", tipo: "Anfitrion" },
-{ nombre: "Arturo", clave: "unaclavede8digitos", tipo: "Anfitrion" },
-{ nombre: "Debora", clave: "mwbk5255", tipo: "Huesped" },
-{ nombre: "Pablo", clave: "randompasword99", tipo: "Huesped" },
-{ nombre: "Marge", clave: "sinfonica269", tipo: "Huesped" },
-{ nombre: "Lisa", clave: "Millhouse123", tipo: "Huesped" },
-{ nombre: "Gabriel", clave: "cacahuate44", tipo: "Huesped" },
-{ nombre: "Nacho", clave: "bolsoamuerte123", tipo: "Huesped" },{ nombre: "Ricardo", clave: "unaclaverandom", tipo: "Huesped" }]
+let listaPrecarga =
+    [{ nombreUsu: "agu22", nombre: "Agustín", clave: "bsadfklj123", tipo: "Huesped" },
+    { nombreUsu: "AlmiSua345", nombre: "Almicar", clave: "Almicar99", tipo: "Huesped" },
+    { nombreUsu: "Camiiii_ok", nombre: "Camila", clave: "Camilita123", tipo: "Anfitrion" },
+    { nombreUsu: "Este_rodriguez", nombre: "Esteban", clave: "Quitoroto", tipo: "Huesped" },
+    { nombreUsu: "Américo_V", nombre: "Dardo", clave: "YMariaElena", tipo: "Huesped" },
+    { nombreUsu: "admin", nombre: "Administrador", clave: "1234", tipo: "Administrador" },
+    { nombreUsu: "Pepe_1", nombre: "José", clave: "EncimaDeRacing", tipo: "Anfitrion" },
+    { nombreUsu: "Homer.78", nombre: "Homero", clave: "Marge", tipo: "Anfitrion" },
+    { nombreUsu: "Robert_63", nombre: "Roberto", clave: "unmillondeamigos", tipo: "Anfitrion" },
+    { nombreUsu: "R2D2", nombre: "Arturo", clave: "unaclavede8digitos", tipo: "Anfitrion" },
+    { nombreUsu: "DebyBolso", nombre: "Débora", clave: "mwbk5255", tipo: "Huesped" },
+    { nombreUsu: "Pablosky27", nombre: "Pablo", clave: "randompasword99", tipo: "Huesped" },
+    { nombreUsu: "Marge96", nombre: "Marjorie", clave: "sinfonica269", tipo: "Huesped" },
+    { nombreUsu: "Liiisa", nombre: "Lucía", clave: "Millhouse123", tipo: "Huesped" },
+    { nombreUsu: "GabitomanyaCAP", nombre: "Gabriel", clave: "cacahuate44", tipo: "Huesped" },
+    { nombreUsu: "Nachocapo1", nombre: "Juan Ignacio", clave: "bolsoamuerte123", tipo: "Huesped" },
+    { nombreUsu: "Rickymaravilla", nombre: "Ricardo", clave: "unaclaverandom", tipo: "Huesped" }]
+//falta mail, apellido, telefono
+function eventos() {
+    document.querySelector("#btnAcceso").addEventListener("click", validarLogin);
+    document.querySelector("#btnRegistro").addEventListener("click", registro);
+}
 
 function precargaUsuarios() {
     for (let i = 0; i < listaPrecarga.length; i++) {
         let element = listaPrecarga[i];
-        let user = element.nombre;
+
+        let user = element.nombreUsu;
+        let nombre = element.nombre;
+        let apellido = element.apellido;
+        let mail = element.mail;
+        let tel = element.telefono;
         let clave = element.clave;
         let tipo = element.tipo;
+
         let agregarActual = new Usuarios();
-        agregarActual.nombre = user;
+
+        agregarActual.nombreUsu = user;
+        agregarActual.nombre = nombre;
+        agregarActual.apellido = apellido;
+        agregarActual.mail = mail;
+        agregarActual.telefono = tel;
         agregarActual.clave = clave;
         agregarActual.tipo = tipo;
+
         listaUsuarios.push(agregarActual);
     }
 }
 ////////////// REGISTRO //////////////
+function registro() {
+    let nUser = document.querySelector("#txtRegistroNomUsu").value;
+    let nNombre = document.querySelector("#txtRegistroNom").value;
+    let nApellido = document.querySelector("#txtRegistroApe").value;
+    let nMail = document.querySelector("#txtRegistroEmail").value;
+    let nTel = document.querySelector("#txtRegistroTel").value;
+    let nPass = document.querySelector("#txtRegistroContraseña").value;
+
+    let agregarActual = new Usuarios();
+
+    agregarActual.nombreUsu = nUser;
+    agregarActual.nombre = nNombre;
+    agregarActual.apellido = nApellido;
+    agregarActual.mail = nMail;
+    agregarActual.telefono = nTel;
+    agregarActual.clave = nPass;
+    let ntipo = "";
+    if (user == "Visitante") {
+        ntipo = "Huésped"
+        agregarActual.tipo = ntipo;
+    }
+    if (user == "Administrador") {
+        ntipo = "Anfitrión"
+        agregarActual.tipo = ntipo;
+    }
+    listaUsuarios.push(agregarActual);
+
+}
+
 ////////////// AUTENTICACION /////////
 function validarLogin() {
     let user = document.querySelector("#txtLoginUser").value;
@@ -52,4 +102,4 @@ function validarLogin() {
     }
 }
 document.querySelector("#btnAcceso").addEventListener("click", validarLogin);
-console.log("javascript 3/3 cargado")
+console.log("Acceso cargado")

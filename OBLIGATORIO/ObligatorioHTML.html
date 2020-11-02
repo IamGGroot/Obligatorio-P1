@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="data:,">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Obligatorio ORT</title>
     <style>
@@ -42,19 +43,23 @@
         <div id="divReg">
             ELEMENTOS DE REGISTRO
             <br>
-            Registro<br>
-            Usuario<input type="text" style="display: block;width: 200px;" id="txtRegistroNombre"
-                placeholder="Ingrese su Nombre a registrar">
+            <div id="tituloReg">
+            </div>
+            Usuario<input type="text" style="display: block;width: 200px;" id="txtRegistroNomUsu"
+                placeholder="Ingrese Usuario">
+            Nombre<input type="text" style="display: block;width: 200px;" id="txtRegistroNom"
+                placeholder="Ingrese Nombre">
+            Apellido<input type="text" style="display: block;width: 200px;" id="txtRegistroApe"
+                placeholder="Ingrese Apellido">
             Email:<input type="text" style="display: block;width: 200px;" id="txtRegistroEmail"
-                placeholder="Ingrese su Email a registrar">
-            Celular<input type="text" style="display: block;width: 200px;" id="txtRegistroCelular"
-                placeholder="Ingrese su numero de celular">
-            Apellido<input type="text" style="display: block;width: 200px;" id="txtRegistroApellido"
-                placeholder="Ingrese su Apellido aqui">
-            Contraseña<input type="password" style="display: block;width: 200px;" id="txtRegistroConstraseña"
-                placeholder="Ingrese su contraseña a registrar">
-            Confirmar Contraseña<input type="password" style="display: block; width: 200px;"
-                id="txtRegistroContraseñaComp" placeholder="Confirme su contraseña aqui">
+                placeholder="Ingrese Email">
+            Teléfono<input type="text" style="display: block;width: 200px;" id="txtRegistroTel"
+                placeholder="Ingrese Teléfono">
+            Contraseña<input type="password" style="display: block;width: 200px;" id="txtRegistroContraseña"
+                placeholder="Ingrese Contraseña">
+            Reingrese Contraseña<input type="password" style="display: block; width: 200px;"
+                id="txtRegistroContraseñaComp" placeholder="Reingrese Contraseña">
+            <br>
             <input type="button" id="btnRegistro" style="display: block;" value="Registrarse">
         </div>
         <br>
@@ -70,12 +75,12 @@
             </div>
 
             <select id="selCotizacion" style="display: inline;">
-                <option>UYU</option>
-                <option>USD</option>
+                <option>$</option>
+                <option>U$S</option>
             </select>
             <select id="selOrdenar" style="display: inline;">
-                <option>Asendente</option>
-                <option>Desendente</option>
+                <option>Ascendente</option>
+                <option>Descendente</option>
             </select>
             <input type="text" id="txtBusqueda" style="display: inline; width: 200px;"
                 placeholder="Ingrese su busqueda aqui">

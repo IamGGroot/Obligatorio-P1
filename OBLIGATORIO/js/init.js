@@ -43,6 +43,7 @@ function mostrarAcceso(user) {
 }
 function mostrarRegistro(user) {
     if (user == "Visitante") {
+        document.querySelector("#tituloReg").innerHTML = "Registro de nuevo Huésped"
         document.querySelector("#divNoReg").style.display = "block";
         document.querySelector("#divReg").style.display = "block";
     }
@@ -55,8 +56,9 @@ function mostrarRegistro(user) {
         document.querySelector("#divReg").style.display = "none";
     }
     if (user == "Administrador") {
-        document.querySelector("#divNoReg").style.display = "none";
-        document.querySelector("#divReg").style.display = "none";
+        document.querySelector("#tituloReg").innerHTML = "Registro de nuevo Anfitrión"
+        document.querySelector("#divNoReg").style.display = "block";
+        document.querySelector("#divReg").style.display = "block";
     }
 }
 function mostrarSeleccionarMoneda(user) {
@@ -296,5 +298,5 @@ function mostrarRelizarCalificacion(user) {
         document.querySelector("#divCalificarReserva").style.display = "none";
     }
 }
-console.log("javascript 2/3 cargado")
+console.log("Init cargado")
 

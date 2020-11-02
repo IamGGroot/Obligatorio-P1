@@ -1,6 +1,10 @@
 class Usuarios{
     constructor() {
+      this.nombreUsu;
       this.nombre;
+      this.apellido;
+      this.mail;
+      this.telefono;
       this.clave;
       this.tipo;
       this.reservas;
@@ -8,4 +12,14 @@ class Usuarios{
     }
 }
 
-console.log("javascript 1/3 cargado")
+class Inmuebles{
+  constructor(){
+    this.titulo;
+    this.descripcion;
+    this.ciudad;
+    this.precioxnoche;
+    this.promediocalif;
+  }
+}
+
+console.log("Class cargado")
