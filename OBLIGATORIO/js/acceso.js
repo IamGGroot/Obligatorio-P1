@@ -52,31 +52,40 @@ function precargaUsuarios() {
 }
 ////////////// REGISTRO //////////////
 function registro() {
-    let nUser = document.querySelector("#txtRegistroNomUsu").value;
+    let nUser = document.querySelector("#txtRegistroNomUsu").value;                   /// comienza seleccion de valores del html///
     let nNombre = document.querySelector("#txtRegistroNom").value;
     let nApellido = document.querySelector("#txtRegistroApe").value;
     let nMail = document.querySelector("#txtRegistroEmail").value;
     let nTel = document.querySelector("#txtRegistroTel").value;
-    let nPass = document.querySelector("#txtRegistroContraseña").value;
+    let nPass = document.querySelector("#txtRegistroContraseña").value;         // termina seleccion de valores del html
 
-    let agregarActual = new Usuarios();
+    let agregarActual = new Usuarios();                   // Se crea un objeto de clase usuario
 
-    agregarActual.nombreUsu = nUser;
+    agregarActual.nombreUsu = nUser;                          //comienza  a ese objeto se le pone el dato que corresponde
     agregarActual.nombre = nNombre;
     agregarActual.apellido = nApellido;
     agregarActual.mail = nMail;
     agregarActual.telefono = nTel;
-    agregarActual.clave = nPass;
+    agregarActual.clave = nPass;                              // termina ponerle datos a objeto
     let ntipo = "";
-    if (user == "Visitante") {
-        ntipo = "Huésped"
-        agregarActual.tipo = ntipo;
+    if (user == "Visitante") {      /// si la pagina la esta viendo un visitante (el unico que deberia poder verlo porque no hay upgrade de user)
+        ntipo = "Huésped"                 /// si es visitante su tipo de user va ser huesped
+        agregarActual.tipo = ntipo;      
     }
     if (user == "Administrador") {
         ntipo = "Anfitrión"
-        agregarActual.tipo = ntipo;
+        agregarActual.tipo = ntipo;     //// creo que el admin tiene que poder elegir si aceptar 
+                                        //o no a un usuario para hacerlo anfitrion
+                                        /// no tener que rellenar los datos 
+                                         /// yo creo que de la lista de registros ademas de aceptarlo como bien esta en el primer if
+                                         //, lo otro
+                                         // que hay que hacer es ponerlo en un nuevo array de posibles aceptados
+                                         /// y que en un select muestre una lista con esos posibles aceptados 
+                                         //(cuando sea admin el usuario)el admin tenga un boton de validar anfitrion
+                                         /// en otra funcionalidad obvio, porque sino aca los datos el admin tiene 
+                                         //que llenarlos a mano en el registro.
     }
-    listaUsuarios.push(agregarActual);
+    listaUsuarios.push(agregarActual); /// se pushea 
 
 }
 
