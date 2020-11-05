@@ -1,13 +1,14 @@
-
-
-
-
- // document.querySelector("#selLogin").addEventListener("change", ingreso); // Cuando el select de tipo de usuario cambia ejecuta ingreso()
+document.querySelector("#selLogin").addEventListener("change", ingresofalso); // Cuando el select de tipo de usuario cambia ejecuta ingreso()
 ingreso("Visitante");
 
+
+function ingresofalso()
+{
+    let tipoUsuario = document.querySelector("#selLogin").value; 
+    ingreso(tipoUsuario);
+}
 function ingreso(tipoUsuario) {
-   // let tipoUsuario = document.querySelector("#selLogin").value;  // Toma el valor del select tipo de usuario y lo guarda en la variable tipoUsuario.
-console.log(tipoUsuario);
+
     mostrarInmueblesListadosYCalificaciones(tipoUsuario); // 
     mostrarInmueblesListadosVerMas(tipoUsuario); // 
     mostrarInmueblesPorPropiedad(tipoUsuario); // 
@@ -28,34 +29,34 @@ console.log(tipoUsuario);
 }
 function mostrarAcceso(user) {
 
-    if (user == "Visitante") {
+    if (user === "Visitante") {
         document.querySelector("#btnSalir").style.display = "none";
     }
-    if (user == "Huesped") {
+    if (user === "Huesped") {
         document.querySelector("#btnSalir").style.display = "inline";
     }
-    if (user == "Anfitrion") {
+    if (user === "Anfitrion") {
         document.querySelector("#btnSalir").style.display = "inline";
     }
-    if (user == "Administrador") {
+    if (user === "Administrador") {
         document.querySelector("#btnSalir").style.display = "inline";
     }
 }
 function mostrarRegistro(user) {
-    if (user == "Visitante") {
+    if (user === "Visitante") {
         document.querySelector("#tituloReg").innerHTML = "Registro de nuevo Huésped"
         document.querySelector("#divNoReg").style.display = "block";
         document.querySelector("#divReg").style.display = "block";
     }
-    if (user == "Huesped") {
+    if (user === "Huesped") {
         document.querySelector("#divNoReg").style.display = "none";
         document.querySelector("#divReg").style.display = "none";
     }
-    if (user == "Anfitrion") {
+    if (user === "Anfitrion") {
         document.querySelector("#divNoReg").style.display = "none";
         document.querySelector("#divReg").style.display = "none";
     }
-    if (user == "Administrador") {
+    if (user === "Administrador") {
         document.querySelector("#tituloReg").innerHTML = "Registro de nuevo Anfitrión"
         document.querySelector("#divNoReg").style.display = "block";
         document.querySelector("#divReg").style.display = "block";
@@ -63,50 +64,50 @@ function mostrarRegistro(user) {
 }
 function mostrarSeleccionarMoneda(user) {
     document.querySelector("#selCotizacion").selectedIndex = 0; //SETEA LA COTIZACION EN PESOS PORQUE SI VIENE SETEADA DESDE DOLARES PUEDE QUE OTRO USUARIO VEA EL VALOR EN DOLARES 
-    if (user == "Visitante") {
+    if (user === "Visitante") {
         document.querySelector("#selCotizacion").style.display = "inline";
         document.querySelector("#selCotizacion").options[1].style.display = "";
     }
-    if (user == "Huesped") {
+    if (user === "Huesped") {
         document.querySelector("#selCotizacion").style.display = "inline";
         document.querySelector("#selCotizacion").options[1].style.display = "";
     }
-    if (user == "Anfitrion") {
+    if (user === "Anfitrion") {
         document.querySelector("#selCotizacion").style.display = "inline";
         document.querySelector("#selCotizacion").options[1].style.display = "none"
     }
-    if (user == "Administrador") {
+    if (user === "Administrador") {
         document.querySelector("#selCotizacion").style.display = "none";
         document.querySelector("#selCotizacion").options[1].style.display = "none"
     }
 }
 function mostrarCotizacion(user) {
-    if (user == "Visitante") {
+    if (user === "Visitante") {
         document.querySelector("#divCotizar").style.display = "none";
 
     }
-    if (user == "Huesped") {
+    if (user === "Huesped") {
         document.querySelector("#divCotizar").style.display = "none";
     }
-    if (user == "Anfitrion") {
+    if (user === "Anfitrion") {
         document.querySelector("#divCotizar").style.display = "none";
     }
-    if (user == "Administrador") {
+    if (user === "Administrador") {
         document.querySelector("#divCotizar").style.display = "inline";
     }
 }
 function mostrarReporteInmuebles(user) {
-    if (user == "Visitante") {
+    if (user === "Visitante") {
         document.querySelector("#divReporteInmueble").style.display = "none";
 
     }
-    if (user == "Huesped") {
+    if (user === "Huesped") {
         document.querySelector("#divReporteInmueble").style.display = "none";
     }
-    if (user == "Anfitrion") {
+    if (user === "Anfitrion") {
         document.querySelector("#divReporteInmueble").style.display = "none";
     }
-    if (user == "Administrador") {
+    if (user === "Administrador") {
         document.querySelector("#divReporteInmueble").style.display = "inline";
     }
 
@@ -178,105 +179,105 @@ function mostrarInmueblesListadosYCalificaciones(user) {
     }
 }
 function mostrarOrdenarInmuebles(user) {
-    if (user == "Visitante") {
+    if (user === "Visitante") {
         document.querySelector("#selOrdenar").style.display = "inline";
         document.querySelector("#txtBusqueda").style.display = "inline";
     }
-    if (user == "Huesped") {
+    if (user === "Huesped") {
         document.querySelector("#selOrdenar").style.display = "inline";
         document.querySelector("#txtBusqueda").style.display = "inline";
     }
-    if (user == "Anfitrion") {
+    if (user === "Anfitrion") {
         document.querySelector("#selOrdenar").style.display = "none";
         document.querySelector("#txtBusqueda").style.display = "none";
     }
-    if (user == "Administrador") {
+    if (user === "Administrador") {
         document.querySelector("#selOrdenar").style.display = "none";
         document.querySelector("#txtBusqueda").style.display = "none";
     }
 }
 function mostrarInmueblesPorPropiedad(user) {
-    if (user == "Visitante") {
+    if (user === "Visitante") {
         document.querySelector("#btnVerInmueblesAnfitrion").style.display = "none";
     }
-    if (user == "Huesped") {
+    if (user === "Huesped") {
         document.querySelector("#btnVerInmueblesAnfitrion").style.display = "none";
     }
-    if (user == "Anfitrion") {
+    if (user === "Anfitrion") {
         document.querySelector("#btnVerInmueblesAnfitrion").style.display = "inline";
     }
-    if (user == "Administrador") {
+    if (user === "Administrador") {
         document.querySelector("#btnVerInmueblesAnfitrion").style.display = "none";
     }
 }
 function mostrarInmueblesListadosVerMas(user) {
-    if (user == "Visitante") {
+    if (user === "Visitante") {
         document.querySelector("#divVerMas").style.display = "none";
     }
-    if (user == "Huesped") {
+    if (user === "Huesped") {
         document.querySelector("#divVerMas").style.display = "block";
     }
-    if (user == "Anfitrion") {
+    if (user === "Anfitrion") {
         document.querySelector("#divVerMas").style.display = "none"; 
     }
-    if (user == "Administrador") {
+    if (user === "Administrador") {
         document.querySelector("#divVerMas").style.display = "none";
     }
 }
 function mostrarHabilitarInmuebles(user) {
-    if (user == "Visitante") {
+    if (user === "Visitante") {
         document.querySelector("#divHabilitarInmueble").style.display = "none";
 
     }
-    if (user == "Huesped") {
+    if (user === "Huesped") {
         document.querySelector("#divHabilitarInmueble").style.display = "none";
     }
-    if (user == "Anfitrion") {
+    if (user === "Anfitrion") {
         document.querySelector("#divHabilitarInmueble").style.display = "block";
     }
-    if (user == "Administrador") {
+    if (user === "Administrador") {
         document.querySelector("#divHabilitarInmueble").style.display = "none";
     }
 }
 function mostrarRegistroInmubles(user) {
-    if (user == "Visitante") {
+    if (user === "Visitante") {
         document.querySelector("#divRegistrarInmueble").style.display = "none";
     }
-    if (user == "Huesped") {
+    if (user === "Huesped") {
         document.querySelector("#divRegistrarInmueble").style.display = "none";
     }
-    if (user == "Anfitrion") {
+    if (user === "Anfitrion") {
         document.querySelector("#divRegistrarInmueble").style.display = "inline";
     }
-    if (user == "Administrador") {
+    if (user === "Administrador") {
         document.querySelector("#divRegistrarInmueble").style.display = "none";
     }
 }
 function mostrarDarAltaAnfitrion(user) {
-    if (user == "Visitante") {
+    if (user === "Visitante") {
         document.querySelector("#btnAltaAnfitrion").style.display = "none";
     }
-    if (user == "Huesped") {
+    if (user === "Huesped") {
         document.querySelector("#btnAltaAnfitrion").style.display = "none";
     }
-    if (user == "Anfitrion") {
+    if (user === "Anfitrion") {
         document.querySelector("#btnAltaAnfitrion").style.display = "none";
     }
-    if (user == "Administrador") {
+    if (user === "Administrador") {
         document.querySelector("#btnAltaAnfitrion").style.display = "block";
     }
 }
 function mostrarRealizarReserva(user) {
-    if (user == "Visitante") {
+    if (user === "Visitante") {
         document.querySelector("#divReserva").style.display = "none";
     }
-    if (user == "Huesped") {
+    if (user === "Huesped") {
         document.querySelector("#divReserva").style.display = "block";
     }
-    if (user == "Anfitrion") {
+    if (user === "Anfitrion") {
         document.querySelector("#divReserva").style.display = "none";
     }
-    if (user == "Administrador") {
+    if (user === "Administrador") {
         document.querySelector("#divReserva").style.display = "none";
     }
 }
@@ -285,16 +286,16 @@ function mostrarRealizarReserva(user) {
 //{}
 
 function mostrarRelizarCalificacion(user) {
-    if (user == "Visitante") {
+    if (user === "Visitante") {
         document.querySelector("#divCalificarReserva").style.display = "none";
     }
-    if (user == "Huesped") {
+    if (user === "Huesped") {
         document.querySelector("#divCalificarReserva").style.display = "block";
     }
-    if (user == "Anfitrion") {
+    if (user === "Anfitrion") {
         document.querySelector("#divCalificarReserva").style.display = "none";
     }
-    if (user == "Administrador") {
+    if (user === "Administrador") {
         document.querySelector("#divCalificarReserva").style.display = "none";
     }
 }

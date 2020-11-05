@@ -68,22 +68,13 @@ function registro() {
     agregarActual.telefono = nTel;
     agregarActual.clave = nPass;                              // termina ponerle datos a objeto
     let ntipo = "";
-    if (user == "Visitante") {      /// si la pagina la esta viendo un visitante (el unico que deberia poder verlo porque no hay upgrade de user)
+    if (user === "Visitante") {      /// si la pagina la esta viendo un visitante (el unico que deberia poder verlo porque no hay upgrade de user)
         ntipo = "Huésped"                 /// si es visitante su tipo de user va ser huesped
         agregarActual.tipo = ntipo;      
     }
-    if (user == "Administrador") {
+    if (user === "Administrador") {
         ntipo = "Anfitrión"
-        agregarActual.tipo = ntipo;     //// creo que el admin tiene que poder elegir si aceptar 
-                                        //o no a un usuario para hacerlo anfitrion
-                                        /// no tener que rellenar los datos 
-                                         /// yo creo que de la lista de registros ademas de aceptarlo como bien esta en el primer if
-                                         //, lo otro
-                                         // que hay que hacer es ponerlo en un nuevo array de posibles aceptados
-                                         /// y que en un select muestre una lista con esos posibles aceptados 
-                                         //(cuando sea admin el usuario)el admin tenga un boton de validar anfitrion
-                                         /// en otra funcionalidad obvio, porque sino aca los datos el admin tiene 
-                                         //que llenarlos a mano en el registro.
+        agregarActual.tipo = ntipo;     
     }
     listaUsuarios.push(agregarActual); /// se pushea 
 
