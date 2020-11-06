@@ -1,5 +1,8 @@
 eventos();
 
+
+
+
 let listaUsuarios = new Array;
 let listaPrecarga =
     [{ nombreUsu: "agu22", nombre: "Agustín", clave: "bsadfklj123", tipo: "Huesped" , email : "agu22@gmail.com" , apellido : "Rodriguez" , celular : "099123456"},
@@ -65,11 +68,7 @@ function registro() {
 
     
 
-    let validacionPass = false;
-    if(nPass === nPassComp)
-    {
-        validacionPass = true;
-    }else{mensaje += "Las contreseñas ingresadas no son iguales.<br>"}
+
 
     if (!verificarTextoNoVacio(nUser)) {
     mensaje += "Ingrese datos validos en el campo de usuario"    
@@ -87,7 +86,7 @@ function registro() {
 
     
 
-    if(verificarTextoNoVacio(nUser)&&verificarTextoNoVacio(nNombre)&&verificarTextoNoVacio(nApellido)&&validacionEmail(nMail)&&validarCel(nTel)&&validacionPass)
+    if(verificarTextoNoVacio(nUser)&&verificarTextoNoVacio(nNombre)&&verificarTextoNoVacio(nApellido)&&validacionEmail(nMail)&&validarCel(nTel)&&validacionPass(nPass,nPassComp))
 {
 
     let agregarActual = new Usuarios();                   // Se crea un objeto de clase usuario
@@ -191,7 +190,46 @@ function validacionEmail(mail)
         
 }
 
+function validacionPass(clave,confirmacion)
+{
+    let validacionPass = false;
+    let validacionLongitud = false;
+    //let validacionLetrasMin = false;
+    let validacionLetrasMay = false;
+    let validacionNumeros = false;
+    let validacionConfirmacion = false;
 
+    if(clave === confirmacion)
+    {
+        validacionConfirmacion = true;
+        
+        if (clave.length>5) {
+            validacionLongitud = true;
+            let i = 0;
+            while((!validacionLetrasMay&&!validacionNumeros)||(i < clave.length))
+            {
+                /*if(isNaN(clave.charAt(i))){validacionLetrasMin}*/
+                if(!isNaN(clave.charAt(i))){validacionNumeros = true;}
+                if(clave.charCodeAt(i)>64&&clave.charCodeAt(i)<91){validacionMay = true;}
+                i++;
+               
+            }
+                        
+        }
+
+        if(validacionLetrasMay&&validacionLongitud&&validacionNumeros&&validacionConfirmacion)
+        {
+            validacionPass = true;
+        }
+        return validacionPass;
+        
+
+    }
+    
+
+
+
+}
 
 
 
