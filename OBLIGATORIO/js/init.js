@@ -1,14 +1,15 @@
 document.querySelector("#selLogin").addEventListener("change", ingresofalso); // Cuando el select de tipo de usuario cambia ejecuta ingreso()
 ingreso("Visitante");
 
+var userActual = document.querySelector("#selLogin").value; 
 
 function ingresofalso()
 {
-    let tipoUsuario = document.querySelector("#selLogin").value; 
+    
     ingreso(tipoUsuario);
 }
 function ingreso(tipoUsuario) {
-
+    userActual = tipoUsuario;
     mostrarInmueblesListadosYCalificaciones(tipoUsuario); // 
     mostrarInmueblesListadosVerMas(tipoUsuario); // 
     mostrarInmueblesPorPropiedad(tipoUsuario); // 

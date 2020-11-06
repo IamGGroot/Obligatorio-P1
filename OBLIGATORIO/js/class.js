@@ -3,8 +3,8 @@ class Usuarios{
       this.nombreUsu;
       this.nombre;
       this.apellido;
-      this.mail;
-      this.telefono;
+      this.email;
+      this.celular;
       this.clave;
       this.tipo;
       this.reservas;
