@@ -1,34 +1,19 @@
 LISTA DE USUARIOS PRECARGADOS:
- { nombre: "agu22", clave: "bsadfklj123", tipo: "Huesped" }
-​
- { nombre: "Almicar", clave: "Almicar99", tipo: "Huesped" }
-​
- { nombre: "Camila", clave: "Camilita123", tipo: "Anfitrion" }
-​
- { nombre: "Esteban", clave: "Quitoroto", tipo: "Huesped" }
-​
- { nombre: "Dardo", clave: "YMariaElena", tipo: "Huesped" }
-​
- { nombre: "admin", clave: "1234", tipo: "Administrador" }
-​
- { nombre: "Pepe", clave: "EncimaDeRacing", tipo: "Anfitrion" }
-​
- { nombre: "Homero", clave: "Marge", tipo: "Anfitrion" }
-​
- { nombre: "Roberto", clave: "unmillondeamigos", tipo: "Anfitrion" }
 
- { nombre: "Arturo", clave: "unaclavede8digitos", tipo: "Anfitrion" }
-
- { nombre: "Debora", clave: "mwbk5255", tipo: "Huesped" }
-
- { nombre: "Pablo", clave: "randompasword99", tipo: "Huesped" }
-
- { nombre: "Marge", clave: "sinfonica269", tipo: "Huesped" }
-
- { nombre: "Lisa", clave: "Millhouse123", tipo: "Huesped" }
-
- { nombre: "Gabriel", clave: "cacahuate44", tipo: "Huesped" }
-
- { nombre: "Nacho", clave: "bolsoamuerte123", tipo: "Huesped" }
-
- { nombre: "Ricardo", clave: "unaclaverandom", tipo: "Huesped" }
+    [{ nombreUsu: "agu22", nombre: "Agustín", apellido: "Rodriguez", email: "agu22@gmail.com", celular: "099123456", clave: "bSaDfklj123", tipo: "Huesped" },
+    { nombreUsu: "AlmiSua345", nombre: "Almicar", apellido: "Vazques", email: "almicar@hotmail.com", celular: "096234654", clave: "Almicar1995", tipo: "Huesped" },
+    { nombreUsu: "Camiiii_ok", nombre: "Camila", apellido: "Carrasco", email: "camila@zoho.com", celular: "095236547", clave: "Camilita123", tipo: "Anfitrion" },
+    { nombreUsu: "Este_rodriguez", nombre: "Esteban", apellido: "Quito", email: "estebanquito@gmail.com", celular: "099456456", clave: "Quitoroto456", tipo: "Huesped" },
+    { nombreUsu: "Américo_V", nombre: "Dardo", apellido: "Fuseneco", email: "dardo2020@yahoo.com", celular: "099222222", clave: "YMari4Elen4", tipo: "Huesped", },
+    { nombreUsu: "admin", nombre: "Administrador", apellido: "admin", email: "admin@hotmail.com", celular: "097111111", clave: "1234", tipo: "Administrador" },
+    { nombreUsu: "Pepe_1", nombre: "José", apellido: "Gomez", email: "josesito@gmail.com", celular: "094446456", clave: "EncimadeRacing27", tipo: "Anfitrion" },
+    { nombreUsu: "Homer.78", nombre: "Homero", apellido: "Simpson", email: "homerojsimpson@gmail.com", celular: "099777756", clave: "Marge1967", tipo: "Anfitrion" },
+    { nombreUsu: "Robert_63", nombre: "Roberto", apellido: "Carlos", email: "robert@gmail.com", celular: "099888888", clave: "1millondeAmigos", tipo: "Anfitrion" },
+    { nombreUsu: "R2D2", nombre: "Arturo", apellido: "Luro", email: "arturoduro@hotmail.com", celular: "099199956", clave: "unaClavede8digitos", tipo: "Anfitrion" },
+    { nombreUsu: "DebyBolso", nombre: "Débora", apellido: "Lopez", email: "debielo@adinet.com", celular: "099557456", clave: "mwBk5255", tipo: "Huesped" },
+    { nombreUsu: "Pablosky27", nombre: "Pablo", apellido: "Marmol", email: "pablomarmol@outlook.com", celular: "099651456", clave: "randoMpasSword99", tipo: "Huesped" },
+    { nombreUsu: "Marge96", nombre: "Marjorie", apellido: "Simpson", email: "MargeS@gmail.com", celular: "099095430", clave: "sinFonica269", tipo: "Huesped" },
+    { nombreUsu: "Liiisa", nombre: "Lucía", apellido: "Diaz", email: "luciaD@zoho.com", celular: "099231576", clave: "Millhouse789", tipo: "Huesped" },
+    { nombreUsu: "GabitomanyaCAP", apellido: "Figueredo", nombre: "Gabriel", email: "gaby22@gmail.com", celular: "099194456", clave: "CacaHuate44", tipo: "Huesped" },
+    { nombreUsu: "Nachocapo1", apellido: "Silva", nombre: "Juan Ignacio", email: "juancho@yahoo.com", celular: "099658456", clave: "bolsoAmuerte1899", tipo: "Huesped" },
+    { nombreUsu: "Rickymaravilla", apellido: "Perez", nombre: "Ricardo", email: "ricky@adinet.com", celular: "099858456", clave: "r1ckYmorty", tipo: "Huesped" }]
