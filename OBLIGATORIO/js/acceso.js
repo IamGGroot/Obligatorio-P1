@@ -1,6 +1,7 @@
 eventos();
 
 let listaUsuarios = new Array;
+<<<<<<< Updated upstream
 let listaPrecargaUsuarios =
     [
         { nombreUsu: "agu22", nombre: "Agustín", apellido: "Rodriguez", email: "agu22@gmail.com", celular: "099123456", clave: "bSaDfklj123", tipo: "Huesped" },
@@ -70,6 +71,27 @@ function precargaFotos() {
 //Falta bandera en while y automatizar la cantidad de fotos para que corte cuando salga undefined y despues sacamos el atributo cantidadFotosInm de la clase Inmuebles
 
 
+=======
+let listaPrecarga =
+    [{ nombreUsu: "agu22", nombre: "Agustín", clave: "bsadfklj123", tipo: "Huesped" , email : "agu22@gmail.com" , apellido : "Rodriguez" , celular : "099123456"},
+    { nombreUsu: "AlmiSua345", nombre: "Almicar", clave: "Almicar99", tipo: "Huesped" , email : "almicar@gmail.com" , apellido : "Vazques" , celular : "099234654" },
+    { nombreUsu: "Camiiii_ok", nombre: "Camila", clave: "Camilita123", tipo: "Anfitrion" , email : "camila@gmail.com" , apellido : "Carrasco" , celular : "1236547" },
+    { nombreUsu: "Este_rodriguez", nombre: "Esteban", clave: "Quitoroto", tipo: "Huesped" , email : "estebanquito@gmail.com" , apellido : "Quito" , celular : "099456456" },
+    { nombreUsu: "Américo_V", nombre: "Dardo", clave: "YMariaElena", tipo: "Huesped" , email : "dardo2020@gmail.com" , apellido : "Fuseneco" , celular : "099222222"},
+    { nombreUsu: "admin", nombre: "Administrador", clave: "1234", tipo: "Administrador" , email : "admin@admin.com" , apellido : "admin" , celular : "111111111" },
+    { nombreUsu: "Pepe_1", nombre: "José", clave: "EncimaDeRacing", tipo: "Anfitrion" , email : "josesito@gmail.com" , apellido : "Gomez" , celular : "09444456" },
+    { nombreUsu: "Homer.78", nombre: "Homero", clave: "Marge", tipo: "Anfitrion" , email : "homerojsimpson@gmail.com" , apellido : "Simpson" , celular : "099777756" },
+    { nombreUsu: "Robert_63", nombre: "Roberto", clave: "unmillondeamigos", tipo: "Anfitrion" , email : "robert@gmail.com" , apellido : "Carlos" , celular : "099888888" },
+    { nombreUsu: "R2D2", nombre: "Arturo", clave: "unaclavede8digitos", tipo: "Anfitrion" , email : "arturoduro@gmail.com" , apellido : "Luro" , celular : "099199956"},
+    { nombreUsu: "DebyBolso", nombre: "Débora", clave: "mwbk5255", tipo: "Huesped" , email : "debielo@gmail.com" , apellido : "Lopez" , celular : "099557456"},
+    { nombreUsu: "Pablosky27", nombre: "Pablo", clave: "randompasword99", tipo: "Huesped" , email : "pablomarmol@gmail.com" , apellido : "Marmol" , celular : "099651456"},
+    { nombreUsu: "Marge96", nombre: "Marjorie", clave: "sinfonica269", tipo: "Huesped" , email : "MargeS@gmail.com" , apellido : "Simpson" , celular : "099095430"},
+    { nombreUsu: "Liiisa", nombre: "Lucía", clave: "Millhouse123", tipo: "Huesped" , email : "luciaD@gmail.com" , apellido : "Diaz" , celular : "099231576"},
+    { nombreUsu: "GabitomanyaCAP", nombre: "Gabriel", clave: "cacahuate44", tipo: "Huesped" , email : "gaby22@gmail.com" , apellido : "Figueredo" , celular : "099194456"},
+    { nombreUsu: "Nachocapo1", nombre: "Juan Ignacio", clave: "bolsoamuerte123", tipo: "Huesped" , email : "juancho@gmail.com" , apellido : "Silva" , celular : "099658456"},
+    { nombreUsu: "Rickymaravilla", nombre: "Ricardo", clave: "unaclaverandom", tipo: "Huesped" , email : "ricky@gmail.com" , apellido : "Perez" , celular : "099858456"}]
+//falta arreglar las constraseñas
+>>>>>>> Stashed changes
 function eventos() {
     document.querySelector("#btnAcceso").addEventListener("click", validarLogin);
     document.querySelector("#btnRegistro").addEventListener("click", registro);
@@ -142,10 +164,18 @@ function registro() {
     let nPass = document.querySelector("#txtRegistroContraseña").value.trim();
     let nPassComp = document.querySelector("#txtRegistroContraseñaComp").value.trim();  // termina seleccion de valores del html
     let mensaje = "";
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
 
     if (!verificarTextoNoVacio(nUser)) {
         mensaje += "Ingrese datos validos en el campo de usuario"
     }
+
+
+
+
 
     if (!verificarTextoNoVacio(nNombre)) {
         mensaje += "Ingrese datos validos en el campo de nombre<br>"
@@ -156,9 +186,18 @@ function registro() {
     if (!validacionEmail) {
         mensaje += "Email no valido.<br>"
     }
+<<<<<<< Updated upstream
 
 
     if (verificarTextoNoVacio(nUser) && verificarTextoNoVacio(nNombre) && verificarTextoNoVacio(nApellido) && validacionEmail(nMail) && validarCel(nTel) && validacionPass(nPass, nPassComp)) {
+=======
+    if(validarExisteUser(nUser))
+    {mensaje += "Usuario ya existente";}
+    
+
+    if(validarExisteUser(nUser)&&verificarTextoNoVacio(nUser)&&verificarTextoNoVacio(nNombre)&&verificarTextoNoVacio(nApellido)&&validacionEmail(nMail)&&validarCel(nTel)&&validacionPass(nPass,nPassComp))
+{
+>>>>>>> Stashed changes
 
         let agregarActual = new Usuarios();                   // Se crea un objeto de clase usuario
 
@@ -180,18 +219,32 @@ function registro() {
         listaUsuarios.push(agregarActual); /// se agrega al array 
         mensaje = "El usuario fue creado con exito";
     }
+<<<<<<< Updated upstream
+=======
+    listaUsuarios.push(agregarActual); /// se agrega al array 
+    mensaje = "El usuario fue creado con exito";
+}
+console.log(mensaje)
+>>>>>>> Stashed changes
 }
 
 ////////////// AUTENTICACION /////////
 function validarLogin() {
-    let user = document.querySelector("#txtLoginUser").value;
-    let pasword = document.querySelector("#txtLoginPassword").value;
+    let user = document.querySelector("#txtLoginUser").value.trim();
+    let pasword = document.querySelector("#txtLoginPassword").value.trim();
     /////////////// VALIDACIONES ////////////////
+<<<<<<< Updated upstream
     let validacionAcceso = false;
     if(user.length>0&&pasword.length>0)
     {
     /////////////// VALIDACION DEL ACCESO ///////
+=======
+>>>>>>> Stashed changes
     let validacionAcceso = false;
+    if(user.length>0&&pasword.length>0)
+    {
+    /////////////// VALIDACION DEL ACCESO ///////
+    
     let tipoUser = "";
     for (let i = 0; i < listaUsuarios.length; i++) {
         let element = listaUsuarios[i];
@@ -200,6 +253,7 @@ function validarLogin() {
             tipoUser = element.tipo;
             i = listaUsuarios.length + 1;
         }
+    }
     }
     if (validacionAcceso) {
         ingreso(`${tipoUser}`)
@@ -235,9 +289,62 @@ function validarCel(cel) {
     return validacion;
 }
 
+<<<<<<< Updated upstream
 
 
 function validacionPass(clave, confirmacion) {
+=======
+
+function validacionEmail(texto)
+{ 
+ let validacionTexto = true;
+ let validacion = false;
+ let contadorPunto = 0;
+ let contadorArroba = 0; 
+ let encontroArroba = false;
+ let tieneUnPuntoValido = false;
+ let textoAntesArroba = false;
+ let textoDespArroba = false;
+ let textoDespPunto = false;
+ let comprobacion = "";
+
+    for (let i = 0; i < texto.length; i++) {
+        if((texto.charCodeAt(i)>63 && texto.charCodeAt(i)<91)||(texto.charCodeAt(i)>96 && texto.charCodeAt(i)<123)||(texto.charCodeAt(i)===46))
+        {validacionTexto = false;
+        comprobacion = comprobacion + texto.charAt(i);}
+        if (texto.charCodeAt(i)===64) {
+            contadorArroba = contadorArroba + 1;
+            encontroArroba = true;
+            if ((texto.charCodeAt(i+1)!==64)&&(texto.charCodeAt(i+1)!==46)) {
+                textoDespArroba = true;
+            }
+
+        }
+        if (encontroArroba&&texto.charAt(i)===".") {
+            tieneUnPuntoValido = true;
+            contadorPunto = contadorPunto + 1;
+            if((texto.charCodeAt(i+1)!==64)&&(texto.charCodeAt(i+1)!==46))
+            {textoDespPunto = true;}
+        }
+        if((texto.charCodeAt(0)!==64)&&(texto.charCodeAt(0)!==46))
+        {textoAntesArroba = true;} 
+        
+    }
+    if (comprobacion.length === texto.length)
+    {validacionTexto = true;}else{validacionTexto = false;}
+  //  console.log("comprobacion" + "         " + comprobacion)
+  //  console.log("tiene punto" + "   " + tieneUnPuntoValido + "   " + contadorPunto)
+  //  console.log("tiene @" + "   " + encontroArroba + "   " + contadorArroba)
+  //  console.log("validacion texto" + "   " + validacionTexto)
+    if(validacionTexto&&contadorArroba===1&&contadorPunto===1&&tieneUnPuntoValido&&textoAntesArroba&&textoDespArroba&&textoDespPunto){
+    validacion = true;}
+return validacion;
+}
+
+
+function validacionPass(clave,confirmacion)
+{
+>>>>>>> Stashed changes
     let validacionPass = false;
     let validacionLongitud = false;
     //let validacionLetrasMin = false;
@@ -285,11 +392,26 @@ function mostrarTabla() {
         tablaVisi += `<td> ${titu} </td><td> ${desc} </td><td>  ${ciud}</td><td>  ${precio}</td><td>  ${prom}</td><td>  ${imagen}</td>`;
         tablaVisi += '</tr>';
 
+<<<<<<< Updated upstream
         if (inmuebleX.listaInmuebles.length > 0) {
             for (let j = 0; j < inmuebleX.listaInmuebles.length; j++) {
                 let inmuebleActual = inmuebleX.listaInmuebles[i];
 
                 tablaVisi += `<tr><td> </td><td> ${inmuebleActual.titulo} </td><td>  ${inmuebleActual.descripcion}</td></tr><td>  ${inmuebleActual.ciudad}</td></tr><td>  ${inmuebleActual.precioPorNoche}</td></tr><td>  ${inmuebleActual.promedioCalif}</td></tr><td>  ${inmuebleActual.fotos}</td></tr>`;
+=======
+function validarExisteUser(usr)
+{let validacion = true;
+    for (let i = 0; i < listaUsuarios.length; i++) {
+        let element = listaUsuarios[i].nombreUsu;
+        if (element = usr)
+        {
+            validacion=false;
+        }
+        
+    }
+    return validacion;
+}
+>>>>>>> Stashed changes
 
             }
         }
