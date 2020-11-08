@@ -36,7 +36,8 @@ let listaPrecargaInmuebles =
             precioPorNoche: 5400,
             promedioCalif: 3.9,
             cantidadFotosInm: 12,
-            rutaImg: "img\Inmuebles\Inmueble1"
+            rutaImg: "img\Inmuebles\Inmueble1",
+            fotos:""
         }
     ];
 
@@ -50,6 +51,7 @@ function precargaFotos() {
         let id = 1;
         let idInm = inmuebleX[id];
         let rutaActual = inmuebleX[rutaImg];
+        
 
         let cantidadFotos = inmuebleX[cantidadFotosInm];
         while (ite < cantidadFotos /*&& bandera*/) {
