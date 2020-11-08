@@ -43,7 +43,7 @@ let listaPrecargaInmuebles =
             fotos:""
         }
     ];
-
+  
 let listaFotos = new Array;
 
 function precargaFotos() {
