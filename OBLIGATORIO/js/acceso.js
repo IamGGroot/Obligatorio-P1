@@ -1,6 +1,4 @@
 
-
-
 eventos();
 
 let listaUsuarios = new Array;
@@ -34,45 +32,19 @@ let listaPrecargaInmuebles =
         {
             id: 1,
             titulo: "Complejo Los Balcones, 3era unidad",
-            descripcion: "Living amplio con hogar, comedor con cocina integrada, baño social, cocina con cómodos placares. Planta alta con acceso por cómoda escalera con pasamanos, baño principal completo, parrillero semi cubierto con pergola de madera. Piscina de uso común. Consulte por fines de semana en temporada baja.",
+            descripcion: "Living amplio con hogar",
             ciudad: "Punta Colorada",
             precioPorNoche: 5400,
             promedioCalif: 3.9,
             cantidadFotosInm: 12,
-            rutaImg: "img\Inmuebles\Inmueble1",
-            fotos:""
+            rutaImg: "/img/Inmuebles/Inmueble1/",
+            usuario: 1,
+            fotos: ""
         }
     ];
-  
+
 let listaFotos = new Array;
 
-function precargaFotos() {
-
-    for (let i = 0; i < listaInmuebles.length; i++) {
-
-        let inmuebleX = listaInmuebles[i];
-        let id = 1;
-        let idInm = inmuebleX[id];
-        let rutaActual = inmuebleX[rutaImg];
-        
-
-        let cantidadFotos = inmuebleX[cantidadFotosInm];
-        while (ite < cantidadFotos /*&& bandera*/) {
-
-            let agregarFotoActual = new Fotos();
-            agregarFotoActual.id = id;
-            agregarFotoActual.idInmuebleRel = idInm;
-
-            let fotoAcargar = `<img src='${rutaActual}'${id}/>`;
-            agregarFotoActual.codigoFoto = fotoAcargar;
-            listaFotos.push(agregarFotoActual);
-
-            ite++;
-            id++;
-        }
-    }
-}
-//Falta bandera en while y automatizar la cantidad de fotos para que corte cuando salga undefined y despues sacamos el atributo cantidadFotosInm de la clase Inmuebles
 
 
 function eventos() {
@@ -106,6 +78,7 @@ function precargaUsuarios() {
 
         listaUsuarios.push(agregarUsuActual);                  //los pushea al array de lista de usuarios
     }
+    console.log(`${listaUsuarios}`)
 }
 
 function precargaInmuebles() {
@@ -119,7 +92,10 @@ function precargaInmuebles() {
         let ciud = element.ciudad;                            // declara los atributos para preparar la carga
         let precioNoche = element.precioPorNoche;
         let prom = element.promedioCalif;
-        let foto = element.fotos;
+        let cantfotos = element.cantidadFotosInm;
+        let rutaImagenes = element.rutaImg;
+        let user = element.usuario;
+        let fotos = element.fotos;
 
         let agregarInmActual = new Inmuebles();
 
@@ -129,12 +105,45 @@ function precargaInmuebles() {
         agregarInmActual.ciudad = ciud;                          //agrega atributos
         agregarInmActual.precioPorNoche = precioNoche;
         agregarInmActual.promedioCalif = prom;
-        agregarInmActual.fotos = foto;
+        agregarInmActual.cantidadFotosInm = cantfotos;
+        agregarInmActual.rutaImg = rutaImagenes;
+        agregarInmActual.usuario = user;
+        agregarInmActual.fotos = fotos;
 
         listaInmuebles.push(agregarInmActual);                  //los pushea al array de lista de inmuebles
         id++;
     }
+    console.log(`${listaInmuebles}`)
 }
+
+function precargaFotos() {
+    let idFoto = 1;
+    let ite = 0;
+    for (let i = 0; i < listaInmuebles.length; i++) {
+
+        let element = listaInmuebles[i];
+
+        let idInm = element.id;
+        let rutaActual = element.rutaImg;
+        let cantidadFotos = element.cantidadFotosInm;
+
+        while (ite < cantidadFotos /*&& bandera*/) {
+
+            let agregarFotoActual = new Fotos();
+            agregarFotoActual.id = idFoto;
+            agregarFotoActual.idInmuebleRel = idInm;
+
+            let fotoAcargar = `<img src=${rutaActual}${idFoto}/>`;
+            agregarFotoActual.codigoFoto = fotoAcargar;
+            listaFotos.push(agregarFotoActual);
+
+            ite++;
+            idFoto++;
+        }
+    }
+    console.log(`${listaFotos}`)
+}
+//Falta bandera en while y automatizar la cantidad de fotos para que corte cuando salga undefined y despues sacamos el atributo cantidadFotosInm de la clase Inmuebles
 
 
 ////////////// REGISTRO //////////////
@@ -292,28 +301,29 @@ function mostrarTabla() {
 
     for (let i = 0; i < listaInmuebles.length; i++) {
 
-        let inmuebleX = listaInmuebles[i];
-        let titu = inmuebleX.titulo;
-        let desc = inmuebleX.descripcion;
-        let ciud = inmuebleX.ciudad;
-        let precio = inmuebleX.precioPorNoche;
-        let prom = inmuebleX.promedioCalif;
+        let element = listaInmuebles[i];
+        let titu = element.titulo;
+        let desc = element.descripcion;
+        let ciud = element.ciudad;
+        let precio = element.precioPorNoche;
+        let prom = element.promedioCalif;
+        let idInm = element.id;
 
-        let imagen = listafotos.idInmuebleRel[i];
+        let imagen = listaFotos.id[idInm];
 
-        tablaVisi += `<tr id="fila-${inmuebleX.Id}">`;
+        tablaVisi += `<tr id="fila-${element.Id}">`;
         tablaVisi += `<td> ${titu} </td><td> ${desc} </td><td>  ${ciud}</td><td>  ${precio}</td><td>  ${prom}</td><td>  ${imagen}</td>`;
         tablaVisi += '</tr>';
 
-        if (inmuebleX.listaInmuebles.length > 0) {
-            for (let j = 0; j < inmuebleX.listaInmuebles.length; j++) {
-                let inmuebleActual = inmuebleX.listaInmuebles[i];
+        if (element.listaInmuebles.length > 0) {
+            for (let j = 0; j < element.listaInmuebles.length; j++) {
+                let inmuebleActual = element.listaInmuebles[i];
 
                 tablaVisi += `<tr><td> </td><td> ${inmuebleActual.titulo} </td><td>  ${inmuebleActual.descripcion}</td></tr><td>  ${inmuebleActual.ciudad}</td></tr><td>  ${inmuebleActual.precioPorNoche}</td></tr><td>  ${inmuebleActual.promedioCalif}</td></tr><td>  ${inmuebleActual.fotos}</td></tr>`;
 
             }
         }
-        // tablaVisi+= inmuebleX.obtenerFila();
+        // tablaVisi+= element.obtenerFila();
 
 
     }
@@ -324,5 +334,8 @@ function mostrarTabla() {
 
 }
 
-console.log("Acceso cargado")
+precargaUsuarios();
+precargaInmuebles();
+precargaFotos();
 
+console.log("Acceso cargado")
