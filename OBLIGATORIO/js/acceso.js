@@ -187,6 +187,9 @@ function validarLogin() {
     let user = document.querySelector("#txtLoginUser").value;
     let pasword = document.querySelector("#txtLoginPassword").value;
     /////////////// VALIDACIONES ////////////////
+    let validacionAcceso = false;
+    if(user.length>0&&pasword.length>0)
+    {
     /////////////// VALIDACION DEL ACCESO ///////
     let validacionAcceso = false;
     let tipoUser = "";
@@ -202,7 +205,9 @@ function validarLogin() {
         ingreso(`${tipoUser}`)
 
     }
+    }
 }
+
 document.querySelector("#btnAcceso").addEventListener("click", validarLogin);
 
 function validarRegistro(user, nombre, apellido, email, celular, contraseña, repetirContraseña) {
@@ -230,27 +235,7 @@ function validarCel(cel) {
     return validacion;
 }
 
-function validacionEmail(mail) {
-    let noExiste = true;
-    let validacion = false;
-    let encontroArroba = false;
-    let encontroPunto = false;
-    for (let i = 0; i < mail.length; i++) {
-        let element = mail.charAt(i);
-        if (element === "@") {
-            encontroArroba = true;
-        }
-        if (encontroArroba && element === ".") {
-            encontroPunto = true;
-        }
-        listaUsuarios.forEach(element => {
-            if (element.email === mail) { noExiste = false; }
-        });
-    }
-    if (encontroPunto && encontroArroba && noExiste) { validacion = true; }
-    return validacion;
 
-}
 
 function validacionPass(clave, confirmacion) {
     let validacionPass = false;
@@ -317,6 +302,51 @@ function mostrarTabla() {
     document.querySelector("#divInmuebles").innerHTML = "";
     document.querySelector("#divInmuebles").innerHTML = tablaVisi;
 
+}
+function validacionEmail(texto)
+{ 
+ let validacionTexto = true;
+ let validacion = false;
+ let contadorPunto = 0;
+ let contadorArroba = 0; 
+ let encontroArroba = false;
+ let tieneUnPuntoValido = false;
+ let textoAntesArroba = false;
+ let textoDespArroba = false;
+ let textoDespPunto = false;
+ let comprobacion = "";
+
+    for (let i = 0; i < texto.length; i++) {
+        if((texto.charCodeAt(i)>63 && texto.charCodeAt(i)<91)||(texto.charCodeAt(i)>96 && texto.charCodeAt(i)<123)||(texto.charCodeAt(i)===46))
+        {validacionTexto = false;
+        comprobacion = comprobacion + texto.charAt(i);}
+        if (texto.charCodeAt(i)===64) {
+            contadorArroba = contadorArroba + 1;
+            encontroArroba = true;
+            if ((texto.charCodeAt(i+1)!==64)&&(texto.charCodeAt(i+1)!==46)) {
+                textoDespArroba = true;
+            }
+
+        }
+        if (encontroArroba&&texto.charAt(i)===".") {
+            tieneUnPuntoValido = true;
+            contadorPunto = contadorPunto + 1;
+            if((texto.charCodeAt(i+1)!==64)&&(texto.charCodeAt(i+1)!==46))
+            {textoDespPunto = true;}
+        }
+        if((texto.charCodeAt(0)!==64)&&(texto.charCodeAt(0)!==46))
+        {textoAntesArroba = true;} 
+        
+    }
+    if (comprobacion.length === texto.length)
+    {validacionTexto = true;}else{validacionTexto = false;}
+  //  console.log("comprobacion" + "         " + comprobacion)
+  //  console.log("tiene punto" + "   " + tieneUnPuntoValido + "   " + contadorPunto)
+  //  console.log("tiene @" + "   " + encontroArroba + "   " + contadorArroba)
+  //  console.log("validacion texto" + "   " + validacionTexto)
+    if(validacionTexto&&contadorArroba===1&&contadorPunto===1&&tieneUnPuntoValido&&textoAntesArroba&&textoDespArroba&&textoDespPunto){
+    validacion = true;}
+return validacion;
 }
 
 console.log("Acceso cargado")
