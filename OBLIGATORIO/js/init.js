@@ -1,11 +1,11 @@
-document.querySelector("#selLogin").addEventListener("change", ingresofalso); // Cuando el select de tipo de usuario cambia ejecuta ingreso()
 ingreso("Visitante");
 
-var userActual = document.querySelector("#selLogin").value; 
+document.querySelector("#selLogin").addEventListener("change", ingresofalso); // Cuando el select de tipo de usuario cambia ejecuta ingreso()
 
-function ingresofalso()
-{
-    
+var userActual = document.querySelector("#selLogin").value;
+
+function ingresofalso() {
+    tipoUsuario = document.querySelector("#selLogin").value
     ingreso(tipoUsuario);
 }
 function ingreso(tipoUsuario) {
@@ -113,36 +113,12 @@ function mostrarReporteInmuebles(user) {
     }
 
 }
-function mostrarInmueblesListadosYCalificaciones(user) {
+function mostrarInmueblesListadosYCalificaciones(user) {    
+ 
     if (user === "Visitante") {
-        document.querySelector("#divInmuebles").innerHTML = ` <table border=1>
-        <tr>
-      
-          <th>Título 1</th>
-          
-        </tr>
-        <tr>
-        <th>Descripción</th>
-        <th>hermosa casa 1</th>
-        </tr>
-        <tr>
-        <th>Ciudad</th>
-        <th>Montevideo</th>
-        </tr>
-        <tr>
-        
-          <th>Precio por Noche</th>
-          <th>$150</th>
-        </tr>
-        <tr>
-          <th>Promedio de Calificacion</th>
-          <th>5</th>
-          
-        </tr>
-      </table>
-      <img id="imagenActual" src="img/casa1.jpg">`;
-
-
+        document.querySelector("#divInmuebles").innerHTML = "";
+        //ver mostrarTabla en acceso.js
+  
     }
     if (user === "Huesped") {
         document.querySelector("#divInmuebles").innerHTML = ` <table border=1>
@@ -219,7 +195,7 @@ function mostrarInmueblesListadosVerMas(user) {
         document.querySelector("#divVerMas").style.display = "block";
     }
     if (user === "Anfitrion") {
-        document.querySelector("#divVerMas").style.display = "none"; 
+        document.querySelector("#divVerMas").style.display = "none";
     }
     if (user === "Administrador") {
         document.querySelector("#divVerMas").style.display = "none";

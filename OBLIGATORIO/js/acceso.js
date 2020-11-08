@@ -1,55 +1,100 @@
 eventos();
 
 let listaUsuarios = new Array;
-let listaPrecarga =
-    [{ nombreUsu: "agu22", nombre: "Agustín", apellido: "Rodriguez", email: "agu22@gmail.com", celular: "099123456", clave: "bSaDfklj123", tipo: "Huesped" },
-    { nombreUsu: "AlmiSua345", nombre: "Almicar", apellido: "Vazques", email: "almicar@hotmail.com", celular: "096234654", clave: "Almicar1995", tipo: "Huesped" },
-    { nombreUsu: "Camiiii_ok", nombre: "Camila", apellido: "Carrasco", email: "camila@zoho.com", celular: "095236547", clave: "Camilita123", tipo: "Anfitrion" },
-    { nombreUsu: "Este_rodriguez", nombre: "Esteban", apellido: "Quito", email: "estebanquito@gmail.com", celular: "099456456", clave: "Quitoroto456", tipo: "Huesped" },
-    { nombreUsu: "Américo_V", nombre: "Dardo", apellido: "Fuseneco", email: "dardo2020@yahoo.com", celular: "099222222", clave: "YMari4Elen4", tipo: "Huesped", },
-    { nombreUsu: "admin", nombre: "Administrador", apellido: "admin", email: "admin@hotmail.com", celular: "097111111", clave: "1234", tipo: "Administrador" },
-    { nombreUsu: "Pepe_1", nombre: "José", apellido: "Gomez", email: "josesito@gmail.com", celular: "094446456", clave: "EncimadeRacing27", tipo: "Anfitrion" },
-    { nombreUsu: "Homer.78", nombre: "Homero", apellido: "Simpson", email: "homerojsimpson@gmail.com", celular: "099777756", clave: "Marge1967", tipo: "Anfitrion" },
-    { nombreUsu: "Robert_63", nombre: "Roberto", apellido: "Carlos", email: "robert@gmail.com", celular: "099888888", clave: "1millondeAmigos", tipo: "Anfitrion" },
-    { nombreUsu: "R2D2", nombre: "Arturo", apellido: "Luro", email: "arturoduro@hotmail.com", celular: "099199956", clave: "unaClavede8digitos", tipo: "Anfitrion" },
-    { nombreUsu: "DebyBolso", nombre: "Débora", apellido: "Lopez", email: "debielo@adinet.com", celular: "099557456", clave: "mwBk5255", tipo: "Huesped" },
-    { nombreUsu: "Pablosky27", nombre: "Pablo", apellido: "Marmol", email: "pablomarmol@outlook.com", celular: "099651456", clave: "randoMpasSword99", tipo: "Huesped" },
-    { nombreUsu: "Marge96", nombre: "Marjorie", apellido: "Simpson", email: "MargeS@gmail.com", celular: "099095430", clave: "sinFonica269", tipo: "Huesped" },
-    { nombreUsu: "Liiisa", nombre: "Lucía", apellido: "Diaz", email: "luciaD@zoho.com", celular: "099231576", clave: "Millhouse789", tipo: "Huesped" },
-    { nombreUsu: "GabitomanyaCAP", apellido: "Figueredo", nombre: "Gabriel", email: "gaby22@gmail.com", celular: "099194456", clave: "CacaHuate44", tipo: "Huesped" },
-    { nombreUsu: "Nachocapo1", apellido: "Silva", nombre: "Juan Ignacio", email: "juancho@yahoo.com", celular: "099658456", clave: "bolsoAmuerte1899", tipo: "Huesped" },
-    { nombreUsu: "Rickymaravilla", apellido: "Perez", nombre: "Ricardo", email: "ricky@adinet.com", celular: "099858456", clave: "r1ckYmorty", tipo: "Huesped" }]
+let listaPrecargaUsuarios =
+    [
+        { nombreUsu: "agu22", nombre: "Agustín", apellido: "Rodriguez", email: "agu22@gmail.com", celular: "099123456", clave: "bSaDfklj123", tipo: "Huesped" },
+        { nombreUsu: "AlmiSua345", nombre: "Almicar", apellido: "Vazques", email: "almicar@hotmail.com", celular: "096234654", clave: "Almicar1995", tipo: "Huesped" },
+        { nombreUsu: "Camiiii_ok", nombre: "Camila", apellido: "Carrasco", email: "camila@zoho.com", celular: "095236547", clave: "Camilita123", tipo: "Anfitrion" },
+        { nombreUsu: "Este_rodriguez", nombre: "Esteban", apellido: "Quito", email: "estebanquito@gmail.com", celular: "099456456", clave: "Quitoroto456", tipo: "Huesped" },
+        { nombreUsu: "Américo_V", nombre: "Dardo", apellido: "Fuseneco", email: "dardo2020@yahoo.com", celular: "099222222", clave: "YMari4Elen4", tipo: "Huesped", },
+        { nombreUsu: "admin", nombre: "Administrador", apellido: "admin", email: "admin@hotmail.com", celular: "097111111", clave: "1234", tipo: "Administrador" },
+        { nombreUsu: "Pepe_1", nombre: "José", apellido: "Gomez", email: "josesito@gmail.com", celular: "094446456", clave: "EncimadeRacing27", tipo: "Anfitrion" },
+        { nombreUsu: "Homer.78", nombre: "Homero", apellido: "Simpson", email: "homerojsimpson@gmail.com", celular: "099777756", clave: "Marge1967", tipo: "Anfitrion" },
+        { nombreUsu: "Robert_63", nombre: "Roberto", apellido: "Carlos", email: "robert@gmail.com", celular: "099888888", clave: "1millondeAmigos", tipo: "Anfitrion" },
+        { nombreUsu: "R2D2", nombre: "Arturo", apellido: "Luro", email: "arturoduro@hotmail.com", celular: "099199956", clave: "unaClavede8digitos", tipo: "Anfitrion" },
+        { nombreUsu: "DebyBolso", nombre: "Débora", apellido: "Lopez", email: "debielo@adinet.com", celular: "099557456", clave: "mwBk5255", tipo: "Huesped" },
+        { nombreUsu: "Pablosky27", nombre: "Pablo", apellido: "Marmol", email: "pablomarmol@outlook.com", celular: "099651456", clave: "randoMpasSword99", tipo: "Huesped" },
+        { nombreUsu: "Marge96", nombre: "Marjorie", apellido: "Simpson", email: "MargeS@gmail.com", celular: "099095430", clave: "sinFonica269", tipo: "Huesped" },
+        { nombreUsu: "Liiisa", nombre: "Lucía", apellido: "Diaz", email: "luciaD@zoho.com", celular: "099231576", clave: "Millhouse789", tipo: "Huesped" },
+        { nombreUsu: "GabitomanyaCAP", apellido: "Figueredo", nombre: "Gabriel", email: "gaby22@gmail.com", celular: "099194456", clave: "CacaHuate44", tipo: "Huesped" },
+        { nombreUsu: "Nachocapo1", apellido: "Silva", nombre: "Juan Ignacio", email: "juancho@yahoo.com", celular: "099658456", clave: "bolsoAmuerte1899", tipo: "Huesped" },
+        { nombreUsu: "Rickymaravilla", apellido: "Perez", nombre: "Ricardo", email: "ricky@adinet.com", celular: "099858456", clave: "r1ckYmorty", tipo: "Huesped" }
+    ];
 // 07/11 - Reeordené los datos acorde al orden de los atributos de class.js
 //         Verifiqué todos los atributos sean válidos con las necesitades del obligatorio (ej celular > 8 largo y solo numeros)
 
+let listaInmuebles = new Array;
+let listaPrecargaInmuebles =
+    [
+        {
+            id: "",
+            titulo: "Complejo Los Balcones, 3era unidad",
+            descripcion: "Tres casas en un mismo terreno, totalmente independientes entre sí, estacionamiento exclusivo para cada propiedad. Living amplio con hogar, comedor con cocina integrada, baño social, cocina con cómodos placares.     Planta alta con acceso por cómoda escalera con pasamanos, dormitorio principal     con aire acondicionado (vista al cerro San Antonio) segundo dormitorio amplio     con cuatro plazas, baño principal completo, parrillero semi cubierto con pergola     de madera.Piscina de uso común, entorno agradable, ideal para disfrutar en familia     y para realizar caminatas y paseos en bicicletas.     Consulte por fines de semana en temporada baja.",
+            ciudad: "Punta Colorada",
+            precioxnoche: 5400, 
+            promediocalif: 3.9, 
+            fotos: "Inmueble1/27865898.jpg",
+        }
+    ];
 function eventos() {
     document.querySelector("#btnAcceso").addEventListener("click", validarLogin);
     document.querySelector("#btnRegistro").addEventListener("click", registro);
+    document.querySelector("#selLogin").addEventListener("change", mostrarTabla);
+
 }
 
 function precargaUsuarios() {
-    for (let i = 0; i < listaPrecarga.length; i++) {
-        let element = listaPrecarga[i];
+    for (let i = 0; i < listaPrecargaUsuarios.length; i++) {  //recorre lista precargaUsuarios
+        let element = listaPrecargaUsuarios[i];
 
         let user = element.nombreUsu;
-        let nombre = element.nombre;
+        let nombre = element.nombre;                        // declara los atributos para preparar la carga
         let apellido = element.apellido;
         let email = element.email;
         let tel = element.celular;
         let clave = element.clave;
         let tipo = element.tipo;
 
-        let agregarActual = new Usuarios();
+        let agregarUsuActual = new Usuarios();
 
-        agregarActual.nombreUsu = user;
-        agregarActual.nombre = nombre;
-        agregarActual.apellido = apellido;
-        agregarActual.email = email;
-        agregarActual.celular = tel;
-        agregarActual.clave = clave;
-        agregarActual.tipo = tipo;
+        agregarUsuActual.nombreUsu = user;
+        agregarUsuActual.nombre = nombre;
+        agregarUsuActual.apellido = apellido;                  //agrega atributos
+        agregarUsuActual.email = email;
+        agregarUsuActual.celular = tel;
+        agregarUsuActual.clave = clave;
+        agregarUsuActual.tipo = tipo;
 
-        listaUsuarios.push(agregarActual);
+        listaUsuarios.push(agregarUsuActual);                  //los pushea al array de lista de usuarios
+    }
+}
+
+function precargaInmuebles() {
+    let id = 1;
+    for (let i = 0; i < listaPrecargaInmuebles.length; i++) {
+        let element = listaPrecargaInmuebles[i];                 //recorre lista precargaUsuarios
+
+        id = element.id;
+        let titu = element.titulo;
+        let desc = element.descripcion;
+        let ciud = element.ciudad;                            // declara los atributos para preparar la carga
+        let precioNoche = element.precioxnoche;
+        let prom = element.promediocalif;
+        let foto = element.fotos;
+
+        let agregarInmActual = new Inmuebles();
+
+        agregarInmActual.titulo = 
+        agregarInmActual.titulo = titu;
+        agregarInmActual.descripcion = desc;
+        agregarInmActual.ciudad = ciud;                          //agrega atributos
+        agregarInmActual.precioxnoche = precioNoche;
+        agregarInmActual.promediocalif = prom;
+        agregarInmActual.fotos = foto;
+
+        listaInmuebles.push(agregarInmActual);                  //los pushea al array de lista de usuarios
+        id ++;
     }
 }
 ////////////// REGISTRO //////////////
@@ -62,12 +107,6 @@ function registro() {
     let nPass = document.querySelector("#txtRegistroContraseña").value.trim();
     let nPassComp = document.querySelector("#txtRegistroContraseñaComp").value.trim();  // termina seleccion de valores del html
     let mensaje = "";
-
-
-
-
-
-
 
     if (!verificarTextoNoVacio(nUser)) {
         mensaje += "Ingrese datos validos en el campo de usuario"
@@ -84,7 +123,6 @@ function registro() {
     }
 
 
-
     if (verificarTextoNoVacio(nUser) && verificarTextoNoVacio(nNombre) && verificarTextoNoVacio(nApellido) && validacionEmail(nMail) && validarCel(nTel) && validacionPass(nPass, nPassComp)) {
 
         let agregarActual = new Usuarios();                   // Se crea un objeto de clase usuario
@@ -97,11 +135,11 @@ function registro() {
         agregarActual.clave = nPass;                              // termina ponerle datos a objeto
         let ntipo = "";
         if (userActual === "Visitante") {      /// si la pagina la esta viendo un visitante (el unico que deberia poder verlo porque no hay upgrade de user)
-            ntipo = "Huésped"                 /// si es visitante su tipo de user va ser huesped
+            ntipo = "Huesped"                 /// si es visitante su tipo de user va ser huesped
             agregarActual.tipo = ntipo;
         }
         if (userActual === "Administrador") {
-            ntipo = "Anfitrión"
+            ntipo = "Anfitrion"                 //// si es admi tipo user = anfitrion
             agregarActual.tipo = ntipo;
         }
         listaUsuarios.push(agregarActual); /// se agrega al array 
@@ -132,7 +170,7 @@ function validarLogin() {
 }
 document.querySelector("#btnAcceso").addEventListener("click", validarLogin);
 
-function validarRegistro(usr, nombre, apellido, email, celular, contraseña, repetircontraseña) {
+function validarRegistro(user, nombre, apellido, email, celular, contraseña, repetirContraseña) {
 
 }
 
@@ -211,14 +249,65 @@ function validacionPass(clave, confirmacion) {
 
     }
 
+}
+function mostrarTabla(){
+let tablaVisi = `<Table border="1">`;
+tablaVisi += `<th>Titulo</th><th>Descripción</th><th>Ciudad</th><th>Precio Por Noche</th><th>Calificación</th><th>Foto</th>`;
 
+for (let i = 0; i < listaInmuebles.length; i++) {
+
+    let inmuebleX = listaInmuebles[i];
+    let titu = inmuebleX.titulo;
+    let desc = inmuebleX.descripcion;
+    let ciud = inmuebleX.ciudad;
+    let precio = inmuebleX.precioxnoche;
+    let prom = inmuebleX.promediocalif;
+    let fotos = inmuebleX.fotos;
+    
+    let imagen = '<img src="fotos/' + fotos + '" class="fotos" />';
+
+    tablaVisi += `<tr id="fila-${inmuebleX.Id}">`;
+    tablaVisi += `<td> ${titu} </td><td> ${desc} </td><td>  ${ciud}</td><td>  ${precio}</td><td>  ${prom}</td><td>  ${imagen}</td>`;
+    tablaVisi += '</tr>';
+
+    if (inmuebleX.listaInmuebles.length > 0) {
+        tablaVisi += `<tr><th></th><th>Nombre</th><th>Edad</th></tr>`;
+        for (let j = 0; j < inmuebleX.listaInmuebles.length; j++) {
+            let inmuebleActual = inmuebleX.listaInmuebles[i];
+
+            tablaVisi += `<tr><td> </td><td> ${inmuebleActual.titulo} </td><td>  ${inmuebleActual.descripcion}</td></tr><td>  ${inmuebleActual.ciudad}</td></tr><td>  ${inmuebleActual.precioxnoche}</td></tr><td>  ${inmuebleActual.promediocalif}</td></tr><td>  ${inmuebleActual.fotos}</td></tr>`;
+
+        }
+    }
+    // tablaVisi+= inmuebleX.obtenerFila();
 
 
 }
+tablaVisi += '</table>';
 
-
-
-
+document.querySelector("#divInmuebles").innerHTML = "";
+document.querySelector("#divInmuebles").innerHTML = tablaVisi;
+/*
+//se obtienen los elementos del dom etiquetas img
+let listaImagenesDOM = document.querySelectorAll("img");
+for (let i = 0; i < listaImagenesDOM.length; i++) {
+    // se asigna evento click a cada imagen
+    listaImagenesDOM[i].addEventListener("click", mostrarFoto);
+}
+//se obtienen los elementos del dom etiquetas tr las filas
+let listaDeFilas = document.querySelectorAll(".clsAgregarMascota");
+for (let i = 0; i < listaDeFilas.length; i++) {
+    // se asigna evento click a cada imagen
+    listaDeFilas[i].addEventListener("click", mostrarAgregarMascota);
+}
+//se DARLE FUNCIONALIDAD AL BOTÓN AGREGAR DEL FORMULARIO PARA AGREGAR MASCOTA 
+let listaDeBTNAgregarMascotas = document.querySelectorAll(".clsBtnAgregarMascota");
+for (let i = 0; i < listaDeBTNAgregarMascotas.length; i++) {
+    // se asigna evento click a cada imagen
+    listaDeBTNAgregarMascotas[i].addEventListener("click", agregarMoscotaContacto);
+}
+*/
+}
 
 console.log("Acceso cargado")
 

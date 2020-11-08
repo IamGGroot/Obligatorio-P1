@@ -14,11 +14,13 @@ class Usuarios{
 
 class Inmuebles{
   constructor(){
+    this.id;
     this.titulo;
     this.descripcion;
     this.ciudad;
-    this.precioxnoche;
-    this.promediocalif;
+    this.precioxnoche; //en pesos
+    this.promediocalif; // del 1 al 5 un decimal obligatorio
+    this.fotos;
   }
 }
 
