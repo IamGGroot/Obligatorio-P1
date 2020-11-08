@@ -4,11 +4,17 @@ document.querySelector("#selLogin").addEventListener("change", ingresofalso); //
 
 var userActual = document.querySelector("#selLogin").value;
 
+<<<<<<< Updated upstream
+function ingresofalso() {
+    tipoUsuario = document.querySelector("#selLogin").value
+    ingreso(tipoUsuario);
+=======
 function ingresofalso()
 {  
     userActual = document.querySelector("#selLogin").value; 
     console.log()
     ingreso(userActual);
+>>>>>>> Stashed changes
 }
 function ingreso(tipoUsuario) {
     userActual = tipoUsuario;

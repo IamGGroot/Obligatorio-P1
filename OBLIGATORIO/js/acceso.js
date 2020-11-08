@@ -1,6 +1,77 @@
 eventos();
 
 let listaUsuarios = new Array;
+<<<<<<< Updated upstream
+let listaPrecargaUsuarios =
+    [
+        { nombreUsu: "agu22", nombre: "Agustín", apellido: "Rodriguez", email: "agu22@gmail.com", celular: "099123456", clave: "bSaDfklj123", tipo: "Huesped" },
+        { nombreUsu: "AlmiSua345", nombre: "Almicar", apellido: "Vazques", email: "almicar@hotmail.com", celular: "096234654", clave: "Almicar1995", tipo: "Huesped" },
+        { nombreUsu: "Camiiii_ok", nombre: "Camila", apellido: "Carrasco", email: "camila@zoho.com", celular: "095236547", clave: "Camilita123", tipo: "Anfitrion" },
+        { nombreUsu: "Este_rodriguez", nombre: "Esteban", apellido: "Quito", email: "estebanquito@gmail.com", celular: "099456456", clave: "Quitoroto456", tipo: "Huesped" },
+        { nombreUsu: "Américo_V", nombre: "Dardo", apellido: "Fuseneco", email: "dardo2020@yahoo.com", celular: "099222222", clave: "YMari4Elen4", tipo: "Huesped", },
+        { nombreUsu: "admin", nombre: "Administrador", apellido: "admin", email: "admin@hotmail.com", celular: "097111111", clave: "1234", tipo: "Administrador" },
+        { nombreUsu: "Pepe_1", nombre: "José", apellido: "Gomez", email: "josesito@gmail.com", celular: "094446456", clave: "EncimadeRacing27", tipo: "Anfitrion" },
+        { nombreUsu: "Homer.78", nombre: "Homero", apellido: "Simpson", email: "homerojsimpson@gmail.com", celular: "099777756", clave: "Marge1967", tipo: "Anfitrion" },
+        { nombreUsu: "Robert_63", nombre: "Roberto", apellido: "Carlos", email: "robert@gmail.com", celular: "099888888", clave: "1millondeAmigos", tipo: "Anfitrion" },
+        { nombreUsu: "R2D2", nombre: "Arturo", apellido: "Luro", email: "arturoduro@hotmail.com", celular: "099199956", clave: "unaClavede8digitos", tipo: "Anfitrion" },
+        { nombreUsu: "DebyBolso", nombre: "Débora", apellido: "Lopez", email: "debielo@adinet.com", celular: "099557456", clave: "mwBk5255", tipo: "Huesped" },
+        { nombreUsu: "Pablosky27", nombre: "Pablo", apellido: "Marmol", email: "pablomarmol@outlook.com", celular: "099651456", clave: "randoMpasSword99", tipo: "Huesped" },
+        { nombreUsu: "Marge96", nombre: "Marjorie", apellido: "Simpson", email: "MargeS@gmail.com", celular: "099095430", clave: "sinFonica269", tipo: "Huesped" },
+        { nombreUsu: "Liiisa", nombre: "Lucía", apellido: "Diaz", email: "luciaD@zoho.com", celular: "099231576", clave: "Millhouse789", tipo: "Huesped" },
+        { nombreUsu: "GabitomanyaCAP", apellido: "Figueredo", nombre: "Gabriel", email: "gaby22@gmail.com", celular: "099194456", clave: "CacaHuate44", tipo: "Huesped" },
+        { nombreUsu: "Nachocapo1", apellido: "Silva", nombre: "Juan Ignacio", email: "juancho@yahoo.com", celular: "099658456", clave: "bolsoAmuerte1899", tipo: "Huesped" },
+        { nombreUsu: "Rickymaravilla", apellido: "Perez", nombre: "Ricardo", email: "ricky@adinet.com", celular: "099858456", clave: "r1ckYmorty", tipo: "Huesped" }
+    ];
+// 07/11 - Reeordené los datos acorde al orden de los atributos de class.js
+//         Verifiqué todos los atributos sean válidos con las necesitades del obligatorio (ej celular > 8 largo y solo numeros)
+
+let listaInmuebles = new Array;
+
+let listaPrecargaInmuebles =
+    [
+        {
+            id: 1,
+            titulo: "Complejo Los Balcones, 3era unidad",
+            descripcion: "Living amplio con hogar, comedor con cocina integrada, baño social, cocina con cómodos placares. Planta alta con acceso por cómoda escalera con pasamanos, baño principal completo, parrillero semi cubierto con pergola de madera. Piscina de uso común. Consulte por fines de semana en temporada baja.",
+            ciudad: "Punta Colorada",
+            precioPorNoche: 5400,
+            promedioCalif: 3.9,
+            cantidadFotosInm: 12,
+            rutaImg: "img\Inmuebles\Inmueble1"
+        }
+    ];
+
+let listaFotos = new Array;
+
+function precargaFotos() {
+
+    for (let i = 0; i < listaInmuebles.length; i++) {
+
+        let inmuebleX = listaInmuebles[i];
+        let id = 1;
+        let idInm = inmuebleX[id];
+        let rutaActual = inmuebleX[rutaImg];
+
+        let cantidadFotos = inmuebleX[cantidadFotosInm];
+        while (ite < cantidadFotos /*&& bandera*/) {
+
+            let agregarFotoActual = new Fotos();
+            agregarFotoActual.id = id;
+            agregarFotoActual.idInmuebleRel = idInm;
+
+            let fotoAcargar = `<img src='${rutaActual}'${id}/>`;
+            agregarFotoActual.codigoFoto = fotoAcargar;
+            listaFotos.push(agregarFotoActual);
+
+            ite++;
+            id++;
+        }
+    }
+}
+//Falta bandera en while y automatizar la cantidad de fotos para que corte cuando salga undefined y despues sacamos el atributo cantidadFotosInm de la clase Inmuebles
+
+
+=======
 let listaPrecarga =
     [{ nombreUsu: "agu22", nombre: "Agustín", clave: "bsadfklj123", tipo: "Huesped" , email : "agu22@gmail.com" , apellido : "Rodriguez" , celular : "099123456"},
     { nombreUsu: "AlmiSua345", nombre: "Almicar", clave: "Almicar99", tipo: "Huesped" , email : "almicar@gmail.com" , apellido : "Vazques" , celular : "099234654" },
@@ -20,6 +91,7 @@ let listaPrecarga =
     { nombreUsu: "Nachocapo1", nombre: "Juan Ignacio", clave: "bolsoamuerte123", tipo: "Huesped" , email : "juancho@gmail.com" , apellido : "Silva" , celular : "099658456"},
     { nombreUsu: "Rickymaravilla", nombre: "Ricardo", clave: "unaclaverandom", tipo: "Huesped" , email : "ricky@gmail.com" , apellido : "Perez" , celular : "099858456"}]
 //falta arreglar las constraseñas
+>>>>>>> Stashed changes
 function eventos() {
     document.querySelector("#btnAcceso").addEventListener("click", validarLogin);
     document.querySelector("#btnRegistro").addEventListener("click", registro);
@@ -92,7 +164,10 @@ function registro() {
     let nPass = document.querySelector("#txtRegistroContraseña").value.trim();
     let nPassComp = document.querySelector("#txtRegistroContraseñaComp").value.trim();  // termina seleccion de valores del html
     let mensaje = "";
+<<<<<<< Updated upstream
+=======
     
+>>>>>>> Stashed changes
 
     if (!verificarTextoNoVacio(nUser)) {
         mensaje += "Ingrese datos validos en el campo de usuario"
@@ -111,12 +186,18 @@ function registro() {
     if (!validacionEmail) {
         mensaje += "Email no valido.<br>"
     }
+<<<<<<< Updated upstream
+
+
+    if (verificarTextoNoVacio(nUser) && verificarTextoNoVacio(nNombre) && verificarTextoNoVacio(nApellido) && validacionEmail(nMail) && validarCel(nTel) && validacionPass(nPass, nPassComp)) {
+=======
     if(validarExisteUser(nUser))
     {mensaje += "Usuario ya existente";}
     
 
     if(validarExisteUser(nUser)&&verificarTextoNoVacio(nUser)&&verificarTextoNoVacio(nNombre)&&verificarTextoNoVacio(nApellido)&&validacionEmail(nMail)&&validarCel(nTel)&&validacionPass(nPass,nPassComp))
 {
+>>>>>>> Stashed changes
 
         let agregarActual = new Usuarios();                   // Se crea un objeto de clase usuario
 
@@ -138,16 +219,27 @@ function registro() {
         listaUsuarios.push(agregarActual); /// se agrega al array 
         mensaje = "El usuario fue creado con exito";
     }
+<<<<<<< Updated upstream
+=======
     listaUsuarios.push(agregarActual); /// se agrega al array 
     mensaje = "El usuario fue creado con exito";
 }
-
+console.log(mensaje)
+>>>>>>> Stashed changes
+}
 
 ////////////// AUTENTICACION /////////
 function validarLogin() {
     let user = document.querySelector("#txtLoginUser").value.trim();
     let pasword = document.querySelector("#txtLoginPassword").value.trim();
     /////////////// VALIDACIONES ////////////////
+<<<<<<< Updated upstream
+    let validacionAcceso = false;
+    if(user.length>0&&pasword.length>0)
+    {
+    /////////////// VALIDACION DEL ACCESO ///////
+=======
+>>>>>>> Stashed changes
     let validacionAcceso = false;
     if(user.length>0&&pasword.length>0)
     {
@@ -167,8 +259,8 @@ function validarLogin() {
         ingreso(`${tipoUser}`)
 
     }
+    }
 }
-
 
 document.querySelector("#btnAcceso").addEventListener("click", validarLogin);
 
@@ -197,6 +289,11 @@ function validarCel(cel) {
     return validacion;
 }
 
+<<<<<<< Updated upstream
+
+
+function validacionPass(clave, confirmacion) {
+=======
 
 function validacionEmail(texto)
 { 
@@ -247,6 +344,7 @@ return validacion;
 
 function validacionPass(clave,confirmacion)
 {
+>>>>>>> Stashed changes
     let validacionPass = false;
     let validacionLongitud = false;
     //let validacionLetrasMin = false;
@@ -293,37 +391,40 @@ function mostrarTabla() {
         tablaVisi += `<tr id="fila-${inmuebleX.Id}">`;
         tablaVisi += `<td> ${titu} </td><td> ${desc} </td><td>  ${ciud}</td><td>  ${precio}</td><td>  ${prom}</td><td>  ${imagen}</td>`;
         tablaVisi += '</tr>';
-    
 
+<<<<<<< Updated upstream
+        if (inmuebleX.listaInmuebles.length > 0) {
+            for (let j = 0; j < inmuebleX.listaInmuebles.length; j++) {
+                let inmuebleActual = inmuebleX.listaInmuebles[i];
 
-
-            
+                tablaVisi += `<tr><td> </td><td> ${inmuebleActual.titulo} </td><td>  ${inmuebleActual.descripcion}</td></tr><td>  ${inmuebleActual.ciudad}</td></tr><td>  ${inmuebleActual.precioPorNoche}</td></tr><td>  ${inmuebleActual.promedioCalif}</td></tr><td>  ${inmuebleActual.fotos}</td></tr>`;
+=======
+function validarExisteUser(usr)
+{let validacion = true;
+    for (let i = 0; i < listaUsuarios.length; i++) {
+        let element = listaUsuarios[i].nombreUsu;
+        if (element = usr)
+        {
+            validacion=false;
+        }
         
+    }
+    return validacion;
+}
+>>>>>>> Stashed changes
+
+            }
+        }
         // tablaVisi+= inmuebleX.obtenerFila();
 
 
-    
+    }
     tablaVisi += '</table>';
 
     document.querySelector("#divInmuebles").innerHTML = "";
     document.querySelector("#divInmuebles").innerHTML = tablaVisi;
-    }}
 
-    
-    function validarExisteUser(usr)
-    {let validacion = true;
-        for (let i = 0; i < listaUsuarios.length; i++) {
-            let element = listaUsuarios[i].nombreUsu;
-            if (element = usr)
-            {
-                validacion=false;
-            }
-            
-        }
-        return validacion;
-    }
-
-
+}
 function validacionEmail(texto)
 { 
  let validacionTexto = true;
