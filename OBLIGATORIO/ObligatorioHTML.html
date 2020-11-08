@@ -18,48 +18,49 @@
     BANCO DE PRUEBAS DE USUARIOS
     <select id="selLogin">
         <option value="Visitante">Visitante</option>
-        <option value="Huesped">Huesped</option>
-        <option value="Anfitrion">Anfitrion</option>
+        <option value="Huesped">Huésped</option>
+        <option value="Anfitrion">Anfitrión</option>
         <option value="Administrador">Administrador</option>
     </select>
     <br>
     <hr>
     <!--- COMIENZO DE BARRA SUPERIOR RELACIONADAS A LA VINCULACION DE USUARIO --->
-    <div id="elementosAcceso" class="Visitante Administrador Huesped Anfitrion">ESTA PARTE ES LA QUE CONTIENE LOS ELEMENTOS DE ACCESO<br>
+    <div id="elementosAcceso">ESTA PARTE ES LA QUE CONTIENE LOS ELEMENTOS DE ACCESO<br>
         <hr>
-        <div id="divNoReg" class="Visitante">
+        <div id="divNoReg">
             ELEMENTO DE LOGIN <br>
-            Usuario:<input class="Visitante" type="text" style="display: block;width: 200px;" id="txtLoginUser"
+            Usuario: <input type="text" style="display: block;width: 200px;" id="txtLoginUser"
                 placeholder="Ingrese usuario">
-            Contraseña:<input class="Visitante" type="password" style="display: block;width: 200px;" id="txtLoginPassword"
+            Contraseña:<input type="password" style="display: block;width: 200px;" id="txtLoginPassword"
                 placeholder="Ingrese contraseña">
-            <input type="button" class="Visitante" style="display: inline;" id="btnAcceso" value="Acceder">
+            <input type="button" style="display: inline;" id="btnAcceso" value="Acceder">
         </div>
-        <input type="button" class="Administrador Huesped Anfitrion" style="display: inline;" id="btnSalir" value="Cerrar Sesión">
-    </div>
+        <input type="button" style="display: inline;" id="btnSalir" value="Cerrar Sesión">
 
 
 
-        <div id="divReg" class="Visitante Administrador">
+
+        <div id="divReg">
             ELEMENTOS DE REGISTRO
             <br>
-        
-            Usuario<input  class="Visitante Administrador" type="text" style="display: block;width: 200px;" id="txtRegistroNomUsu"
+            <div id="tituloReg">
+            </div>
+            Usuario<input type="text" style="display: block;width: 200px;" id="txtRegistroNomUsu"
                 placeholder="Ingrese Usuario">
-            Nombre<input type="text" class="Visitante Administrador" style="display: block;width: 200px;" id="txtRegistroNom"
+            Nombre<input type="text" style="display: block;width: 200px;" id="txtRegistroNom"
                 placeholder="Ingrese Nombre">
-            Apellido<input type="text" class="Visitante Administrador" style="display: block;width: 200px;" id="txtRegistroApe"
+            Apellido<input type="text" style="display: block;width: 200px;" id="txtRegistroApe"
                 placeholder="Ingrese Apellido">
-            Email:<input type="text" class="Visitante Administrador" style="display: block;width: 200px;" id="txtRegistroEmail"
+            Email:<input type="text" style="display: block;width: 200px;" id="txtRegistroEmail"
                 placeholder="Ingrese Email">
-            Teléfono<input type="text" class="Visitante Administrador" style="display: block;width: 200px;" id="txtRegistroTel"
+            Teléfono<input type="text" style="display: block;width: 200px;" id="txtRegistroTel"
                 placeholder="Ingrese Teléfono">
-            Contraseña<input type="password" class="Visitante Administrador" style="display: block;width: 200px;" id="txtRegistroContraseña"
+            Contraseña<input type="password" style="display: block;width: 200px;" id="txtRegistroContraseña"
                 placeholder="Ingrese Contraseña">
-            Reingrese Contraseña<input type="password" class="Visitante Administrador" style="display: block; width: 200px;"
-                id="txtRegistroContraseñaComp" class="Visitante" placeholder="Reingrese Contraseña">
+            Reingrese Contraseña<input type="password" style="display: block; width: 200px;"
+                id="txtRegistroContraseñaComp" placeholder="Reingrese Contraseña">
             <br>
-            <input type="button" id="btnRegistro" class="Visitante Administrador" style="display: block;" value="Registrarse">
+            <input type="button" id="btnRegistro" style="display: block;" value="Registrarse">
         </div>
         <br>
         <HR>
@@ -180,7 +181,7 @@
         <hr><br>
         <hr>
         <script type="text/JavaScript" src="js/class.js"></script>
-        <script type="text/JavaScript" src="js/init2.js"></script>
+        <script type="text/JavaScript" src="js/init.js"></script>
         <script type="text/JavaScript" src="js/acceso.js"></script>
 </body>
 

@@ -4,17 +4,9 @@ document.querySelector("#selLogin").addEventListener("change", ingresofalso); //
 
 var userActual = document.querySelector("#selLogin").value;
 
-<<<<<<< Updated upstream
 function ingresofalso() {
     tipoUsuario = document.querySelector("#selLogin").value
     ingreso(tipoUsuario);
-=======
-function ingresofalso()
-{  
-    userActual = document.querySelector("#selLogin").value; 
-    console.log()
-    ingreso(userActual);
->>>>>>> Stashed changes
 }
 function ingreso(tipoUsuario) {
     userActual = tipoUsuario;
@@ -36,7 +28,6 @@ function ingreso(tipoUsuario) {
     mostrarRelizarCalificacion(tipoUsuario);// 
 
 }
-
 function mostrarAcceso(user) {
 
     if (user === "Visitante") {
@@ -51,11 +42,7 @@ function mostrarAcceso(user) {
     if (user === "Administrador") {
         document.querySelector("#btnSalir").style.display = "inline";
     }
-
-    
-
 }
-
 function mostrarRegistro(user) {
     if (user === "Visitante") {
         document.querySelector("#tituloReg").innerHTML = "Registro de nuevo Huésped"
