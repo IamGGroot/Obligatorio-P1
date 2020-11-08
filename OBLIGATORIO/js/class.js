@@ -20,7 +20,8 @@ class Inmuebles{
     this.ciudad;
     this.precioPorNoche; //en pesos
     this.promedioCalif; // del 1 al 5 un decimal obligatorio
-    this.fotos; // nombre array de fotos de ese inmueble
+    this.cantidadFotosInm;
+    this.rutaImg;
   }
 }
 
@@ -28,7 +29,7 @@ class Fotos{
   constructor(){
     this.id;
     this.idInmuebleRel;
-    this.rutaImg;
+    this.codigoFoto;
   }
 }
 

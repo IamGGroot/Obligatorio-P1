@@ -31,22 +31,43 @@ let listaPrecargaInmuebles =
         {
             id: 1,
             titulo: "Complejo Los Balcones, 3era unidad",
-            descripcion: "Tres casas en un mismo terreno, totalmente independientes entre sí, estacionamiento exclusivo para cada propiedad. Living amplio con hogar, comedor con cocina integrada, baño social, cocina con cómodos placares.     Planta alta con acceso por cómoda escalera con pasamanos, dormitorio principal     con aire acondicionado (vista al cerro San Antonio) segundo dormitorio amplio     con cuatro plazas, baño principal completo, parrillero semi cubierto con pergola     de madera.Piscina de uso común, entorno agradable, ideal para disfrutar en familia     y para realizar caminatas y paseos en bicicletas.     Consulte por fines de semana en temporada baja.",
+            descripcion: "Living amplio con hogar, comedor con cocina integrada, baño social, cocina con cómodos placares. Planta alta con acceso por cómoda escalera con pasamanos, baño principal completo, parrillero semi cubierto con pergola de madera. Piscina de uso común. Consulte por fines de semana en temporada baja.",
             ciudad: "Punta Colorada",
             precioPorNoche: 5400,
             promedioCalif: 3.9,
-            fotos: fotos0,
+            cantidadFotosInm: 12,
+            rutaImg: "img\Inmuebles\Inmueble1"
         }
     ];
 
-let fotos0 = [
-    {
-        id: 1,idInmuebleRel:1,rutaImg:"img\Inmuebles\Inmueble1\27865898"
-    }
-]
+let listaFotos = new Array;
 
-// me gustaria automatizar la carga de inmuebles y fotos para cada inmueble con una iteración 
-// pero todavía no se me ocurre como.
+function precargaFotos() {
+
+    for (let i = 0; i < listaInmuebles.length; i++) {
+
+        let inmuebleX = listaInmuebles[i];
+        let id = 1;
+        let idInm = inmuebleX[id];
+        let rutaActual = inmuebleX[rutaImg];
+
+        let cantidadFotos = inmuebleX[cantidadFotosInm];
+        while (ite < cantidadFotos /*&& bandera*/) {
+
+            let agregarFotoActual = new Fotos();
+            agregarFotoActual.id = id;
+            agregarFotoActual.idInmuebleRel = idInm;
+
+            let fotoAcargar = `<img src='${rutaActual}'${id}/>`;
+            agregarFotoActual.codigoFoto = fotoAcargar;
+            listaFotos.push(agregarFotoActual);
+
+            ite++;
+            id++;
+        }
+    }
+}
+//Falta bandera en while y automatizar la cantidad de fotos para que corte cuando salga undefined y despues sacamos el atributo cantidadFotosInm de la clase Inmuebles
 
 
 function eventos() {
@@ -85,7 +106,7 @@ function precargaUsuarios() {
 function precargaInmuebles() {
     let id = 1;
     for (let i = 0; i < listaPrecargaInmuebles.length; i++) {
-        let element = listaPrecargaInmuebles[i];                 //recorre lista precargaUsuarios
+        let element = listaPrecargaInmuebles[i];                 //recorre lista listaPrecargaInmuebles
 
         id = element.id;
         let titu = element.titulo;
@@ -97,6 +118,7 @@ function precargaInmuebles() {
 
         let agregarInmActual = new Inmuebles();
 
+        agregarInmActual.id = id;
         agregarInmActual.titulo = titu;
         agregarInmActual.descripcion = desc;
         agregarInmActual.ciudad = ciud;                          //agrega atributos
@@ -104,10 +126,12 @@ function precargaInmuebles() {
         agregarInmActual.promedioCalif = prom;
         agregarInmActual.fotos = foto;
 
-        listaInmuebles.push(agregarInmActual);                  //los pushea al array de lista de usuarios
+        listaInmuebles.push(agregarInmActual);                  //los pushea al array de lista de inmuebles
         id++;
     }
 }
+
+
 ////////////// REGISTRO //////////////
 function registro() {
     let nUser = document.querySelector("#txtRegistroNomUsu").value.trim();                   /// comienza seleccion de valores del html///
@@ -247,20 +271,16 @@ function validacionPass(clave, confirmacion) {
                 if (!isNaN(clave.charAt(i))) { validacionNumeros = true; }
                 if (clave.charCodeAt(i) > 64 && clave.charCodeAt(i) < 91) { validacionMay = true; }
                 i++;
-
             }
-
         }
 
         if (validacionLetrasMay && validacionLongitud && validacionNumeros && validacionConfirmacion) {
             validacionPass = true;
         }
         return validacionPass;
-
-
     }
-
 }
+
 function mostrarTabla() {
     let tablaVisi = `<Table border="1">`;
     tablaVisi += `<th>Titulo</th><th>Descripción</th><th>Ciudad</th><th>Precio Por Noche</th><th>Calificación</th><th>Foto</th>`;
@@ -273,16 +293,14 @@ function mostrarTabla() {
         let ciud = inmuebleX.ciudad;
         let precio = inmuebleX.precioPorNoche;
         let prom = inmuebleX.promedioCalif;
-        let fotos = inmuebleX.fotos;
 
-        let imagen = '<img src="' + fotos + '" class="fotos" />';
+        let imagen = listafotos.idInmuebleRel[i];
 
         tablaVisi += `<tr id="fila-${inmuebleX.Id}">`;
         tablaVisi += `<td> ${titu} </td><td> ${desc} </td><td>  ${ciud}</td><td>  ${precio}</td><td>  ${prom}</td><td>  ${imagen}</td>`;
         tablaVisi += '</tr>';
 
         if (inmuebleX.listaInmuebles.length > 0) {
-            tablaVisi += `<tr><th></th><th>Nombre</th><th>Edad</th></tr>`;
             for (let j = 0; j < inmuebleX.listaInmuebles.length; j++) {
                 let inmuebleActual = inmuebleX.listaInmuebles[i];
 
@@ -298,26 +316,7 @@ function mostrarTabla() {
 
     document.querySelector("#divInmuebles").innerHTML = "";
     document.querySelector("#divInmuebles").innerHTML = tablaVisi;
-    /*
-    //se obtienen los elementos del dom etiquetas img
-    let listaImagenesDOM = document.querySelectorAll("img");
-    for (let i = 0; i < listaImagenesDOM.length; i++) {
-        // se asigna evento click a cada imagen
-        listaImagenesDOM[i].addEventListener("click", mostrarFoto);
-    }
-    //se obtienen los elementos del dom etiquetas tr las filas
-    let listaDeFilas = document.querySelectorAll(".clsAgregarMascota");
-    for (let i = 0; i < listaDeFilas.length; i++) {
-        // se asigna evento click a cada imagen
-        listaDeFilas[i].addEventListener("click", mostrarAgregarMascota);
-    }
-    //se DARLE FUNCIONALIDAD AL BOTÓN AGREGAR DEL FORMULARIO PARA AGREGAR MASCOTA 
-    let listaDeBTNAgregarMascotas = document.querySelectorAll(".clsBtnAgregarMascota");
-    for (let i = 0; i < listaDeBTNAgregarMascotas.length; i++) {
-        // se asigna evento click a cada imagen
-        listaDeBTNAgregarMascotas[i].addEventListener("click", agregarMoscotaContacto);
-    }
-    */
+
 }
 
 console.log("Acceso cargado")
