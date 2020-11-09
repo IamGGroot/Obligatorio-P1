@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector("#btnRegistro").addEventListener("click",registro);
     document.querySelector("#btnAltaAnfitrion").addEventListener("click",registro);
     document.querySelector("#btnCotizar").addEventListener("click",cotizar);
-    ingreso("Visitante","Visitante");
     cargarListaFotos();
     precargaUsuarios();
-    precargaInmuebles();  
+    precargaInmuebles(); 
+    ingreso("Visitante","Visitante"); 
     });
    
     
@@ -201,7 +201,7 @@ function ingreso(tipoUsuario, usuario) {
         alert(`${usuario} Has ingresado con exito! Bienvenido`);
         }
         selectCotizacion(userActual);  /// se ejecuta la funcion de crear el select en $ o dolares, solo pesos o no crearlo varia segun el tipo de usuario logeado.
-        
+        mostrarInmuebles();
         
     }
     //// SALIDA
