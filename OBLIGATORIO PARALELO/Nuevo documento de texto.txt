@@ -1,0 +1,24 @@
+lista de casas precargadas
+
+ [
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [0,1,2]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [3,4,5]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [6,7,8]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [9,10,11]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [12,13,14]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [15,16,17]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [18,19,20]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [21,22,23]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [26,24,25]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [29,27,28]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [30,31,32]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [33,35,34]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [36,37,38]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [39,40,1]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [5,8,9]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [18,25,34]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [9,28,19]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [3,6,9]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [10,20,30]}
+{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [16,24,32]}
+ ]
