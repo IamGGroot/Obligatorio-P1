@@ -3,10 +3,12 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector("#btnRegistro").addEventListener("click",registro);
     document.querySelector("#btnAltaAnfitrion").addEventListener("click",registro);
     document.querySelector("#btnCotizar").addEventListener("click",cotizar);
+    document.querySelector("#btnSalir").addEventListener("click",salir);
+    ingreso("Visitante","Visitante");
     cargarListaFotos();
     precargaUsuarios();
     precargaInmuebles(); 
-    ingreso("Visitante","Visitante"); 
+    cargarPrecargaUserConInmueble(); 
     });
    
     
@@ -38,23 +40,23 @@ for (let i = 0; i < 41; i++) {
     let listaUsuarios = new Array();
     let listaPrecargaUsuarios =
 [
-{ nombreUsu: "agu22", nombre: "Agustín", apellido: "Rodriguez", email: "agu22@gmail.com", celular: "099123456", clave: "bSaDfklj123", tipo: "Huesped" },
-{ nombreUsu: "AlmiSua345", nombre: "Almicar", apellido: "Vazques", email: "almicar@hotmail.com", celular: "096234654", clave: "Almicar1995", tipo: "Huesped" },
-{ nombreUsu: "Camiiii_ok", nombre: "Camila", apellido: "Carrasco", email: "camila@zoho.com", celular: "095236547", clave: "Camilita123", tipo: "Anfitrion" },
-{ nombreUsu: "Este_rodriguez", nombre: "Esteban", apellido: "Quito", email: "estebanquito@gmail.com", celular: "099456456", clave: "Quitoroto456", tipo: "Huesped" },
-{ nombreUsu: "Américo_V", nombre: "Dardo", apellido: "Fuseneco", email: "dardo2020@yahoo.com", celular: "099222222", clave: "YMari4Elen4", tipo: "Huesped", },
+{ nombreUsu: "agu22", nombre: "Agustín", apellido: "Rodriguez", email: "agu22@gmail.com", celular: "099123456", clave: "bSaDfklj123", tipo: "Huesped" , inmuebles:[]},
+{ nombreUsu: "AlmiSua345", nombre: "Almicar", apellido: "Vazques", email: "almicar@hotmail.com", celular: "096234654", clave: "Almicar1995", tipo: "Huesped" , inmuebles:[] },
+{ nombreUsu: "Camiiii_ok", nombre: "Camila", apellido: "Carrasco", email: "camila@zoho.com", celular: "095236547", clave: "Camilita123", tipo: "Anfitrion"  , inmuebles:[]},
+{ nombreUsu: "Este_rodriguez", nombre: "Esteban", apellido: "Quito", email: "estebanquito@gmail.com", celular: "099456456", clave: "Quitoroto456", tipo: "Huesped" , inmuebles:[] },
+{ nombreUsu: "Américo_V", nombre: "Dardo", apellido: "Fuseneco", email: "dardo2020@yahoo.com", celular: "099222222", clave: "YMari4Elen4", tipo: "Huesped", inmuebles:[] },
 { nombreUsu: "admin", nombre: "Administrador", apellido: "admin", email: "admin@hotmail.com", celular: "097111111", clave: "1234", tipo: "Administrador" },
-{ nombreUsu: "Pepe_1", nombre: "José", apellido: "Gomez", email: "josesito@gmail.com", celular: "094446456", clave: "EncimadeRacing27", tipo: "Anfitrion" },
-{ nombreUsu: "Homer.78", nombre: "Homero", apellido: "Simpson", email: "homerojsimpson@gmail.com", celular: "099777756", clave: "Marge1967", tipo: "Anfitrion" },
-{ nombreUsu: "Robert_63", nombre: "Roberto", apellido: "Carlos", email: "robert@gmail.com", celular: "099888888", clave: "1millondeAmigos", tipo: "Anfitrion" },
-{ nombreUsu: "R2D2", nombre: "Arturo", apellido: "Luro", email: "arturoduro@hotmail.com", celular: "099199956", clave: "unaClavede8digitos", tipo: "Anfitrion" },
-{ nombreUsu: "DebyBolso", nombre: "Débora", apellido: "Lopez", email: "debielo@adinet.com", celular: "099557456", clave: "mwBk5255", tipo: "Huesped" },
-{ nombreUsu: "Pablosky27", nombre: "Pablo", apellido: "Marmol", email: "pablomarmol@outlook.com", celular: "099651456", clave: "randoMpasSword99", tipo: "Huesped" },
-{ nombreUsu: "Marge96", nombre: "Marjorie", apellido: "Simpson", email: "MargeS@gmail.com", celular: "099095430", clave: "sinFonica269", tipo: "Huesped" },
-{ nombreUsu: "Liiisa", nombre: "Lucía", apellido: "Diaz", email: "luciaD@zoho.com", celular: "099231576", clave: "Millhouse789", tipo: "Huesped" },
-{ nombreUsu: "GabitomanyaCAP", apellido: "Figueredo", nombre: "Gabriel", email: "gaby22@gmail.com", celular: "099194456", clave: "CacaHuate44", tipo: "Huesped" },
-{ nombreUsu: "Nachocapo1", apellido: "Silva", nombre: "Juan Ignacio", email: "juancho@yahoo.com", celular: "099658456", clave: "bolsoAmuerte1899", tipo: "Huesped" },
-{ nombreUsu: "Rickymaravilla", apellido: "Perez", nombre: "Ricardo", email: "ricky@adinet.com", celular: "099858456", clave: "r1ckYmorty", tipo: "Huesped" }
+{ nombreUsu: "Pepe_1", nombre: "José", apellido: "Gomez", email: "josesito@gmail.com", celular: "094446456", clave: "EncimadeRacing27", tipo: "Anfitrion"  , inmuebles:[]},
+{ nombreUsu: "Homer.78", nombre: "Homero", apellido: "Simpson", email: "homerojsimpson@gmail.com", celular: "099777756", clave: "Marge1967", tipo: "Anfitrion"  , inmuebles:[]},
+{ nombreUsu: "Robert_63", nombre: "Roberto", apellido: "Carlos", email: "robert@gmail.com", celular: "099888888", clave: "1millondeAmigos", tipo: "Anfitrion" , inmuebles:[]},
+{ nombreUsu: "R2D2", nombre: "Arturo", apellido: "Luro", email: "arturoduro@hotmail.com", celular: "099199956", clave: "unaClavede8mildigitos", tipo: "Anfitrion"  , inmuebles:[]},
+{ nombreUsu: "DebyBolso", nombre: "Débora", apellido: "Lopez", email: "debielo@adinet.com", celular: "099557456", clave: "mwBk5255", tipo: "Huesped"  , inmuebles:[]},
+{ nombreUsu: "Pablosky27", nombre: "Pablo", apellido: "Marmol", email: "pablomarmol@outlook.com", celular: "099651456", clave: "randoMpasSword99", tipo: "Huesped"  , inmuebles:[] },
+{ nombreUsu: "Marge96", nombre: "Marjorie", apellido: "Simpson", email: "MargeS@gmail.com", celular: "099095430", clave: "sinFonica269", tipo: "Huesped"  , inmuebles:[]},
+{ nombreUsu: "Liiisa", nombre: "Lucía", apellido: "Diaz", email: "luciaD@zoho.com", celular: "099231576", clave: "Millhouse789", tipo: "Huesped"  , inmuebles:[]},
+{ nombreUsu: "GabitomanyaCAP", apellido: "Figueredo", nombre: "Gabriel", email: "gaby22@gmail.com", celular: "099194456", clave: "CacaHuate44", tipo: "Huesped"  , inmuebles:[]},
+{ nombreUsu: "Nachocapo1", apellido: "Silva", nombre: "Juan Ignacio", email: "juancho@yahoo.com", celular: "099658456", clave: "bolsoAmuerte1899", tipo: "Huesped"  , inmuebles:[]},
+{ nombreUsu: "Rickymaravilla", apellido: "Perez", nombre: "Ricardo", email: "ricky@adinet.com", celular: "099858456", clave: "r1ckYmorty", tipo: "Huesped" , inmuebles:[]}
 ];
 function precargaUsuarios() {
             for (let i = 0; i < listaPrecargaUsuarios.length; i++) {  //recorre lista precargaUsuarios
@@ -143,6 +145,31 @@ function precargaInmuebles() {
 /// RELACIONAR FOTOS CON INMUEBLES
 function relacionarInmuebleConFoto(inmueble,photo) {
 listaInmuebles[inmueble].fotos.push(listaFotos[photo])    
+}
+
+
+/// RELACIONAR USUARIOS CON INMUEBLES
+
+function relacionarUsuarioConInmueble(usuario,inmueble) {
+    listaUsuarios[usuario].inmuebles.push(listaInmuebles[inmueble])    
+}
+function cargarPrecargaUserConInmueble()
+{let p = 0;
+    for (let i = 0; i < listaUsuarios.length; i++) {
+        let element = listaUsuarios[i];
+        
+        if(p>=listaInmuebles.length)
+        {p = 0;} 
+        if(element.tipo !== "Administrador")
+    {
+    relacionarUsuarioConInmueble(i,p)   
+    p++  
+    relacionarUsuarioConInmueble(i,p)   
+    p++  
+    relacionarUsuarioConInmueble(i,p)   
+    p++  
+    }   
+    }
 }
     //////////////<---------------------- PRECARGA DE DATOS FIN--------------->/////////////////////
     
@@ -409,23 +436,41 @@ function mostrarInmuebles()
 let divMostrar = document.querySelector("#divInmuebles");
 divMostrar.setAttribute("style","display:block");
 divMostrar.innerHTML = "";
-if (userActual === "Visitante")
+if (userActual === "Visitante" || userActual === "Huesped")
 {   
     listaInmuebles.forEach(element => {
     divMostrar.innerHTML += 
-    `
-    <table border=1>
-    
-    <tr><td><img src="${element.fotos[0]}.jpg"></td></tr>
+    `<table border=1><tr><td><img src="${element.fotos[0]}.jpg"></td></tr>
     <tr><td>Titulo: ${element.titulo}</td></tr>
     <tr><td>Descripcion: ${element.descripcion}</td></tr>
     <tr><td>Ciudad: ${element.ciudad}</td></tr>
-    <tr><td>Precio por noche: ${element.precioPorNoche}</td></tr>
+    <tr><td>Precio por noche: <span id="precio${element.id}">${element.precioPorNoche}</span></td></tr>
     <tr><td>Calificacion: ${element.promedioCalif}</td> </tr>
-    
-  </table><br><br>`
-  ;
+    </table><br><br>`;
 });
+}
+if(userActual === "Anfitrion")
+{
+let nombreUsuarioAnfitrion = document.getElementById("usuario-actual-nombre").innerHTML;
+let i = 0;
+let banderawhile = false;
+while(i<listaUsuarios.length || !banderawhile)
+{
+if(listaUsuarios[i].nombreUsu === nombreUsuarioAnfitrion)
+{
+    banderawhile = true;
+    listaUsuarios[i].inmuebles.forEach(element => {
+    divMostrar.innerHTML += `<table border=1><tr><td><img src="${element.fotos[0]}.jpg"></td></tr>
+    <tr><td>Titulo: ${element.titulo}</td></tr>
+    <tr><td>Descripcion: ${element.descripcion}</td></tr>
+    <tr><td>Ciudad: ${element.ciudad}</td></tr>
+    <tr><td>Precio por noche: <span id="precio${element.id}">${element.precioPorNoche}</span></td></tr>
+    <tr><td>Calificacion: ${element.promedioCalif}</td> </tr>
+    </table><br><br>`;
+    });
+}
+i++;
+}    
 }
 }
 

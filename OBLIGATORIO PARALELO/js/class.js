@@ -8,7 +8,7 @@ class Usuarios {
     this.clave;
     this.tipo;
     this.reservas;
-    this.inmuebles;
+    this.inmuebles = new Array;
   }
 }
 
