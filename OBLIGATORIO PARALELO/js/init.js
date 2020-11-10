@@ -4,29 +4,16 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector("#btnAltaAnfitrion").addEventListener("click",registro);
     document.querySelector("#btnCotizar").addEventListener("click",cotizar);
     document.querySelector("#btnSalir").addEventListener("click",salir);
-    ingreso("Visitante","Visitante");
     cargarListaFotos();
     precargaUsuarios();
     precargaInmuebles(); 
     cargarPrecargaUserConInmueble(); 
-    });
-   
+    ingreso("Visitante","Visitante");    
+});
     
-   
-   document.querySelector("#selLogin").addEventListener("change", ingresofalso); // Cuando el select de tipo de usuario cambia ejecuta ingreso()
-    
-    var userActual = document.querySelector("#selLogin").value;
+    var userActual = "Visitante";
+    document.querySelector("#txtCotizar").value = 40;
     var cotizacion = Number(document.querySelector("#txtCotizar").value);
-    function ingresofalso()
-    {  
-        userActual = document.querySelector("#selLogin").value; 
-        console.log()
-        ingreso(userActual);
-    }
-    
-
-    
-    
     
     //////////////<---------------------- PRECARGA DE DATOS INICIO--------------->//////////////////
     //// PRECARGA FOTOS
@@ -85,27 +72,28 @@ function precargaUsuarios() {
         }
     //// PRECARGA INMUEBLES
 let listaInmuebles = new Array();
+let listaInmueblesAnfitrion = new Array();
 let listaPrecargaInmuebles =  
-[{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [0,1,2]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [3,4,5]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [6,7,8]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [9,10,11]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [12,13,14]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [15,16,17]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [18,19,20]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [21,22,23]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [26,24,25]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [29,27,28]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [30,31,32]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [33,35,34]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [36,37,38]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [39,40,1]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [2,3,4]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [5,6,7]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [8,9,10]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [11,12,13]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [14,15,16]},
-    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "unanfitrion" , fotos : [17,18,19]},
+[{ id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Camiiii_ok" , fotos : [0,1,2]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Camiiii_ok" , fotos : [3,4,5]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Camiiii_ok" , fotos : [6,7,8]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Camiiii_ok" , fotos : [9,10,11]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Robert_63" , fotos : [12,13,14]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Robert_63" , fotos : [15,16,17]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Pepe_1" , fotos : [18,19,20]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Pepe_1" , fotos : [21,22,23]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Pepe_1" , fotos : [26,24,25]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Pepe_1" , fotos : [29,27,28]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Homer.78" , fotos : [30,31,32]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Homer.78" , fotos : [33,35,34]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Robert_63" , fotos : [36,37,38]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Homer.78" , fotos : [39,40,1]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Homer.78" , fotos : [2,3,4]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "R2D2" , fotos : [5,6,7]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "R2D2" , fotos : [8,9,10]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "R2D2" , fotos : [11,12,13]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "R2D2" , fotos : [14,15,16]},
+    { id: "inmueble", titulo: "casa grande", descripcion: "", ciudad: "", precioPorNoche: 50, promedioCalif: 50, usuarioAnfitrion: "Robert_63" , fotos : [17,18,19]},
      ]
 function precargaInmuebles() {
         for (let i = 0; i < listaPrecargaInmuebles.length; i++) {
@@ -140,6 +128,7 @@ function precargaInmuebles() {
                               
             
         }
+        listaInmueblesAnfitrion = listaInmuebles;
 }
 
 /// RELACIONAR FOTOS CON INMUEBLES
@@ -238,7 +227,7 @@ function salir()
         document.querySelectorAll(".texto").forEach(element => {
         element.innerHTML = "";       
         });
-        ingreso("Vistante","Visitante");
+        ingreso("Visitante","Visitante");
         alert("Has cerrado sesion con exito!");
     }
     //// REGISTRO
@@ -423,10 +412,14 @@ function selectCotizacion(usr)
 {
     let divCotizacion = document.querySelector("#divCotizacion");
     
-    if(usr === "Visitante" || usr === "Huesped"){ divCotizacion.innerHTML = `<select><option value="$">$</option><option value="U$D">U$D</option></select>`;}
+    if(usr === "Visitante" || usr === "Huesped"){ divCotizacion.innerHTML = `<select id="selectCot"><option value="$">$</option><option value="U$D">U$D</option></select>`;
+    document.querySelector("#selectCot").addEventListener("change",cambiarMoneda);}
     if(usr === "Anfitrion"){ divCotizacion.innerHTML = `<select><option value="$">$</option></select>`;}
-    if(usr === "Administrador"){divCotizacion.innerHTML = "";}
-    
+    if(usr === "Administrador"){divCotizacion.innerHTML = "";}  
+}
+function cambiarMoneda()
+{
+mostrarInmuebles();
 }
 //////////////<--------------------- COTIZACION FIN----------------------------->/////////////////////
 //////////////<--------------------- INMUEBLES INICIO -------------------------->/////////////////////
@@ -436,43 +429,78 @@ function mostrarInmuebles()
 let divMostrar = document.querySelector("#divInmuebles");
 divMostrar.setAttribute("style","display:block");
 divMostrar.innerHTML = "";
-if (userActual === "Visitante" || userActual === "Huesped")
+if (userActual === "Visitante")
 {   
+ if(document.getElementById("divCotizacion").children[0].value === "U$D")
+ {
     listaInmuebles.forEach(element => {
     divMostrar.innerHTML += 
     `<table border=1><tr><td><img src="${element.fotos[0]}.jpg"></td></tr>
     <tr><td>Titulo: ${element.titulo}</td></tr>
     <tr><td>Descripcion: ${element.descripcion}</td></tr>
     <tr><td>Ciudad: ${element.ciudad}</td></tr>
-    <tr><td>Precio por noche: <span id="precio${element.id}">${element.precioPorNoche}</span></td></tr>
+    <tr><td>Precio por noche: <span class="precio">${cotizacion*Number(element.precioPorNoche)}</span></td></tr>
     <tr><td>Calificacion: ${element.promedioCalif}</td> </tr>
     </table><br><br>`;
 });
-}
-if(userActual === "Anfitrion")
-{
-let nombreUsuarioAnfitrion = document.getElementById("usuario-actual-nombre").innerHTML;
-let i = 0;
-let banderawhile = false;
-while(i<listaUsuarios.length || !banderawhile)
-{
-if(listaUsuarios[i].nombreUsu === nombreUsuarioAnfitrion)
-{
-    banderawhile = true;
-    listaUsuarios[i].inmuebles.forEach(element => {
-    divMostrar.innerHTML += `<table border=1><tr><td><img src="${element.fotos[0]}.jpg"></td></tr>
+}else{listaInmuebles.forEach(element => {
+    divMostrar.innerHTML += 
+    `<table border=1><tr><td><img src="${element.fotos[0]}.jpg"></td></tr>
     <tr><td>Titulo: ${element.titulo}</td></tr>
     <tr><td>Descripcion: ${element.descripcion}</td></tr>
     <tr><td>Ciudad: ${element.ciudad}</td></tr>
-    <tr><td>Precio por noche: <span id="precio${element.id}">${element.precioPorNoche}</span></td></tr>
+    <tr><td>Precio por noche:  <span class="precio">${Number(element.precioPorNoche)}</span></td></tr>
     <tr><td>Calificacion: ${element.promedioCalif}</td> </tr>
     </table><br><br>`;
-    });
+});}
 }
-i++;
+
+if (userActual === "Huesped") {
+    if(document.getElementById("divCotizacion").children[0].value === "U$D")
+    {
+       listaInmuebles.forEach(element => {
+       divMostrar.innerHTML += 
+       `<table border=1><tr><td><img src="${element.fotos[0]}.jpg"></td></tr>
+       <tr><td>Titulo: ${element.titulo}</td></tr>
+       <tr><td>Descripcion: ${element.descripcion}</td></tr>
+       <tr><td>Ciudad: ${element.ciudad}</td></tr>
+       <tr><td>Precio por noche: <span class="precio">${cotizacion*Number(element.precioPorNoche)}</span></td></tr>
+       <tr><td>Calificacion: ${element.promedioCalif}</td></tr>
+       </table><br><br>`;
+   });
+   }else{listaInmuebles.forEach(element => {
+       divMostrar.innerHTML += 
+       `<table border=1><tr><td><img src="${element.fotos[0]}.jpg"></td></tr>
+       <tr><td>Titulo: ${element.titulo}</td></tr>
+       <tr><td>Descripcion: ${element.descripcion}</td></tr>
+       <tr><td>Ciudad: ${element.ciudad}</td></tr>
+       <tr><td>Precio por noche:  <span class="precio">${Number(element.precioPorNoche)}</span></td></tr>
+       <tr><td>Calificacion: ${element.promedioCalif}</td> </tr>
+       <input type="button" id="btnVerMas${element.id}" style="display: block;" value="Ver más">
+       </table><br><br>`;
+   });}    
+}
+
+
+if(userActual === "Anfitrion")
+{
+let nombreUsuarioAnfitrion = document.getElementById("usuario-actual-nombre").innerHTML;
+listaInmueblesAnfitrion.forEach(element => {
+if(element.usuarioAnfitrion === nombreUsuarioAnfitrion)
+{
+divMostrar.innerHTML += `<table border=1><tr><td><img src="${element.fotos[0]}.jpg"></td></tr>
+<tr><td>Titulo: ${element.titulo}</td></tr>
+<tr><td>Descripcion: ${element.descripcion}</td></tr>
+<tr><td>Ciudad: ${element.ciudad}</td></tr>
+<tr><td>Precio por noche: <span class"precio">${element.precioPorNoche}</span></td></tr>
+<tr><td>Calificacion: ${element.promedioCalif}</td> </tr>
+<input type="button" class="habilitar" value="Habilitar inmueble">
+<input type="button" class="inhabilitar" value="Inhabilitar inmueble">
+</table><br><br>`;}
+});
 }    
 }
-}
+
 
 //////////////<--------------------- INMUEBLES FIN ----------------------------->/////////////////////
 

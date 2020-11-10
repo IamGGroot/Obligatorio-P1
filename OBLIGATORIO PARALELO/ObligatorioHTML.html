@@ -16,13 +16,6 @@
 </head>
 <body>
 
-    BANCO DE PRUEBAS DE USUARIOS
-    <select id="selLogin">
-        <option value="Visitante">Visitante</option>
-        <option value="Huesped">Huesped</option>
-        <option value="Anfitrion">Anfitrion</option>
-        <option value="Administrador">Administrador</option>
-    </select>
     <p id="usuario-actual-tipo"></p>
     <p id="usuario-actual-nombre"></p>
     <br>
@@ -122,9 +115,9 @@
             <!---INICIO INTERACCIONES CON LOS INMUEBLES -->
             <br>
             <div id="divVerMas" class="Huesped">
-                <input type="button" id="btnVerMas" style="display: block;" value="Ver más">
-                <input type="button" id="btnSigFoto" onclick="cambiarImgSig" value="Ver siguiente">
-                <input type="button" id="btnAntFoto" onclick="cambiarImgAnt" value="Ver anterior">
+             <!--   <input type="button" id="btnVerMas" style="display: block;" value="Ver más">
+                <input type="button" id="btnSigFoto" value="Ver siguiente">
+                <input type="button" id="btnAntFoto" value="Ver anterior">-->
             </div>
 
             <div id="divReserva" class="Huesped">
@@ -140,10 +133,7 @@
                 <input type="button" id="btnCalificarReserva" value="Calificar Reserva">
             </div>
 
-            <div id="divHabilitarInmueble" class="Anfitrion">
-                <input type="button" id="btnHabilitar" value="Habilitar inmueble">
-                <input type="button" id="btnInhabilitar" value="Inhabilitar inmueble">
-            </div>
+
             <div id="divRegistrarInmueble" class="Anfitrion" >
                 <input type="button" id="btnRegistrarInmueble" value="Registrar inmueble">
                 
