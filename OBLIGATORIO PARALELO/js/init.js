@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 var userActual = "Visitante";
+var usuarioAnfitrion = ""; //agregue al login
 document.querySelector("#txtCotizar").value = 40;
 
 var cotizacion = Number(document.querySelector("#txtCotizar").value);
@@ -224,6 +225,7 @@ function ingreso(tipoUsuario, usuario) {
     }
     selectCotizacion(userActual);  /// se ejecuta la funcion de crear el select en $ o dolares, solo pesos o no crearlo varia segun el tipo de usuario logeado.
     mostrarInmuebles();
+    usuarioAnfitrion = user;//agregue 10.11.20
 
 }
 //// SALIDA
@@ -506,27 +508,42 @@ function mostrarInmuebles() {
 
 
 function buscador() {
-    userActual = tipoUsuario;
-    validacionno vacio;
+    let UserActual = tipoUsuario;
+    let mensaje = ``;
+    let txtBuscado = document.getElementById("txtBusqueda").innerHTML;
 
-    busqueda por titulo o ciudad;
-    dps
+    if (!verificarTextoNoVacio(txtBuscado)) {
+        mensaje = "Ingrese datos válidos para buscar<br>"
+    }
 
-
-
-    if (tipoUsuario != "Anfitrion") {
+    if (UserActual !== "Anfitrion") {
         listaInmuebles.forEach(element => {
-
+            if (element.titulo === txtBuscado || element.ciudad === txtBuscado) {
+                //falta que recorra y busque fracciones de texto y no solo resultado identico
+                //unir con funcion mostrar inmuebles
+                //mostrar element.usuarioAnfitrion todos
+            }
         }
     }
 
-    if (tipoUsuario == "Anfitrion") {
+    if (UserActual == "Anfitrion") {
         listaInmueblesAnfitrion.forEach(element => {
+            if (element.descripcion === txtBuscado) {
+                //falta que recorra y busque fracciones de texto y no solo resultado identico
+                //unir con funcion mostrar inmuebles
+                //mostrar solo element.usuarioAnfitrion === usuarioAnfitrion
+            }
         }
     }
+    if (divMostrar.innerHTML === "") {
+            mensaje = `No existen resultados para su búsqueda`
+        }
 
-}
-// usar indexOf
+        alert(mensaje);
+    }
+// usar indexOf (index of no se puede porque es case insensitive y la funcion indexof es case sensitive)
+//case insensitive
+//sin tener en cuenta tildes
 
 
 //////////////<--------------------- INMUEBLES FIN ----------------------------->/////////////////////
