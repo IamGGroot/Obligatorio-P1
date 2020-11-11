@@ -519,11 +519,13 @@ function buscador() {
     if (UserActual !== "Anfitrion") {
         listaInmuebles.forEach(element => {
             if (element.titulo === txtBuscado || element.ciudad === txtBuscado) {
+                
                 //falta que recorra y busque fracciones de texto y no solo resultado identico
                 //unir con funcion mostrar inmuebles
                 //mostrar element.usuarioAnfitrion todos
             }
-        }
+            
+        })
     }
 
     if (UserActual == "Anfitrion") {
@@ -533,14 +535,15 @@ function buscador() {
                 //unir con funcion mostrar inmuebles
                 //mostrar solo element.usuarioAnfitrion === usuarioAnfitrion
             }
-        }
+        })
     }
     if (divMostrar.innerHTML === "") {
-            mensaje = `No existen resultados para su búsqueda`
-        }
-
-        alert(mensaje);
+        mensaje = `No existen resultados para su búsqueda`;
     }
+
+    alert(mensaje);
+}
+
 // usar indexOf (index of no se puede porque es case insensitive y la funcion indexof es case sensitive)
 //case insensitive
 //sin tener en cuenta tildes
