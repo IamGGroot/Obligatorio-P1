@@ -11,6 +11,11 @@
             max-width: 500px;
             max-height: 500px;
             }
+            .miniatura
+{
+      max-width: 150px;
+            max-height: 150px;
+}
     </style>
 
 </head>
@@ -70,7 +75,7 @@
         SECCION INMUEBLES
             <hr>
             <div id="divCotizar" class="Administrador">
-                <label for="selCotizar">Ingrese el valor actual del dólar<input type="text" id="txtCotizar"
+                <label for="selCotizar">Ingrese el valor actual del dolar<input type="text" id="txtCotizar"
                         placeholder="Ingrese un numero"></label>
                 <input type="button" id="btnCotizar" value="Cotizar">
             </div>
@@ -82,8 +87,9 @@
             
             <div class="Visitante Huesped"> <!--ORDENAR-->
             <select id="selOrdenar" style="display: inline;">
-                <option value="Ascendente">Ascendente</option>
-                <option value="Descendente">Descendente</option>
+                <option value="Seleccione una Opcion">Seleccione una opcion</option>
+                <option value="Asendente">Asendente</option>
+                <option value="Desendente">Desendente</option>
             </select>
             </div>
 
@@ -92,7 +98,6 @@
             <div class="Visitante Huesped">
             <input type="text" class="texto" id="txtBusqueda" style="display: inline; width: 200px;" 
                 placeholder="Ingrese su busqueda aqui">
-                <input type="button" id="btnBuscar" value="Buscar">
             </div>
 
             <div>
@@ -136,6 +141,14 @@
 
 
             <div id="divRegistrarInmueble" class="Anfitrion" >
+                <span id="spanEstadoRegInmueble"></span>
+                <label for="selRegInm">Ingrese Estado</label><select id="selRegInm"><option value="on">Habilitado</option><option value="off">Inhabilitado</option></select><br>
+                <label for="txtTitulo">Ingrese Titulo</label><input id="txtTitulo" type="text"><br>
+                <label for="txtDescripcion">Ingrese Descripcion</label><input id="txtDescripcion" type="text"><br>
+                <label for="txtCiudad">Ingrese Ciudad </label><input id="txtCiudad" type="text"><br>
+                <label for="txtPrecioPorNoche">Ingrese Precio por noche<input id="txtPrecioPorNoche" type="text"><br>
+                <div id="regFotos" class="Anfitrion">
+                </div>
                 <input type="button" id="btnRegistrarInmueble" value="Registrar inmueble">
                 
             </div>
