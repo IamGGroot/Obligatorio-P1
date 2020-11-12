@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector("#btnSalir").addEventListener("click",salir);
     document.querySelector("#btnRegistrarInmueble").addEventListener("click",registrarInmueble);
     document.querySelector("#selOrdenar").addEventListener("change",mostrarInmuebles);
+    document.querySelector("#btnBuscar").addEventListener("click",buscador);
     cargarListaFotos();
     precargaUsuarios();
     precargaInmuebles(); 
@@ -626,11 +627,11 @@ document.querySelector("#regFotos").innerHTML = imagenes;
 function buscador() {
     let UserActual = tipoUsuario;
     let mensaje = ``;
-    let txtBuscado = document.getElementById("txtBusqueda").innerHTML;
+    let txtBuscado = document.getElementById("txtBusqueda").value;
 
     if (!verificarTextoNoVacio(txtBuscado)) {
         mensaje = "Ingrese datos válidos para buscar<br>"
-    }
+    
 
     if (UserActual !== "Anfitrion") {
         listaInmuebles.forEach(element => {
@@ -656,8 +657,10 @@ function buscador() {
     if (divMostrar.innerHTML === "") {
         mensaje = `No existen resultados para su búsqueda`;
     }
+}
 
     alert(mensaje);
+    
 }
 
 // usar indexOf (index of no se puede porque es case insensitive y la funcion indexof es case sensitive)
