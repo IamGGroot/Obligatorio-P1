@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnRegistrarInmueble").addEventListener("click", registrarInmueble);
     document.querySelector("#selOrdenar").addEventListener("change", mostrarInmuebles);
     document.querySelector("#btnBuscar").addEventListener("click", buscador);
+
     cargarListaFotos();
     precargaUsuarios();
     precargaInmuebles();
@@ -19,6 +20,9 @@ var globalUser = "Visitante";
 document.querySelector("#txtCotizar").value = 40;
 var cotizacion = Number(document.querySelector("#txtCotizar").value);
 let arrayResultado = new Array();
+let posFoto = 0;
+let posFotoTope = 0;
+let FotosInmuebleParticular = new Array();
 
 
 //////////////<---------------------- PRECARGA DE DATOS INICIO--------------->//////////////////
@@ -322,22 +326,28 @@ function registro() {
     }
 
     if (!verificarTextoNoVacio(nNombre)) {
-        mensaje += "Ingrese datos validos en el campo de nombre<br>"
+        mensaje += "Ingrese datos validos en el campo de nombre.<br>"
     }
 
     if (!verificarTextoNoVacio(nApellido)) {
-        mensaje += "Ingrese datos validos en el campo de Apellido<br>"
+        mensaje += "Ingrese datos validos en el campo de apellido.<br>"
     }
 
     if (!validacionEmail(nMail)) {
         mensaje += "Email no valido.<br>"
     }
 
+    if (!validarCel(nTel)) {
+        mensaje += "Teléfono no válido. Debe ser de 8 números.<br>"
+    }
+
     if (!validacionPass(nPass, nPassComp)) { mensaje += "Las claves no coinciden o no es es valida. Recuerde incluir una mayuscula, una letra, un numero y la longitud de la clave debe ser mayor a 5 caracteres." }
 
     if (!verificarNoExisteUser(nUser)) { mensaje += "Ya existe otro usuario con ese nombre"; }
 
-    if (verificarNoExisteUser(nUser) && verificarTextoNoVacio(nUser) && verificarTextoNoVacio(nNombre) && verificarTextoNoVacio(nApellido) && validacionEmail(nMail) && validarCel(nTel) && validacionPass(nPass, nPassComp)) {
+    if (verificarNoExisteUser(nUser) && verificarTextoNoVacio(nUser) &&
+        verificarTextoNoVacio(nNombre) && verificarTextoNoVacio(nApellido) &&
+        validacionEmail(nMail) && validarCel(nTel) && validacionPass(nPass, nPassComp)) {
         let agregarActual = new Usuarios();                   // Se crea un objeto de clase usuario
         agregarActual.nombreUsu = nUser;                          //comienza  a ese objeto se le pone el dato que corresponde
         agregarActual.nombre = nNombre;
@@ -542,8 +552,8 @@ function mostrarInmuebles() {
         if (divCotiChild === "U$S") {
             listaInmuebles.forEach(element => {
                 if (element.estado === "on") {
-                    divMostrar.innerHTML +=
-                        `<table border=1><tr><td><img src="${element.fotos[0]}.jpg"></td></tr>
+                    divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto${element.id}"><img src="${element.fotos[0]}.jpg"></div></td></tr>
+                        <tr><td><input type="button" id="btnAntFoto" value=" << " ><input type="button" id="btnSigFoto" value=" >> "></td> </tr>
     <tr><td>Titulo: ${element.titulo}</td></tr>
     <tr><td>Descripcion: ${element.descripcion}</td></tr>
     <tr><td>Ciudad: ${element.ciudad}</td></tr>
@@ -552,11 +562,12 @@ function mostrarInmuebles() {
     </table><br><br>`;
                 }
             });
+
         } else {
             listaInmuebles.forEach(element => {
                 if (element.estado === "on") {
-                    divMostrar.innerHTML +=
-                        `<table border=1><tr><td><img src="${element.fotos[0]}.jpg"></td></tr>
+                    divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto${element.id}"><img src="${element.fotos[0]}.jpg"></div></td></tr>
+                        <tr><td><input type="button" id="btnAntFoto" value=" << " ><input type="button" id="btnSigFoto" value=" >> "></td> </tr>
     <tr><td>Titulo: ${element.titulo}</td></tr>
     <tr><td>Descripcion: ${element.descripcion}</td></tr>
     <tr><td>Ciudad: ${element.ciudad}</td></tr>
@@ -573,8 +584,8 @@ function mostrarInmuebles() {
         if (divCotiChild === "U$S") {
             listaInmuebles.forEach(element => {
                 if (element.estado === "on") {
-                    divMostrar.innerHTML +=
-                        `<table border=1><tr><td><img src="${element.fotos[0]}.jpg"></td></tr>
+                    divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto${element.id}"><img src="${element.fotos[0]}.jpg"></div></td></tr>
+                        <tr><td><input type="button" id="btnAntFoto" value=" << " ><input type="button" id="btnSigFoto" value=" >> "></td> </tr>
        <tr><td>Titulo: ${element.titulo}</td></tr>
        <tr><td>Descripcion: ${element.descripcion}</td></tr>
        <tr><td>Ciudad: ${element.ciudad}</td></tr>
@@ -586,18 +597,18 @@ function mostrarInmuebles() {
         } else {
             listaInmuebles.forEach(element => {
                 if (element.estado === "on") {
-                    divMostrar.innerHTML +=
-                        `<table border=1><tr><td><img src="${element.fotos[0]}.jpg"></td></tr>
+                    divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto${element.id}"><img src="${element.fotos[0]}.jpg"></div></td></tr>
+                        <tr><td><input type="button" id="btnAntFoto" value=" << " ><input type="button" id="btnSigFoto" value=" >> "></td> </tr>
        <tr><td>Titulo: ${element.titulo}</td></tr>
        <tr><td>Descripcion: ${element.descripcion}</td></tr>
        <tr><td>Ciudad: ${element.ciudad}</td></tr>
        <tr><td>Precio por noche:  <span class="precio">${divCotiChild} ${Number(element.precioPorNoche)}</span></td></tr>
        <tr><td>Calificación promedio: ${element.promedioCalif}</td> </tr>
-       <input type="button"  id="btnVerMas" class="vermas" name=${element.id} style="display: block;" value="Ver más"><div id="${element.id}"></div>
        </table><br><br>`;
                 }
             });
         }
+
     }
 
 
@@ -605,7 +616,8 @@ function mostrarInmuebles() {
         let nombreUsuarioAnfitrion = document.getElementById("usuario-actual-nombre").innerHTML;
         listaInmuebles.forEach(element => {
             if (element.usuarioAnfitrion === nombreUsuarioAnfitrion) {
-                divMostrar.innerHTML += `<table border=1><tr><td><img src="${element.fotos[0]}.jpg"></td></tr>
+                divMostrar.innerHTML += `<table border=1><tr><td><div class="Huesped" id="divParaFoto"><img src="${element.fotos[0]}.jpg"></div></td></tr>
+                <tr><td><input type="button" id="btnAntFoto" value=" << " ><input type="button" id="btnSigFoto" value=" >> "></td> </tr>
 <tr><td>Titulo: ${element.titulo}</td></tr>
 <tr><td>Descripcion: ${element.descripcion}</td></tr>
 <tr><td>Ciudad: ${element.ciudad}</td></tr>
@@ -615,12 +627,32 @@ function mostrarInmuebles() {
 <input type="button" name="${element.id}" class="inhabilitar" value="Inhabilitar inmueble"><div class="Huesped" id="${element.id}"></div>
 </table><br><br>`;
             }
+            document.querySelector("#btnAntFoto").addEventListener("click", siguiente);
+            document.querySelector("#btnSigFoto").addEventListener("click", anterior);
             habilitacionYInabilitacion();
             mostrarFotosRegistrarInmueble();
         });
     }
 }
 
+
+function anterior(idInmueble) {
+    if (posFoto > 0) {
+        posFoto = posFoto - 1;
+    }
+    let fotoX = `<img src="${posFoto}.jpg"/>`;
+    document.querySelector("#divParaFoto").innerHTML = fotoX;
+
+}
+
+function siguiente() {
+    if (posFoto < 9) {
+        posFoto = posFoto + 1;
+    }
+    let fotoX = `<img src="${posFoto}.jpg"/>`;
+    document.querySelector("#divParaFoto").innerHTML = fotoX;
+
+}
 function habilitacionYInabilitacion() {
     document.querySelectorAll(".habilitar").forEach(element => {
         element.addEventListener("click", habilitar);
@@ -730,7 +762,7 @@ function buscador() {
                 }
             })
             if (arrayResultado.length < 1) {
-                mensaje += `No existen resultados para su búsqueda`
+                mensaje += `No existen resultados para su búsqueda`;
             }
         }
         if (tipoUserActual == "Anfitrion") {
@@ -754,16 +786,17 @@ function buscador() {
                 }
             })
             if (arrayResultado.length < 1) {
-                mensaje += `No existen resultados para su búsqueda`
-
+                mensaje += `No existen resultados para su búsqueda`;
+                document.querySelector("#divResultadoBusqueda").innerHTML = `${mensaje}`;
             }
         }
     } else {
         mensaje += `Debe ingresar algo para buscar`;
+        document.querySelector("#divResultadoBusqueda").innerHTML = `${mensaje}`;
     }
 
-    console.log(`Resultado buscador: ${mensaje} y array: ${arrayResultado}`)
-
+    console.log(`${mensaje} Array resultado: ${arrayResultado}`)
+    
     return arrayResultado;
     //devuelve array con inmuebles pronto para funcion inmuebles 
     //(si es anfitrión devuelve solo los de ese anfitrión)
@@ -817,4 +850,5 @@ function txtNoTildesNiMayus(txt) {
 
     return txtSintildesNiMayus;
 }
+
 
