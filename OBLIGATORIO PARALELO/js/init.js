@@ -263,6 +263,7 @@ function validarLogin() {
 }
 //// INGRESO
 function ingreso(tipoUsuario, usuario) {
+    limpiarDivs();
     globalTipoUser = tipoUsuario;                                              /// se cambia la variables globales por la ingresada
     globalUser = usuario;
     document.getElementById("usuario-actual-tipo").innerHTML = tipoUsuario;  // se muestra en pantalla el nombre de usuario y el tipo de usuario actual
@@ -293,16 +294,16 @@ function ingreso(tipoUsuario, usuario) {
         });
 
     }
+    selectCotizacion(globalTipoUser);  /// se ejecuta la funcion de crear el select en $ o dolares, solo pesos o no crearlo varia segun el tipo de usuario logeado.
+    mostrarInmuebles();
     if (globalTipoUser !== "Visitante") {
         document.querySelector("#divResultadoLogin").innerHTML = `Bienvenido ${usuario}. Has ingresado con éxito!`;
     }
 
-    selectCotizacion(globalTipoUser);  /// se ejecuta la funcion de crear el select en $ o dolares, solo pesos o no crearlo varia segun el tipo de usuario logeado.
-    mostrarInmuebles();
-
 }
 //// SALIDA
 function salir() {
+    limpiarDivs();
     //// For each limpia todos lo que sea clase texto (todos inputs). logea mostrando la clase visitante y envia un mensaje avisando que se salio con éxito
     document.querySelectorAll(".texto").forEach(element => {
         element.innerHTML = "";
@@ -312,6 +313,7 @@ function salir() {
 }
 //// REGISTRO
 function registro() {
+    limpiarDivs();
     let nUser = document.querySelector("#txtRegistroNomUsu").value.trim();                   /// comienza seleccion de valores del html///
     let nNombre = document.querySelector("#txtRegistroNom").value.trim();
     let nApellido = document.querySelector("#txtRegistroApe").value.trim();
@@ -482,6 +484,7 @@ function validacionPass(clave, confirmacion) {
 //////////////<---------------------- COTIZACION INICIO-------------------------->//////////////////
 //// CAMBIAR COTIZACION
 function cotizar() {
+
     let nuevoValor = document.querySelector("#txtCotizar").value.trim();
     let mensaje = ``;
     if (verificarEsNum(nuevoValor)) {
@@ -495,6 +498,7 @@ function cotizar() {
 
 // CREAR SELECT COTIZACION
 function selectCotizacion(usr) {
+
     let divCotizacion = document.querySelector("#divCotizacion");
 
     if (usr === "Visitante" || usr === "Huesped") {
@@ -505,27 +509,20 @@ function selectCotizacion(usr) {
     if (usr === "Administrador") { divCotizacion.innerHTML = ""; }
 }
 function cambiarMoneda() {
+    limpiarDivs();
     mostrarInmuebles();
 }
 //////////////<--------------------- COTIZACION FIN----------------------------->/////////////////////
 
-//////////////<--------------------- ORDENAMIENTO INICIO----------------------------->/////////////////////
-//function ordenarInmuebles()
-//{
-//    mostrarInmuebles();
-//}
-//////////////<--------------------- ORDENAMIENTO FIN----------------------------->////////////////////////
-
-
-
 //////////////<--------------------- INMUEBLES INICIO -------------------------->/////////////////////
 //// MOSTRAR INMUEBLES
 function mostrarInmuebles() {
+    limpiarDivs();
     let divMostrar = document.querySelector("#divInmuebles");
     divMostrar.setAttribute("style", "display:block");
     divMostrar.innerHTML = "";
 
-
+    //ordenar
     listaInmuebles.sort((function (a, b) {
         if (Number(a.promedioCalif) < Number(b.promedioCalif)) { return 1; }
         if (Number(a.promedioCalif) > Number(b.promedioCalif)) { return -1; }
@@ -636,7 +633,8 @@ function mostrarInmuebles() {
 }
 
 
-function anterior(idInmueble) {
+function anterior(fotoActual, idInmueble) {
+    limpiarDivs();
     if (posFoto > 0) {
         posFoto = posFoto - 1;
     }
@@ -645,7 +643,8 @@ function anterior(idInmueble) {
 
 }
 
-function siguiente() {
+function siguiente(idInmueble) {
+    limpiarDivs();
     if (posFoto < 9) {
         posFoto = posFoto + 1;
     }
@@ -663,12 +662,14 @@ function habilitacionYInabilitacion() {
 }
 
 function habilitar() {
+    limpiarDivs();
     let name = this.name;
     listaInmuebles.forEach(element => {
         if (element.id === name) { element.estado = "on" }
     });
 }
 function inhabilitar() {
+    limpiarDivs();
     let name = this.name;
     listaInmuebles.forEach(element => {
         if (element.id === name) { element.estado = "off" }
@@ -676,6 +677,7 @@ function inhabilitar() {
 }
 
 function registrarInmueble() {
+    limpiarDivs();
     let mensaje = "";
     let validarFotos = false;
     let validarCamposDeTexto = false;
@@ -709,7 +711,6 @@ function registrarInmueble() {
 }
 
 function mostrarFotosRegistrarInmueble() {
-
     let imagenes = `<table border="1">`;
 
     for (let i = 0; i < listaFotos.length; i++) {
@@ -728,11 +729,13 @@ function activarVerMas() {
     });
 }
 function verMas() {
+    limpiarDivs();
     let div = this.name;
     document.querySelector(`#${div}`).innerHTML = `<input type="button" class"siguiente" value="Siguiente"><input type="button" "anterior" value="Anterior">`;
 }
 
 function buscador() {
+    limpiarDivs();
     arrayResultado = [];
     let tipoUserActual = globalTipoUser;
     let usuarioActual = globalUser;
@@ -796,7 +799,7 @@ function buscador() {
     }
 
     console.log(`${mensaje} Array resultado: ${arrayResultado}`)
-    
+
     return arrayResultado;
     //devuelve array con inmuebles pronto para funcion inmuebles 
     //(si es anfitrión devuelve solo los de ese anfitrión)
@@ -851,4 +854,10 @@ function txtNoTildesNiMayus(txt) {
     return txtSintildesNiMayus;
 }
 
+function limpiarDivs() {
+    document.querySelector("#divResultadoLogin").innerHTML = ``;
+    document.querySelector("#divResultadoRegistro").innerHTML = ``;
+    document.querySelector("#divResultadoCotizacion").innerHTML = ``;
+    document.querySelector("#divResultadoBusqueda").innerHTML = ``;
+}
 
