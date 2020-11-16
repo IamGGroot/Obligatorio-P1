@@ -4,7 +4,7 @@ admin 123 ADMIN
 
 - descartar los alert y meter los div
 - boton habilitar o inabilitar del anfitrion [estado hab/inb]
-- busqueda de inmuebles 
+
 - ordenar asendente y desendente (conviene hay que agregar al select la opcion de seleccione 1 y cuando se inicie la funcion mostrarinmubles() que verifique
 si el select y segun el value que decida entre las 3 opciones... hay que hacerle un sort de forma que queden los mas populares primero sino eligio nada)
 - desplegar nueva pantalla del boton ver mas y lo que eso incluye
@@ -16,4 +16,10 @@ En la pantalla comentada antes se contará con un campo para ingresar la cantida
 consultar y calificar reserva
 
 - registrar inmueble (esta la deje a medio hacer la borre de js para que no quede codigo mitad comentado pero la tengo en el block de notas
-hecha cuando la termine mañana la subo)
+hecha cuando la termine mañana 	la subo)
+
+
+
+
+- busqueda de inmuebles 
+-calificaciones

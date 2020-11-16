@@ -4,21 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="data:,">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Obligatorio ORT</title>
     <style>
         img {
             max-width: 500px;
             max-height: 500px;
-            }
-            .miniatura
-{
-      max-width: 150px;
+        }
+
+        .miniatura {
+            max-width: 150px;
             max-height: 150px;
-}
+        }
     </style>
 
 </head>
+
 <body>
 
     <p id="usuario-actual-tipo"></p>
@@ -28,142 +30,150 @@
     <!--- COMIENZO DE BARRA SUPERIOR RELACIONADAS A LA VINCULACION DE USUARIO --->
     <div id="elementosAcceso" class="Visitante">ESTA PARTE ES LA QUE CONTIENE LOS ELEMENTOS DE ACCESO<br>
         <hr>
-        
-            ELEMENTO DE LOGIN <br>
-            Usuario:<input class="Visitante texto" type="text" style="display: block;width: 200px;" id="txtLoginUser"
-                placeholder="Ingrese usuario">
-            Contraseña:<input class="Visitante texto" type="password" style="display: block;width: 200px;" id="txtLoginPassword"
-                placeholder="Ingrese contraseña">
-                <input type="button" style="display: inline;" id="btnAcceso" value="Acceder">
+
+        ELEMENTOS DE LOGIN <br>
+        Usuario:<input class="Visitante texto" type="text" style="display: block;width: 200px;" id="txtLoginUser"
+            placeholder="Ingrese usuario">
+        Contraseña:<input class="Visitante texto" type="password" style="display: block;width: 200px;"
+            id="txtLoginPassword" placeholder="Ingrese contraseña">
+        <input type="button" style="display: inline;" id="btnAcceso" value="Acceder">
     </div>
     <div class="Huesped Administrador Anfitrion">
-            <input type="button" style="display: inline;" id="btnSalir" value="Cerrar Sesion">
+        <input type="button" style="display: inline;" id="btnSalir" value="Cerrar Sesion">
     </div>
 
 
     <div id="divReg" class="Visitante Administrador">
-            ELEMENTOS DE REGISTRO
-            <br>
-        
-            Usuario<input class="texto" type="text" style="display: block;width: 200px;" id="txtRegistroNomUsu"
-                placeholder="Ingrese Usuario">
-            Nombre<input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroNom"
-                placeholder="Ingrese Nombre">
-            Apellido<input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroApe"
-                placeholder="Ingrese Apellido">
-            Email:<input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroEmail"
-                placeholder="Ingrese Email">
-            Teléfono<input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroTel"
-                placeholder="Ingrese Teléfono">
-            Contraseña<input type="password" class="texto" style="display: block;width: 200px;" id="txtRegistroContraseña"
-                placeholder="Ingrese Contraseña">
-            Reingrese Contraseña<input type="password" class="texto" style="display: block; width: 200px;"
-                id="txtRegistroContraseñaComp" placeholder="Reingrese Contraseña">
-            <br>
-            <div class="Administrador">
-            <input type="button" style="display: block;"  id="btnAltaAnfitrion" value="Dar de alta Anfitrion">
-            </div>
-            <div class="Visitante">
-            <input type="button" id="btnRegistro" style="display: block;" value="Registrarse">
-            </div>
-    </div>
         <br>
-        <HR>
-        <!--- FIN DE BARRA SUPERIOR RELACIONADAS A LA VINCULACION DE USUARIO --->
+        ELEMENTOS DE REGISTRO
+        <br>
 
-        <!---- INICIO BARRA COTIZACIONES ORDENAMIENTOS Y BUSQUEDA -->
-        SECCION INMUEBLES
-            <hr>
-            <div id="divCotizar" class="Administrador">
-                <label for="selCotizar">Ingrese el valor actual del dolar<input type="text" id="txtCotizar"
-                        placeholder="Ingrese un numero"></label>
-                <input type="button" id="btnCotizar" value="Cotizar">
-            </div>
-            
-            <div id="divCotizacion" class="Visitante Anfitrion Huesped"></div>
-            
+        Usuario<input class="texto" type="text" style="display: block;width: 200px;" id="txtRegistroNomUsu"
+            placeholder="Ingrese Usuario">
+        Nombre<input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroNom"
+            placeholder="Ingrese Nombre">
+        Apellido<input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroApe"
+            placeholder="Ingrese Apellido">
+        Email:<input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroEmail"
+            placeholder="Ingrese Email">
+        Teléfono<input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroTel"
+            placeholder="Ingrese Teléfono">
+        Contraseña<input type="password" class="texto" style="display: block;width: 200px;" id="txtRegistroContraseña"
+            placeholder="Ingrese Contraseña">
+        Reingrese Contraseña<input type="password" class="texto" style="display: block; width: 200px;"
+            id="txtRegistroContraseñaComp" placeholder="Reingrese Contraseña">
+        <br>
+        <div class="Administrador">
+            <input type="button" style="display: block;" id="btnAltaAnfitrion" value="Dar de alta Anfitrion">
+        </div>
+        <div class="Visitante">
+            <input type="button" id="btnRegistro" style="display: block;" value="Registrarse">
+        </div>
+    </div>
+    <br>
+    <HR>
+    <!--- FIN DE BARRA SUPERIOR RELACIONADAS A LA VINCULACION DE USUARIO --->
 
-            
-            
-            <div class="Visitante Huesped"> <!--ORDENAR-->
-            <select id="selOrdenar" style="display: inline;">
-                <option value="Seleccione una Opcion">Seleccione una opcion</option>
-                <option value="Asendente">Asendente</option>
-                <option value="Desendente">Desendente</option>
-            </select>
-            </div>
-
-
-            <!--- BUSQUEDA -->
-            <div class="Visitante Huesped">
-            <input type="text" class="texto" id="txtBusqueda" style="display: inline; width: 200px;" 
-                placeholder="Ingrese su busqueda aqui">
-                <input type="button" id="btnBuscar" value="Buscar">
-
-            </div>
-
-            <div>
-            <input class="Anfitrion" type="button" id="btnVerInmueblesAnfitrion" value="Ver mis inmuebles">
-            </div>
-
-            <div id="divReporteInmueble" class="Administrador">
-                <input type="button" id="btnReporteInmueble" style="display: block;" value="Ver reporte de inmuebles">
-                <input type="text" class="texto" id="txtDesde" style="display: inline; width: 200px;"
-                    placeholder="Ingrese numero desde">-
-                <input type="text" class="texto" id="txtHasta" style="display: inline; width: 200px;"
-                    placeholder="Ingrese numera hasta">
-            </div>
-            <!----FIN BARRA COTIZACIONES ORDENAMIENTOS Y BUSQUEDA ---->
-            <!---INICIO AQUI SE DESPLIEGAN LOS INMUEBLES -->
+    <!---- INICIO BARRA COTIZACIONES ORDENAMIENTOS Y BUSQUEDA -->
+    SECCION INMUEBLES
+    <hr>
+    <div id="divCotizar" class="Administrador">
+        <label for="selCotizar">Ingrese la cotización del dólar<input type="text" id="txtCotizar"
+                placeholder="Ingrese un numero"></label>
+        <input type="button" id="btnCotizar" value="Cotizar">
+    </div>
+    Seleccione moneda
+    <div id="divCotizacion" class="Visitante Anfitrion Huesped"></div>
 
 
-            <div id="divInmuebles">
-            </div>
-            <!---FIN DE AQUI SE DESPILIEGAN LOS INMUEBLES-->
-            <!---INICIO INTERACCIONES CON LOS INMUEBLES -->
-            <br>
-            <div id="divVerMas" class="Huesped">
-             <!--   <input type="button" id="btnVerMas" style="display: block;" value="Ver más">
+
+
+    <div class="Visitante Huesped">
+        <!--ORDENAR-->
+        Ordenar por precio por noche. 
+        <br>
+        <select id="selOrdenar" style="display: inline;">
+            <option value="Seleccione una Opción">Seleccione una opción</option>
+            <option value="Ascendente">Ascendente</option>
+            <option value="Descendente">Descendente</option>
+        </select>
+    </div>
+
+
+    <!--- BUSQUEDA -->
+    <div class="Visitante Huesped Anfitrion">
+        <input type="text" class="texto" id="txtBusqueda" style="display: inline; width: 200px;"
+            placeholder="Ingrese su busqueda aqui">
+        <br>
+        <input type="button" id="btnBuscar" value="Buscar">
+        <span id="spanBusqueda"></span>
+    </div>
+
+    <div>
+        <input class="Anfitrion" type="button" id="btnVerInmueblesAnfitrion" value="Ver mis inmuebles">
+    </div>
+
+    <div id="divReporteInmueble" class="Administrador">
+        <input type="button" id="btnReporteInmueble" style="display: block;" value="Ver reporte de inmuebles">
+        <input type="text" class="texto" id="txtDesde" style="display: inline; width: 200px;"
+            placeholder="Ingrese numero desde">-
+        <input type="text" class="texto" id="txtHasta" style="display: inline; width: 200px;"
+            placeholder="Ingrese numera hasta">
+    </div>
+    <!----FIN BARRA COTIZACIONES ORDENAMIENTOS Y BUSQUEDA ---->
+    <!---INICIO AQUI SE DESPLIEGAN LOS INMUEBLES -->
+
+
+    <div id="divInmuebles">
+    </div>
+    <!---FIN DE AQUI SE DESPILIEGAN LOS INMUEBLES-->
+    <!---INICIO INTERACCIONES CON LOS INMUEBLES -->
+    <br>
+    <div id="divVerMas" class="Huesped">
+        <!--   <input type="button" id="btnVerMas" style="display: block;" value="Ver más">
                 <input type="button" id="btnSigFoto" value="Ver siguiente">
                 <input type="button" id="btnAntFoto" value="Ver anterior">-->
+    </div>
+
+    <div id="divReserva" class="Huesped">
+        <input type="text" class="texto" style="display: inline; width: 200px;" id="txtDiasReserva"
+            placeholder="Ingrese numero dias de reserva">
+        <input type="button" id="btnConfirmarReserva" value="Confirmar Reserva">
+        <input type="button" id="btnConsultarReserva" value="Consultar Reserva ">
+    </div>
+    <div id="divCalificarReserva" class="Huesped">
+        <!--ESTE DIV SE HABILITA SI EL INMUEBLE NO TIENE CALIFICACION-->
+        <input type="text" style="display: inline; width: 200px;" id="txtCalificarReserva"
+            placeholder="Ingrese numero 1-5">
+        <input type="button" id="btnCalificarReserva" value="Calificar Reserva">
+    </div>
+
+
+    <div id="divRegistrarInmueble" class="Anfitrion">
+        <span id="spanEstadoRegInmueble"></span>
+        <label for="selRegInm">Ingrese Estado</label><select id="selRegInm">
+            <option value="on">Habilitado</option>
+            <option value="off">Inhabilitado</option>
+        </select><br>
+        <label for="txtTitulo">Ingrese Titulo</label><input id="txtTitulo" type="text"><br>
+        <label for="txtDescripcion">Ingrese Descripcion</label><input id="txtDescripcion" type="text"><br>
+        <label for="txtCiudad">Ingrese Ciudad </label><input id="txtCiudad" type="text"><br>
+        <label for="txtPrecioPorNoche">Ingrese Precio por noche<input id="txtPrecioPorNoche" type="text"><br>
+            <div id="regFotos" class="Anfitrion">
             </div>
+            <input type="button" id="btnRegistrarInmueble" value="Registrar inmueble">
 
-            <div id="divReserva" class="Huesped">
-                <input type="text" class="texto" style="display: inline; width: 200px;" id="txtDiasReserva"
-                    placeholder="Ingrese numero dias de reserva">
-                <input type="button" id="btnConfirmarReserva" value="Confirmar Reserva">
-                <input type="button" id="btnConsultarReserva" value="Consultar Reserva ">
-            </div>
-            <div id="divCalificarReserva" class="Huesped">
-                <!--ESTE DIV SE HABILITA SI EL INMUEBLE NO TIENE CALIFICACION-->
-                <input type="text" style="display: inline; width: 200px;" id="txtCalificarReserva"
-                    placeholder="Ingrese numero 1-5">
-                <input type="button" id="btnCalificarReserva" value="Calificar Reserva">
-            </div>
+    </div>
 
 
-            <div id="divRegistrarInmueble" class="Anfitrion" >
-                <span id="spanEstadoRegInmueble"></span>
-                <label for="selRegInm">Ingrese Estado</label><select id="selRegInm"><option value="on">Habilitado</option><option value="off">Inhabilitado</option></select><br>
-                <label for="txtTitulo">Ingrese Titulo</label><input id="txtTitulo" type="text"><br>
-                <label for="txtDescripcion">Ingrese Descripcion</label><input id="txtDescripcion" type="text"><br>
-                <label for="txtCiudad">Ingrese Ciudad </label><input id="txtCiudad" type="text"><br>
-                <label for="txtPrecioPorNoche">Ingrese Precio por noche<input id="txtPrecioPorNoche" type="text"><br>
-                <div id="regFotos" class="Anfitrion">
-                </div>
-                <input type="button" id="btnRegistrarInmueble" value="Registrar inmueble">
-                
-            </div>
 
-           
+    <!---FIN INTERACCIONES CON LOS INMUEBLES-->
 
-            <!---FIN INTERACCIONES CON LOS INMUEBLES-->
+    </div>
 
-        </div>
-
-        <script type="text/JavaScript" src="js/class.js"></script>
-        <script type="text/JavaScript" src="js/init.js"></script>
-        <script type="text/JavaScript" src="js/acceso.js"></script>
+    <script type="text/JavaScript" src="js/class.js"></script>
+    <script type="text/JavaScript" src="js/init.js"></script>
+    
 </body>
 
 </html>

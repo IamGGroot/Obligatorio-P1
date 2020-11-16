@@ -15,15 +15,19 @@ class Usuarios {
 class Inmuebles {
   constructor() {
     this.id;
+    this.estado;
     this.titulo;
     this.descripcion;
     this.ciudad;
     this.precioPorNoche; //en pesos
-    this.promedioCalif; // del 1 al 5 un decimal obligatorio
     this.usuarioAnfitrion;
+    this.calificaciones = new Array(); 
+    this.promedioCalif; // del 1 al 5 un decimal obligatorio
     this.fotos = new Array();
   }
 }
+
+
 
 
 
