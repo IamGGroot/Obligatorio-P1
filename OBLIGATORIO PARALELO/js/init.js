@@ -19,6 +19,7 @@ var globalTipoUser = "Visitante";
 var globalUser = "Visitante";
 document.querySelector("#txtCotizar").value = 40;
 var cotizacion = Number(document.querySelector("#txtCotizar").value);
+var moneda = "$";
 let arrayResultado = new Array();
 let posFoto = 0;
 let posFotoTope = 0;
@@ -210,6 +211,8 @@ function precargaInmuebles() {
 /// RELACIONAR FOTOS CON INMUEBLES
 function relacionarInmuebleConFoto(inmueble, photo) {
     listaInmuebles[inmueble].fotos.push(listaFotos[photo])
+
+
 }
 
 
@@ -296,24 +299,26 @@ function ingreso(tipoUsuario, usuario) {
     }
     selectCotizacion(globalTipoUser);  /// se ejecuta la funcion de crear el select en $ o dolares, solo pesos o no crearlo varia segun el tipo de usuario logeado.
     mostrarInmuebles();
+
     if (globalTipoUser !== "Visitante") {
+
         document.querySelector("#divResultadoLogin").innerHTML = `Bienvenido ${usuario}. Has ingresado con éxito!`;
     }
 
 }
 //// SALIDA
 function salir() {
-    limpiarDivs();
     //// For each limpia todos lo que sea clase texto (todos inputs). logea mostrando la clase visitante y envia un mensaje avisando que se salio con éxito
     document.querySelectorAll(".texto").forEach(element => {
         element.innerHTML = "";
     });
     ingreso("Visitante", "Visitante");
+    limpiarDivs();
     document.querySelector("#divResultadoLogin").innerHTML = `Has cerrado sesion con éxito!`;
 }
 //// REGISTRO
 function registro() {
-    limpiarDivs();
+
     let nUser = document.querySelector("#txtRegistroNomUsu").value.trim();                   /// comienza seleccion de valores del html///
     let nNombre = document.querySelector("#txtRegistroNom").value.trim();
     let nApellido = document.querySelector("#txtRegistroApe").value.trim();
@@ -324,19 +329,19 @@ function registro() {
     let mensaje = "";
 
     if (!verificarTextoNoVacio(nUser)) {
-        mensaje += "Ingrese datos validos en el campo de usuario"
+        mensaje += "Ingrese datos válidos en el campo de usuario"
     }
 
     if (!verificarTextoNoVacio(nNombre)) {
-        mensaje += "Ingrese datos validos en el campo de nombre.<br>"
+        mensaje += "Ingrese datos válidos en el campo de nombre.<br>"
     }
 
     if (!verificarTextoNoVacio(nApellido)) {
-        mensaje += "Ingrese datos validos en el campo de apellido.<br>"
+        mensaje += "Ingrese datos válidos en el campo de apellido.<br>"
     }
 
     if (!validacionEmail(nMail)) {
-        mensaje += "Email no valido.<br>"
+        mensaje += "Email no válido.<br>"
     }
 
     if (!validarCel(nTel)) {
@@ -369,7 +374,7 @@ function registro() {
         listaUsuarios.push(agregarActual); /// se agrega al array 
         mensaje = "El usuario fue creado con éxito";
     }
-
+    limpiarDivs();
     document.querySelector("#divResultadoRegistro").innerHTML = `${mensaje}`;
 }
 
@@ -489,9 +494,9 @@ function cotizar() {
     let mensaje = ``;
     if (verificarEsNum(nuevoValor)) {
         cotizacion = nuevoValor;
-        mensaje = `El valor del dolar fue actualizado corretamente.`;
+        mensaje = `El valor del dólar fue actualizado correctamente.`;
 
-    } else { mensaje = `El valor ingresado no es valido.`; }
+    } else { mensaje = `El valor ingresado no es válido.`; }
 
     document.querySelector("#divResultadoCotizacion").innerHTML = `${mensaje}`;
 }
@@ -509,18 +514,23 @@ function selectCotizacion(usr) {
     if (usr === "Administrador") { divCotizacion.innerHTML = ""; }
 }
 function cambiarMoneda() {
-    limpiarDivs();
+    if (moneda == "$"){
+        moneda = "U$S";
+    } else{ moneda = "$"}
+    
     mostrarInmuebles();
+
 }
 //////////////<--------------------- COTIZACION FIN----------------------------->/////////////////////
 
 //////////////<--------------------- INMUEBLES INICIO -------------------------->/////////////////////
 //// MOSTRAR INMUEBLES
 function mostrarInmuebles() {
-    limpiarDivs();
+
     let divMostrar = document.querySelector("#divInmuebles");
     divMostrar.setAttribute("style", "display:block");
     divMostrar.innerHTML = "";
+    let fotoActualParaDiv = ``;
 
     //ordenar
     listaInmuebles.sort((function (a, b) {
@@ -545,16 +555,15 @@ function mostrarInmuebles() {
             }));
         }
 
-        let divCotiChild = document.getElementById("divCotizacion").children[0].value;
-        if (divCotiChild === "U$S") {
+        if (moneda === "U$S") {
             listaInmuebles.forEach(element => {
                 if (element.estado === "on") {
                     divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto${element.id}"><img src="${element.fotos[0]}.jpg"></div></td></tr>
                         <tr><td><input type="button" id="btnAntFoto" value=" << " ><input type="button" id="btnSigFoto" value=" >> "></td> </tr>
-    <tr><td>Titulo: ${element.titulo}</td></tr>
+    <tr><td>Titulo: ${element.titulo}</td></tr> 
     <tr><td>Descripcion: ${element.descripcion}</td></tr>
     <tr><td>Ciudad: ${element.ciudad}</td></tr>
-    <tr><td>Precio por noche: <span class="precio">${divCotiChild} ${Number(element.precioPorNoche) / cotizacion}</span></td></tr>
+    <tr><td>Precio por noche: <span class="precio">${moneda} ${Number(element.precioPorNoche) / cotizacion}</span></td></tr>
     <tr><td>Calificación promedio: ${element.promedioCalif}</td> </tr>
     </table><br><br>`;
                 }
@@ -568,7 +577,7 @@ function mostrarInmuebles() {
     <tr><td>Titulo: ${element.titulo}</td></tr>
     <tr><td>Descripcion: ${element.descripcion}</td></tr>
     <tr><td>Ciudad: ${element.ciudad}</td></tr>
-    <tr><td>Precio por noche:  <span class="precio">${divCotiChild} ${Number(element.precioPorNoche)}</span></td></tr>
+    <tr><td>Precio por noche:  <span class="precio">${moneda} ${Number(element.precioPorNoche)}</span></td></tr>
     <tr><td>Calificación promedio: ${element.promedioCalif}</td> </tr>
     </table><br><br>`;
                 }
@@ -578,7 +587,7 @@ function mostrarInmuebles() {
 
     if (globalTipoUser === "Huesped") {
 
-        if (divCotiChild === "U$S") {
+        if (moneda === "U$S") {
             listaInmuebles.forEach(element => {
                 if (element.estado === "on") {
                     divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto${element.id}"><img src="${element.fotos[0]}.jpg"></div></td></tr>
@@ -586,7 +595,7 @@ function mostrarInmuebles() {
        <tr><td>Titulo: ${element.titulo}</td></tr>
        <tr><td>Descripcion: ${element.descripcion}</td></tr>
        <tr><td>Ciudad: ${element.ciudad}</td></tr>
-       <tr><td>Precio por noche: <span class="precio">${divCotiChild} ${Number(element.precioPorNoche) / cotizacion}</span></td></tr>
+       <tr><td>Precio por noche: <span class="precio">${moneda} ${Number(element.precioPorNoche) / cotizacion}</span></td></tr>
        <tr><td>Calificación promedio: ${element.promedioCalif}</td></tr><div id="${element.id}"></div>
        </table><br><br>`;
                 }
@@ -599,7 +608,7 @@ function mostrarInmuebles() {
        <tr><td>Titulo: ${element.titulo}</td></tr>
        <tr><td>Descripcion: ${element.descripcion}</td></tr>
        <tr><td>Ciudad: ${element.ciudad}</td></tr>
-       <tr><td>Precio por noche:  <span class="precio">${divCotiChild} ${Number(element.precioPorNoche)}</span></td></tr>
+       <tr><td>Precio por noche:  <span class="precio">${moneda} ${Number(element.precioPorNoche)}</span></td></tr>
        <tr><td>Calificación promedio: ${element.promedioCalif}</td> </tr>
        </table><br><br>`;
                 }
@@ -613,7 +622,7 @@ function mostrarInmuebles() {
         let nombreUsuarioAnfitrion = document.getElementById("usuario-actual-nombre").innerHTML;
         listaInmuebles.forEach(element => {
             if (element.usuarioAnfitrion === nombreUsuarioAnfitrion) {
-                divMostrar.innerHTML += `<table border=1><tr><td><div class="Huesped" id="divParaFoto"><img src="${element.fotos[0]}.jpg"></div></td></tr>
+                divMostrar.innerHTML += `<table border=1><tr><td><div class="Huesped" id="divParaFoto${element.id}"><img src="${element.fotos[0]}.jpg"></div></td></tr>
                 <tr><td><input type="button" id="btnAntFoto" value=" << " ><input type="button" id="btnSigFoto" value=" >> "></td> </tr>
 <tr><td>Titulo: ${element.titulo}</td></tr>
 <tr><td>Descripcion: ${element.descripcion}</td></tr>
@@ -623,15 +632,18 @@ function mostrarInmuebles() {
 <input type="button" name="${element.id}" class="habilitar" value="Habilitar inmueble">
 <input type="button" name="${element.id}" class="inhabilitar" value="Inhabilitar inmueble"><div class="Huesped" id="${element.id}"></div>
 </table><br><br>`;
+
             }
-            document.querySelector("#btnAntFoto").addEventListener("click", siguiente);
-            document.querySelector("#btnSigFoto").addEventListener("click", anterior);
+
             habilitacionYInabilitacion();
             mostrarFotosRegistrarInmueble();
         });
     }
 }
 
+//this.id;
+//this.inmueble;
+//this.archivoFoto;
 
 function anterior(fotoActual, idInmueble) {
     limpiarDivs();
@@ -639,17 +651,19 @@ function anterior(fotoActual, idInmueble) {
         posFoto = posFoto - 1;
     }
     let fotoX = `<img src="${posFoto}.jpg"/>`;
-    document.querySelector("#divParaFoto").innerHTML = fotoX;
+    let nombreDiv = `#divParaFoto${idInmueble}`;
+    document.querySelector(`${nombreDiv}`).innerHTML = fotoX;
 
 }
 
-function siguiente(idInmueble) {
+function siguiente(fotoActual,idInmueble) {
     limpiarDivs();
     if (posFoto < 9) {
         posFoto = posFoto + 1;
     }
     let fotoX = `<img src="${posFoto}.jpg"/>`;
-    document.querySelector("#divParaFoto").innerHTML = fotoX;
+    let nombreDiv = `#divParaFoto${idInmueble}`;
+    document.querySelector(`${nombreDiv}`).innerHTML = fotoX;
 
 }
 function habilitacionYInabilitacion() {
@@ -662,14 +676,14 @@ function habilitacionYInabilitacion() {
 }
 
 function habilitar() {
-    limpiarDivs();
+
     let name = this.name;
     listaInmuebles.forEach(element => {
         if (element.id === name) { element.estado = "on" }
     });
 }
 function inhabilitar() {
-    limpiarDivs();
+
     let name = this.name;
     listaInmuebles.forEach(element => {
         if (element.id === name) { element.estado = "off" }
@@ -677,7 +691,7 @@ function inhabilitar() {
 }
 
 function registrarInmueble() {
-    limpiarDivs();
+
     let mensaje = "";
     let validarFotos = false;
     let validarCamposDeTexto = false;
@@ -707,6 +721,7 @@ function registrarInmueble() {
         listaInmuebles.push(nuevoInmueble);
         mensaje = "Inmueble agregado con éxito!"
     }
+    limpiarDivs();
     document.querySelector("#spanEstadoRegInmueble").innerHTML = mensaje;
 }
 
@@ -729,13 +744,13 @@ function activarVerMas() {
     });
 }
 function verMas() {
-    limpiarDivs();
+
     let div = this.name;
     document.querySelector(`#${div}`).innerHTML = `<input type="button" class"siguiente" value="Siguiente"><input type="button" "anterior" value="Anterior">`;
 }
 
 function buscador() {
-    limpiarDivs();
+
     arrayResultado = [];
     let tipoUserActual = globalTipoUser;
     let usuarioActual = globalUser;
@@ -790,11 +805,13 @@ function buscador() {
             })
             if (arrayResultado.length < 1) {
                 mensaje += `No existen resultados para su búsqueda`;
+                limpiarDivs();
                 document.querySelector("#divResultadoBusqueda").innerHTML = `${mensaje}`;
             }
         }
     } else {
         mensaje += `Debe ingresar algo para buscar`;
+        limpiarDivs();
         document.querySelector("#divResultadoBusqueda").innerHTML = `${mensaje}`;
     }
 

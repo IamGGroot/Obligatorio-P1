@@ -27,8 +27,12 @@ class Inmuebles {
   }
 }
 
-
-
-
+class Fotos {
+  constructor() {
+    this.id;
+    this.inmueble;
+    this.archivoFoto;
+  }
+}
 
 console.log("Class cargado")
