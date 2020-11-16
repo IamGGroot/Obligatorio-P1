@@ -252,7 +252,9 @@ function validarLogin() {
         }
         if (validacionAcceso) {
             ingreso(tipoUser, user);
-        } else { alert("No se pudo ingresar verifique los datos ingresados.") }
+        } else {
+            document.querySelector("#divResultadoLogin").innerHTML = `No se pudo ingresar verifique los datos ingresados.`;
+        }
     }
 }
 //// INGRESO
@@ -261,7 +263,7 @@ function ingreso(tipoUsuario, usuario) {
     globalUser = usuario;
     document.getElementById("usuario-actual-tipo").innerHTML = tipoUsuario;  // se muestra en pantalla el nombre de usuario y el tipo de usuario actual
     document.getElementById("usuario-actual-nombre").innerHTML = usuario;
-    document.querySelectorAll("div").forEach(element => {           // se ocultan todos los div y se muestran solos que coincidan con la clase que coincida con el tipo de usr actual y se envia un alert de que se logro ingresar
+    document.querySelectorAll("div").forEach(element => {           // se ocultan todos los div y se muestran solos que coincidan con la clase que coincida con el tipo de usr actual y se envia un mensaje de que se logro ingresar
         element.setAttribute("style", "display:none");
     });
     if (globalTipoUser === "Visitante") {
@@ -273,21 +275,23 @@ function ingreso(tipoUsuario, usuario) {
         document.querySelectorAll(".Administrador").forEach(element => {
             element.setAttribute("style", "display:block");
         });
-        alert(`${usuario} Has ingresado con éxito! Bienvenido`);
+
     }
     if (globalTipoUser === "Anfitrion") {
         document.querySelectorAll(".Anfitrion").forEach(element => {
             element.setAttribute("style", "display:block");
         });
-        alert(`${usuario} Has ingresado con éxito! Bienvenido`);
+
     }
     if (globalTipoUser === "Huesped") {
         document.querySelectorAll(".Huesped").forEach(element => {
             element.setAttribute("style", "display:block");
         });
-        alert(`${usuario} Has ingresado con éxito! Bienvenido`);
-    }
 
+    }
+    if (globalTipoUser !== "Visitante") {
+        document.querySelector("#divResultadoLogin").innerHTML = `Bienvenido ${usuario}. Has ingresado con éxito!`;
+    }
 
     selectCotizacion(globalTipoUser);  /// se ejecuta la funcion de crear el select en $ o dolares, solo pesos o no crearlo varia segun el tipo de usuario logeado.
     mostrarInmuebles();
@@ -295,12 +299,12 @@ function ingreso(tipoUsuario, usuario) {
 }
 //// SALIDA
 function salir() {
-    //// For each limpia todos lo que sea clase texto (todos inputs). logea mostrando la clase visitante y envia un alert avisando que se salio con éxito
+    //// For each limpia todos lo que sea clase texto (todos inputs). logea mostrando la clase visitante y envia un mensaje avisando que se salio con éxito
     document.querySelectorAll(".texto").forEach(element => {
         element.innerHTML = "";
     });
     ingreso("Visitante", "Visitante");
-    alert("Has cerrado sesion con éxito!");
+    document.querySelector("#divResultadoLogin").innerHTML = `Has cerrado sesion con éxito!`;
 }
 //// REGISTRO
 function registro() {
@@ -353,7 +357,8 @@ function registro() {
         listaUsuarios.push(agregarActual); /// se agrega al array 
         mensaje = "El usuario fue creado con éxito";
     }
-    alert(mensaje);
+
+    document.querySelector("#divResultadoRegistro").innerHTML = `${mensaje}`;
 }
 
 function verificarNoExisteUser(nUser) {
@@ -468,10 +473,14 @@ function validacionPass(clave, confirmacion) {
 //// CAMBIAR COTIZACION
 function cotizar() {
     let nuevoValor = document.querySelector("#txtCotizar").value.trim();
+    let mensaje = ``;
     if (verificarEsNum(nuevoValor)) {
         cotizacion = nuevoValor;
-        alert("El valor del dolar fue actualizado corretamente.");
-    } else { alert("El valor ingresado no es valido."); }
+        mensaje = `El valor del dolar fue actualizado corretamente.`;
+
+    } else { mensaje = `El valor ingresado no es valido.`; }
+
+    document.querySelector("#divResultadoCotizacion").innerHTML = `${mensaje}`;
 }
 
 // CREAR SELECT COTIZACION
@@ -505,7 +514,7 @@ function mostrarInmuebles() {
     let divMostrar = document.querySelector("#divInmuebles");
     divMostrar.setAttribute("style", "display:block");
     divMostrar.innerHTML = "";
-    
+
 
     listaInmuebles.sort((function (a, b) {
         if (Number(a.promedioCalif) < Number(b.promedioCalif)) { return 1; }
@@ -538,7 +547,7 @@ function mostrarInmuebles() {
     <tr><td>Titulo: ${element.titulo}</td></tr>
     <tr><td>Descripcion: ${element.descripcion}</td></tr>
     <tr><td>Ciudad: ${element.ciudad}</td></tr>
-    <tr><td>Precio por noche: <span class="precio">${divCotiChild} ${Number(element.precioPorNoche)/cotizacion }</span></td></tr>
+    <tr><td>Precio por noche: <span class="precio">${divCotiChild} ${Number(element.precioPorNoche) / cotizacion}</span></td></tr>
     <tr><td>Calificación promedio: ${element.promedioCalif}</td> </tr>
     </table><br><br>`;
                 }
@@ -560,7 +569,7 @@ function mostrarInmuebles() {
     }
 
     if (globalTipoUser === "Huesped") {
-        
+
         if (divCotiChild === "U$S") {
             listaInmuebles.forEach(element => {
                 if (element.estado === "on") {
@@ -569,7 +578,7 @@ function mostrarInmuebles() {
        <tr><td>Titulo: ${element.titulo}</td></tr>
        <tr><td>Descripcion: ${element.descripcion}</td></tr>
        <tr><td>Ciudad: ${element.ciudad}</td></tr>
-       <tr><td>Precio por noche: <span class="precio">${divCotiChild} ${Number(element.precioPorNoche)/cotizacion}</span></td></tr>
+       <tr><td>Precio por noche: <span class="precio">${divCotiChild} ${Number(element.precioPorNoche) / cotizacion}</span></td></tr>
        <tr><td>Calificación promedio: ${element.promedioCalif}</td></tr><div id="${element.id}"></div>
        </table><br><br>`;
                 }

@@ -22,7 +22,11 @@
 </head>
 
 <body>
-
+    <p id="resultados">
+        <div id="divResultadoLogin" class="Visitante Huesped Anfitrion Administrador"></div>
+        <div id="divResultadoRegistro" class="Visitante Administrador"></div>
+        <div id="divResultadoCotizacion" class="Administrador"></div>
+    </p>
     <p id="usuario-actual-tipo"></p>
     <p id="usuario-actual-nombre"></p>
     <br>
@@ -37,7 +41,9 @@
         Contraseña:<input class="Visitante texto" type="password" style="display: block;width: 200px;"
             id="txtLoginPassword" placeholder="Ingrese contraseña">
         <input type="button" style="display: inline;" id="btnAcceso" value="Acceder">
+        
     </div>
+
     <div class="Huesped Administrador Anfitrion">
         <input type="button" style="display: inline;" id="btnSalir" value="Cerrar Sesion">
     </div>
@@ -69,6 +75,7 @@
         <div class="Visitante">
             <input type="button" id="btnRegistro" style="display: block;" value="Registrarse">
         </div>
+        
     </div>
     <br>
     <HR>
@@ -79,8 +86,9 @@
     <hr>
     <div id="divCotizar" class="Administrador">
         <label for="selCotizar">Ingrese la cotización del dólar<input type="text" id="txtCotizar"
-                placeholder="Ingrese un numero"></label>
-        <input type="button" id="btnCotizar" value="Cotizar">
+                placeholder="Ingrese nueva cotización"></label>
+        <input type="button" id="btnCotizar" value="Ingresar nueva cotización">
+        <div id="divResuladoCotizacion" class="Administrador"></div>
     </div>
     Seleccione moneda
     <div id="divCotizacion" class="Visitante Anfitrion Huesped"></div>

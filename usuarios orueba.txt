@@ -2,7 +2,7 @@ agu22 bSaDfklj123 HUESPED
 Camiiii_ok Camilita123 ANFITRION
 admin 123 ADMIN
 
-- descartar los alert y meter los div
+- descartar los alert y meter los div (ya descarte de una manera media cavernicola hay que perfeccionar un cacho)
 - boton habilitar o inabilitar del anfitrion [estado hab/inb]
 
 - ordenar asendente y desendente (conviene hay que agregar al select la opcion de seleccione 1 y cuando se inicie la funcion mostrarinmubles() que verifique
