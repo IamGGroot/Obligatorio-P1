@@ -31,7 +31,7 @@ let FotosInmuebleParticular = new Array();
 //// PRECARGA FOTOS
 let listaFotos = new Array();
 function cargarListaFotos() {
-    for (let i = 0; i < 225; i++) {
+    for (let i = 0; i < 224; i++) {
         let fotoActual = `img/${i}.jpg`;
         listaFotos.push(fotoActual);
     }
@@ -511,10 +511,10 @@ function selectCotizacion(usr) {
     if (usr === "Administrador") { divCotizacion.innerHTML = ""; }
 }
 function cambiarMoneda() {
-    if (moneda == "$"){
+    if (moneda == "$") {
         moneda = "U$S";
-    } else{ moneda = "$"}
-    
+    } else { moneda = "$" }
+
     mostrarInmuebles();
 
 }
@@ -555,8 +555,8 @@ function mostrarInmuebles() {
         if (moneda === "U$S") {
             listaInmuebles.forEach(element => {
                 if (element.estado === "on") {
-                    divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto${element.id}"><img src="${element.fotos[posFoto]}"></div></td></tr>
-                        <tr><td><input type="button" class="btnAntFoto" name="${element.id}" value=" << " ><input type="button" name="${element.id}" class="btnSigFoto" value=" >> "></td> </tr>
+                    divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto"><img src="${element.fotos[posFoto]}"></div></td></tr>
+                        
     <tr><td>Titulo: ${element.titulo}</td></tr> 
     <tr><td>Descripcion: ${element.descripcion}</td></tr>
     <tr><td>Ciudad: ${element.ciudad}</td></tr>
@@ -569,8 +569,8 @@ function mostrarInmuebles() {
         } else {
             listaInmuebles.forEach(element => {
                 if (element.estado === "on") {
-                    divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto${element.id}"><img src="${element.fotos[posFoto]}"></div></td></tr>
-                        <tr><td><input type="button" class="btnAntFoto" name="${element.id}" value=" << " ><input type="button" name="${element.id}" class="btnSigFoto" value=" >> "></td> </tr>
+                    divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto"><img src="${element.fotos[posFoto]}"></div></td></tr>
+                       
     <tr><td>Titulo: ${element.titulo}</td></tr>
     <tr><td>Descripcion: ${element.descripcion}</td></tr>
     <tr><td>Ciudad: ${element.ciudad}</td></tr>
@@ -587,30 +587,35 @@ function mostrarInmuebles() {
         if (moneda === "U$S") {
             listaInmuebles.forEach(element => {
                 if (element.estado === "on") {
-                    divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto${element.id}"><img src="${element.fotos[posFoto]}"></div></td></tr>
-                        <tr><td><input type="button" id="btnAntFoto" value=" << " ><input type="button" id="btnSigFoto" value=" >> "></td> </tr>
+                    divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto"><img src="${element.fotos[0]}"></div></td></tr>
+                    <tr><td>Click en la foto para ver más</td> </tr> 
        <tr><td>Titulo: ${element.titulo}</td></tr>
        <tr><td>Descripcion: ${element.descripcion}</td></tr>
        <tr><td>Ciudad: ${element.ciudad}</td></tr>
        <tr><td>Precio por noche: <span class="precio">${moneda} ${Number(element.precioPorNoche) / cotizacion}</span></td></tr>
        <tr><td>Calificación promedio: ${element.promedioCalif}</td></tr><div id="${element.id}"></div>
        </table><br><br>`;
+     
+       // debería ser <input type="button" name="verMas" value="Ver Más" > el ver más pero no me anduvo
                 }
             });
         } else {
             listaInmuebles.forEach(element => {
                 if (element.estado === "on") {
-                    divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto${element.id}"><img src="${element.fotos[posFoto]}"></div></td></tr>
-                        <tr><td><input type="button" id="btnAntFoto" value=" << " ><input type="button" id="btnSigFoto" value=" >> "></td> </tr>
+                    divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto"><img src="${element.fotos[0]}"></div></td></tr>
+                    <tr><td>Click en la foto para ver más</td> </tr> 
        <tr><td>Titulo: ${element.titulo}</td></tr>
        <tr><td>Descripcion: ${element.descripcion}</td></tr>
        <tr><td>Ciudad: ${element.ciudad}</td></tr>
        <tr><td>Precio por noche:  <span class="precio">${moneda} ${Number(element.precioPorNoche)}</span></td></tr>
        <tr><td>Calificación promedio: ${element.promedioCalif}</td> </tr>
        </table><br><br>`;
+       // debería ser <input type="button" name="verMas" value="Ver Más" > el ver más pero no me anduvo
+    
                 }
             });
         }
+        habilitarVerMas();
 
     }
 
@@ -619,9 +624,9 @@ function mostrarInmuebles() {
         let nombreUsuarioAnfitrion = document.getElementById("usuario-actual-nombre").innerHTML;
         listaInmuebles.forEach(element => {
             if (element.usuarioAnfitrion === nombreUsuarioAnfitrion) {
+
+                divMostrar.innerHTML += `<table border=1><tr><td><div class="Huesped" id="divParaFoto${element.id}"><p<img id="foto${element.id}" src="${element.fotos[posFoto]}"></div></td></tr>
                 
-                divMostrar.innerHTML += `<table border=1><tr><td><div class="Huesped" id="divParaFoto${element.id}"><img id="foto${element.id}" src="${element.fotos[posFoto]}"></div></td></tr>
-                <tr><td><input type="button" class="btnAntFoto" name="${element.id}" value=" << " ><input type="button" name="${element.id}" class="btnSigFoto" value=" >> "></td> </tr>
 <tr><td>Titulo: ${element.titulo}</td></tr>
 <tr><td>Descripcion: ${element.descripcion}</td></tr>
 <tr><td>Ciudad: ${element.ciudad}</td></tr>
@@ -632,44 +637,57 @@ function mostrarInmuebles() {
 </table><br><br>`;
 
             }
-            
+
 
         });
     }
     habilitacionYInabilitacion();
     mostrarFotosRegistrarInmueble();
-    habilitarAnteriorYsiguiente();
+
 }
-function habilitarAnteriorYsiguiente()
-{
-    document.querySelectorAll(".btnAntFoto").forEach(element => {
-        element.addEventListener("click",anterior)
-        
-    });
-    document.querySelectorAll(".btnSigFoto").forEach(element => {
-        element.addEventListener("click",siguiente);
-    });
+function habilitarVerMas() {
+    let listaImagenesDOM = document.querySelectorAll("img");
+    for (let i = 0; i < listaImagenesDOM.length; i++) {
+
+        listaImagenesDOM[i].addEventListener("click", verMas);
+    }
+    
 }
+let nuevoDiv = document.createElement("div");
 
+function verMas() {
 
-//this.id;
-//this.inmueble;
-//this.archivoFoto;
+    let foto = this.getAttribute("src");
+  
+    nuevoDiv.classList.add("fotoGrande");
+    document.querySelector("#divParaFoto").appendChild(nuevoDiv);
 
+    nuevoDiv.innerHTML = '<img src="' + foto + '"/><br><input type="button" name="btnAntFoto" value=" << " ><input type="button" name="btnSigFoto" value=" >> "><input type="button" name="btnCerrarChild" value="Cerrar">';
+       
+    //document.querySelector("#btnAntFoto").addEventListener("click", anterior);
+    //document.querySelector("#btnSigFoto").addEventListener("click", siguiente);                               // PREGUNTAR AL PROFE COMO SE HACE ESTO
+    //document.querySelector("#btnCerrarChild").addEventListener("click", removerChild);
+     
+}
+function removerChild(){
+
+    document.querySelector("#divParaFoto").removeChild(nuevoDiv);
+}
 function anterior() {
     limpiarDivs();
     posFoto = posFoto - 1;
     let numero = this.name
     console.log(numero)
-    
-   // mostrarInmuebles();
+
 }
 
 function siguiente() {
     limpiarDivs();
     posFoto = posFoto + 1;
-  //  mostrarInmuebles();
-    }
+    let numero = this.name
+    console.log(numero)
+
+}
 
 function habilitacionYInabilitacion() {
     document.querySelectorAll(".habilitar").forEach(element => {
@@ -743,16 +761,7 @@ function mostrarFotosRegistrarInmueble() {
     document.querySelector("#regFotos").innerHTML = imagenes;
 }
 
-function activarVerMas() {
-    document.querySelectorAll(".vermas").forEach(element => {
-        element.addEventListener("click", verMas)
-    });
-}
-function verMas() {
 
-    let div = this.name;
-    document.querySelector(`#${div}`).innerHTML = `<input type="button" class"siguiente" value="Siguiente"><input type="button" "anterior" value="Anterior">`;
-}
 
 function buscador() {
 
@@ -882,4 +891,5 @@ function limpiarDivs() {
     document.querySelector("#divResultadoCotizacion").innerHTML = ``;
     document.querySelector("#divResultadoBusqueda").innerHTML = ``;
 }
+
 

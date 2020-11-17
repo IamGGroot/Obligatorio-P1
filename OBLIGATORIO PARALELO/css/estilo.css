@@ -1,0 +1,18 @@
+img {
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.miniatura {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.fotoGrande{
+    position: fixed;
+    left: 150px;
+    top: 50px;
+    z-index:1;
+    height: 400px;
+    width: 400px;
+}
