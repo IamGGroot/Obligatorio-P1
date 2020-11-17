@@ -559,7 +559,7 @@ function mostrarInmuebles() {
             listaInmuebles.forEach(element => {
                 if (element.estado === "on") {
                     divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto${element.id}"><img src="${element.fotos[0]}.jpg"></div></td></tr>
-                        <tr><td><input type="button" id="btnAntFoto" value=" << " ><input type="button" id="btnSigFoto" value=" >> "></td> </tr>
+                        <tr><td><input type="button" class="btnAntFoto" name="${element.id}" value=" << " ><input type="button" name="${element.id}" class="btnSigFoto" value=" >> "></td> </tr>
     <tr><td>Titulo: ${element.titulo}</td></tr> 
     <tr><td>Descripcion: ${element.descripcion}</td></tr>
     <tr><td>Ciudad: ${element.ciudad}</td></tr>
@@ -573,7 +573,7 @@ function mostrarInmuebles() {
             listaInmuebles.forEach(element => {
                 if (element.estado === "on") {
                     divMostrar.innerHTML += `<table border=1><tr><td><div id="divParaFoto${element.id}"><img src="${element.fotos[0]}.jpg"></div></td></tr>
-                        <tr><td><input type="button" id="btnAntFoto" value=" << " ><input type="button" id="btnSigFoto" value=" >> "></td> </tr>
+                        <tr><td><input type="button" class="btnAntFoto" name="${element.id}" value=" << " ><input type="button" name="${element.id}" class="btnSigFoto" value=" >> "></td> </tr>
     <tr><td>Titulo: ${element.titulo}</td></tr>
     <tr><td>Descripcion: ${element.descripcion}</td></tr>
     <tr><td>Ciudad: ${element.ciudad}</td></tr>
@@ -622,37 +622,56 @@ function mostrarInmuebles() {
         let nombreUsuarioAnfitrion = document.getElementById("usuario-actual-nombre").innerHTML;
         listaInmuebles.forEach(element => {
             if (element.usuarioAnfitrion === nombreUsuarioAnfitrion) {
-                divMostrar.innerHTML += `<table border=1><tr><td><div class="Huesped" id="divParaFoto${element.id}"><img src="${element.fotos[0]}.jpg"></div></td></tr>
-                <tr><td><input type="button" id="btnAntFoto" value=" << " ><input type="button" id="btnSigFoto" value=" >> "></td> </tr>
+                divMostrar.innerHTML += `<table border=1><tr><td><div class="Huesped" id="divParaFoto${element.id}"><img id="foto${element.id}" src="${element.fotos[0]}.jpg"></div></td></tr>
+                <tr><td><input type="button" class="btnAntFoto" name="${element.id}" value=" << " ><input type="button" name="${element.id}" class="btnSigFoto" value=" >> "></td> </tr>
 <tr><td>Titulo: ${element.titulo}</td></tr>
 <tr><td>Descripcion: ${element.descripcion}</td></tr>
 <tr><td>Ciudad: ${element.ciudad}</td></tr>
-<tr><td>Precio por noche: <span class"precio">${divCotiChild} ${Number.element.precioPorNoche}</span></td></tr>
+<tr><td>Precio por noche: <span class="precio">${moneda} ${Number.element.precioPorNoche}</span></td></tr>
 <tr><td>Calificación promedio: ${element.promedioCalif}</td> </tr>
 <input type="button" name="${element.id}" class="habilitar" value="Habilitar inmueble">
 <input type="button" name="${element.id}" class="inhabilitar" value="Inhabilitar inmueble"><div class="Huesped" id="${element.id}"></div>
 </table><br><br>`;
 
             }
-
+            
             habilitacionYInabilitacion();
             mostrarFotosRegistrarInmueble();
+            habilitarAnteriorYsiguiente();
         });
     }
 }
+function habilitarAnteriorYsiguiente()
+{
+    document.querySelectorAll(".btnAntFoto").forEach(element => {
+        element.addEventListener("click",anterior)
+        
+    });
+    document.querySelectorAll(".btnSigFoto").forEach(element => {
+        element.addEventListener("click",siguiente);
+    });
+}
+
 
 //this.id;
 //this.inmueble;
 //this.archivoFoto;
 
-function anterior(fotoActual, idInmueble) {
+function anterior() {
     limpiarDivs();
+    let posFoto = this.name;
+    let fotoActual = document.querySelector(`#foto${posFoto}`)
+    fotoActual.setAttribute("src")
+
+
+
+    console.log(posFoto)
     if (posFoto > 0) {
         posFoto = posFoto - 1;
     }
-    let fotoX = `<img src="${posFoto}.jpg"/>`;
-    let nombreDiv = `#divParaFoto${idInmueble}`;
-    document.querySelector(`${nombreDiv}`).innerHTML = fotoX;
+   // let fotoX = `<img src="${posFoto}.jpg"/>`;
+   // let nombreDiv = `#divParaFoto${idInmueble}`;
+   // document.querySelector(`${nombreDiv}`).innerHTML = fotoX;
 
 }
 
