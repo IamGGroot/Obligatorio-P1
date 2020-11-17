@@ -17,3 +17,8 @@ img {
     /*falta agrandar mas las fotos probe un rato y no pude*/
      
 }
+
+.miniatura {
+    max-width: 150px;
+    max-height: 150px;
+}

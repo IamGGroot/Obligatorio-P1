@@ -22,8 +22,10 @@ class Inmuebles {
     this.precioPorNoche; //en pesos
     this.usuarioAnfitrion;
     this.calificaciones = new Array(); 
-    this.promedioCalif; // del 1 al 5 un decimal obligatorio
+    this.calificacionActual; // del 1 al 5 un decimal obligatorio
     this.fotos = new Array();
+    this.fotoActual;
+    this.buscado;
   }
 }
 
