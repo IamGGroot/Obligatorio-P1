@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnCotizar").addEventListener("click", cotizar);
     document.querySelector("#btnSalir").addEventListener("click", salir);
     document.querySelector("#btnRegistrarInmueble").addEventListener("click", registrarInmueble);
-    document.querySelector("#selOrdenar").addEventListener("change", mostrarInmuebles);
+    document.querySelector("#btnOrdenar").addEventListener("click", mostrarInmuebles);
     document.querySelector("#btnBuscar").addEventListener("click", buscador);
 
     cargarListaFotos();
@@ -473,8 +473,9 @@ function ingreso(tipoUsuario, usuario) {
 
     globalTipoUser = tipoUsuario; /// se cambia la variables globales por la ingresada
     globalUser = usuario;
-    document.getElementById("usuario-actual-tipo").innerHTML = tipoUsuario; // se muestra en pantalla el nombre de usuario y el tipo de usuario actual
+    document.getElementById("usuario-actual-tipo").innerHTML = tipoUsuario; // se muestra en pantalla el nombre de usuario, el tipo de usuario actual
     document.getElementById("usuario-actual-nombre").innerHTML = usuario;
+    
     document.querySelectorAll("div").forEach(element => { // se ocultan todos los div y se muestran solos que coincidan con la clase que coincida con el tipo de usr actual y se envia un mensaje de que se logro ingresar
         element.setAttribute("style", "display:none");
     });
@@ -711,18 +712,21 @@ function selectCotizacion(usr) {
     let divCotizacion = document.querySelector("#divCotizacion");
 
     if (usr === "Visitante" || usr === "Huesped") {
-        divCotizacion.innerHTML = `<select id="selectCot"><option value="$">$</option><option value="U$S">U$S</option></select>`;
-        document.querySelector("#selectCot").addEventListener("change", cambiarMoneda);
+        divCotizacion.innerHTML = `<select id="selectCot"><option value="$">$</option><option value="U$S">U$S</option></select>`
+        
+        ;
+        document.querySelector("#btnMoneda").addEventListener("click", cambiarMoneda);
     }
     if (usr === "Anfitrion") { divCotizacion.innerHTML = `<select><option value="$">$</option></select>`; }
     if (usr === "Administrador") { divCotizacion.innerHTML = ""; }
+    document.getElementById("moneda-actual").innerHTML = moneda;
 }
 
 function cambiarMoneda() {
     if (moneda == "$") {
         moneda = "U$S";
     } else { moneda = "$" }
-
+    document.getElementById("moneda-actual").innerHTML = moneda;
     mostrarInmuebles();
 
 }
@@ -732,20 +736,21 @@ function cambiarMoneda() {
 //// MOSTRAR INMUEBLES
 function mostrarInmuebles() {
     actualizarCalificacionesInmuebles();
-    
+
     let tipoUsuario = globalTipoUser;
-    let mostrar = document.querySelector("#mostrarInmuebles");
+    let mostrar = document.querySelector("#divMostrarInmuebles");
     let coti = 0;
 
     mostrar.setAttribute("style", "display:block");
     mostrar.innerHTML = "";
+    mostrar.innerHTML += `<h3> INMUEBLES PARA ALQUILAR </h3>`;
 
     listaInmuebles.sort((function (a, b) {
         if (Number(a.calificacionActual) < Number(b.calificacionActual)) { return 1; }
         if (Number(a.calificacionActual) > Number(b.calificacionActual)) { return -1; }
         if (Number(a.calificacionActual) === Number(b.calificacionActual)) { return 0; }
     }));
-                    
+
     if (globalTipoUser === "Visitante") {
         if (document.querySelector("#selOrdenar").value === "Ascendente") {
             listaInmuebles.sort((function (a, b) {
@@ -792,10 +797,11 @@ function mostrarInmuebles() {
             <tr><td>Ciudad: ${element.ciudad}</td><tr>            
             <tr><td><input type="button" class="verMas" Value="Ver Más" name="${element.id}">
             <div id="divVerMas${element.id}" style="display:none">
-            <input type="button" name="${element.id}" class="fotoSiguiente" value=" >> ">
             <input type="button" name="${element.id}" class="fotoAnterior" value=" << ">
-            <input type="text" id="txtReserva${element.id}" placeholder="Ingrese cantidad de noches">
-            <input type="button" name="${element.id}" class="realizarReserva" value="Realizar reserva">
+            <input type="button" name="${element.id}" class="fotoSiguiente" value=" >> "><br> 
+            <h3> Para reservar </h3><br> 
+            <input type="text" id="txtReserva${element.id}" style="width: 200px;" placeholder="Ingrese cantidad de noches"><br> 
+            <input type="button" name="${element.id}" class="realizarReserva" value="Realizar reserva"><br> 
             <div id="divConfirmar${element.id}" style="display:none"></div></div></td><table><br>`;
         }
         if (tipoUsuario === "Anfitrion" && globalUser == element.usuarioAnfitrion) {
@@ -857,7 +863,8 @@ function habilitarbotones() {
 function realizarReserva() {
     let idInmueble = this.name;
     let costoTotal = (Number(document.querySelector(`#txtReserva${idInmueble}`).value) * Number(document.querySelector(`#precio${idInmueble}`).textContent));
-    document.querySelector(`#divConfirmar${idInmueble}`).innerHTML = `El costo total es de ${costoTotal} ${moneda} <input type="button" name="${idInmueble}" class="confirmaReserva" value="confimar">`;
+    
+    document.querySelector(`#divConfirmar${idInmueble}`).innerHTML = `El costo total es de ${moneda} ${costoTotal} <input type="button" name="${idInmueble}" class="confirmaReserva" value="Confimar">`;
     document.querySelector(`#divConfirmar${idInmueble}`).removeAttribute("style");
     document.querySelectorAll(".confirmaReserva").forEach(element => {
         element.addEventListener("click", confirmaReserva);
@@ -865,6 +872,7 @@ function realizarReserva() {
 }
 
 function confirmaReserva() {
+    //FALTA VALIDACION DE VACIO Y QUE NO SEA LETRA
     let idInmueble = this.name;
     let idUser = obtenerNumeroDeUser();
     relacionarUsuarioConInmueble(idUser, idInmueble)
@@ -908,16 +916,26 @@ function fotoAnterior() {
 function mostrarReservas() {
     let numeroUser = obtenerNumeroDeUser();
     let divMostrar = document.querySelector("#divReservas");
+    let divInmuebles = document.querySelector("#divMostrarInmuebles");
+    divInmuebles.innerHTML ="";
     divMostrar.innerHTML = "";
+    divMostrar.innerHTML += `<h3> MIS RESERVAS </h3>`;
+    let coti = 0;
+    if (moneda === "$") {
+        coti = 1;
+    }
+    if (moneda === "U$S") {
+        coti = cotizacion;
+    }
     for (let i = 0; i < listaUsuarios[numeroUser].inmuebles.length; i++) {
         let element = listaUsuarios[numeroUser].inmuebles[i];
-        divMostrar.innerHTML += `<br><table border=2><tr><td>Titulo: ${element.titulo}</td>
-        <td>Descripción: ${element.descripcion}</td>
-        <td>Precio por noche: ${element.precioPorNoche}</td>
-        <td>Ciudad: ${element.ciudad}</td>
-        <td>Título: ${element.titulo}</td>
-        <td>Calificación: ${element.calificacionActual}</td>
-        <td><img id="img${element.id}" src="${element.fotos[element.fotoActual]}"></td><td><select id="selCalificar${element.id}"><option value="1">1</option> <option value="2" >2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option></select><input type="button" class="calificarInmueble" name="${element.id}" value="calificar"></td><table><br>`
+        divMostrar.innerHTML += `<br><table border=2><tr><td>Titulo: ${element.titulo}</td></tr>
+        <tr><td>Descripción: ${element.descripcion}</td></tr>
+        <tr><td>Precio por noche: ${moneda} ${Number(element.precioPorNoche) / coti}</td></tr>
+        <tr><td>Ciudad: ${element.ciudad}</td></tr>
+        <tr><td>Título: ${element.titulo}</td></tr>
+        <tr><td>Calificación: ${element.calificacionActual}</td></tr>
+        <tr><td><img id="img${element.id}" src="${element.fotos[element.fotoActual]}"></tr></td><td><select id="selCalificar${element.id}"><option value="Seleccione una Opción">Seleccione una opción</option><option value="1">1</option> <option value="2" >2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option></select><input type="button" class="calificarInmueble" name="${element.id}" value="calificar"></td></tr><table><br>`
     }
     document.querySelectorAll(`.calificarInmueble`).forEach(element => {
         element.addEventListener("click", calificarInmueble);
@@ -1047,20 +1065,21 @@ function buscador() {
     //repetimos codigo mostrarInmuebles utilizando array resultado
 
     actualizarCalificacionesInmuebles();
-    
+
     let tipoUsuario = globalTipoUser;
-    let mostrar = document.querySelector("#mostrarInmuebles");
+    let mostrar = document.querySelector("#divMostrarInmuebles");
     let coti = 0;
 
     mostrar.setAttribute("style", "display:block");
     mostrar.innerHTML = "";
+    mostrar.innerHTML += `<h3> INMUEBLES PARA ALQUILAR </h3>`;
 
     arrayResultado.sort((function (a, b) {
         if (Number(a.calificacionActual) < Number(b.calificacionActual)) { return 1; }
         if (Number(a.calificacionActual) > Number(b.calificacionActual)) { return -1; }
         if (Number(a.calificacionActual) === Number(b.calificacionActual)) { return 0; }
     }));
-                    
+
     if (globalTipoUser === "Visitante") {
         if (document.querySelector("#selOrdenar").value === "Ascendente") {
             arrayResultado.sort((function (a, b) {
@@ -1107,10 +1126,11 @@ function buscador() {
             <tr><td>Ciudad: ${element.ciudad}</td><tr>            
             <tr><td><input type="button" class="verMas" Value="Ver Más" name="${element.id}">
             <div id="divVerMas${element.id}" style="display:none">
-            <input type="button" name="${element.id}" class="fotoSiguiente" value=" >> ">
             <input type="button" name="${element.id}" class="fotoAnterior" value=" << ">
-            <input type="text" id="txtReserva${element.id}" placeholder="Ingrese cantidad de noches">
-            <input type="button" name="${element.id}" class="realizarReserva" value="Realizar reserva">
+            <input type="button" name="${element.id}" class="fotoSiguiente" value=" >> "><br> 
+            <h3> Para reservar </h3><br> 
+            <input type="text" id="txtReserva${element.id}" style="width: 200px;" placeholder="Ingrese cantidad de noches"><br>   
+            <input type="button" name="${element.id}" class="realizarReserva" value="Realizar reserva"><br> 
             <div id="divConfirmar${element.id}" style="display:none"></div></div></td><table><br>`;
         }
         habilitarbotones();

@@ -22,6 +22,8 @@
     <p class="a" id="usuario-actual-nombre"></p>
     <p class="a">Tipo Usuario Activo:</p>
     <p class="a" id="usuario-actual-tipo"></p>
+    <p class="a">Moneda Actual:</p>
+    <p class="a" id="moneda-actual"></p>
 
     <hr>
     <!--- COMIENZO DE BARRA SUPERIOR RELACIONADAS A LA VINCULACION DE USUARIO --->
@@ -84,20 +86,20 @@
         <div id="divResuladoCotizacion" class="Administrador"></div>
     </div>
     Seleccione moneda
-    <div id="divCotizacion" class="Visitante Anfitrion Huesped"></div><br>
-
-
+    <div id="divCotizacion" class="Visitante Anfitrion Huesped"></div>
+    <input type="button" id="btnMoneda" Value="Cambiar moneda">`<br>
 
 
     <div class="Visitante Huesped">
         <!--ORDENAR-->
-        Ordenar por precio por noche.
+        Ordenar por precio por noche
         <br>
         <select id="selOrdenar" style="display: inline;">
             <option value="Seleccione una Opción">Seleccione una opción</option>
             <option value="Ascendente">Ascendente</option>
             <option value="Descendente">Descendente</option>
         </select>
+        <input type="button" id="btnOrdenar" Value="Ordenar">`
 
     </div>
 
@@ -127,36 +129,10 @@
     <!----FIN BARRA COTIZACIONES ORDENAMIENTOS Y BUSQUEDA ---->
     <!---INICIO AQUI SE DESPLIEGAN LOS INMUEBLES -->
 
-
-    <div id="mostrarInmuebles" class="Visitante Anfitrion Huesped Administrador"></div>
-    <div class="Huesped"><input type="button" value="reservas" onclick="mostrarReservas()"></div>
-    <div id="divReservas" class="Huesped"></div>
-    <!---FIN DE AQUI SE DESPILIEGAN LOS INMUEBLES-->
-    <!---INICIO INTERACCIONES CON LOS INMUEBLES -->
-    <br>
-    <div id="divVerMas" class="Huesped">
-        <!--   <input type="button" id="btnVerMas" style="display: block;" value="Ver más">
-            <input type="button" id="btnAntFoto" value=" << ">
-        <input type="button" id="btnSigFoto" value=" >> ">           
-        -->
-
-    </div>
-
-    <div id="divReserva" class="Huesped">
-        <input type="text" class="texto" style="display: inline; width: 200px;" id="txtDiasReserva"
-            placeholder="Ingrese numero dias de reserva">
-        <input type="button" id="btnConfirmarReserva" value="Confirmar Reserva">
-        <input type="button" id="btnConsultarReserva" value="Consultar Reserva ">
-    </div>
-    <div id="divCalificarReserva" class="Huesped">
-        <!--ESTE DIV SE HABILITA SI EL INMUEBLE NO TIENE CALIFICACION-->
-        <input type="text" style="display: inline; width: 200px;" id="txtCalificarReserva"
-            placeholder="Ingrese numero 1-5">
-        <input type="button" id="btnCalificarReserva" value="Calificar Reserva">
-    </div>
-
+    <div class="Huesped"><input type="button" value="Mostrar mis reservas" onclick="mostrarReservas()"></div>
 
     <div id="divRegistrarInmueble" class="Anfitrion">
+        <h3> REGISTRO DE NUEVO INMUEBLE </h3>
         <span id="spanEstadoRegInmueble"></span>
         <label for="selRegInm">Ingrese Estado</label><select id="selRegInm">
             <option value="on">Habilitado</option>
@@ -171,8 +147,26 @@
             <input type="button" id="btnRegistrarInmueble" value="Registrar inmueble">
 
     </div>
-
-
+    <div id="divMostrarInmuebles" class="Visitante Anfitrion Huesped Administrador"></div>
+    <div id="divReservas" class="Huesped"></div>
+    <!---FIN DE AQUI SE DESPILIEGAN LOS INMUEBLES-->
+    <!---INICIO INTERACCIONES CON LOS INMUEBLES -->
+    <br>
+    <div id="divVerMas" class="Huesped">
+    </div>
+    
+    <div id="divReserva" class="Huesped">
+        <input type="text" class="texto" style="display: inline; width: 200px;" id="txtDiasReserva"
+            placeholder="Ingrese numero dias a reservar">
+        <input type="button" id="btnConfirmarReserva" value="Confirmar Reserva">
+        <input type="button" id="btnConsultarReserva" value="Consultar Reserva ">
+    </div>
+    <div id="divCalificarReserva" class="Huesped">
+        <!--ESTE DIV SE HABILITA SI EL INMUEBLE NO TIENE CALIFICACION-->
+        <input type="text" style="display: inline; width: 200px;" id="txtCalificarReserva"
+            placeholder="Ingrese numero 1-5">
+        <input type="button" id="btnCalificarReserva" value="Calificar Reserva">
+    </div>
 
     <!---FIN INTERACCIONES CON LOS INMUEBLES-->
 

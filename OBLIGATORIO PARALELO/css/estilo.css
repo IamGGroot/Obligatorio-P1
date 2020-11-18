@@ -26,3 +26,6 @@ p.a {
     text-align: right;
     line-height: 0.1;
 }
+input:placeholder-shown {
+    text-overflow: ellipsis;
+  }
