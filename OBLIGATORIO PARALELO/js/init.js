@@ -240,6 +240,13 @@ function precargaImuebles() {
         }
     });
 }
+function actualizarCalificacionesInmuebles()
+{
+    for (let i = 0; i < listaInmuebles.length; i++) {
+        listaInmuebles[i].calificacionActual = Number((calculadoraDeCalificaciones(i) / listaInmuebles[i].calificaciones.length)).toFixed(1);   
+        
+    }
+}
 
 function relacionarInmuebleConFoto(inmueble, photo) {
     listaInmuebles[inmueble].fotos.push(listaFotos[photo])
@@ -537,7 +544,7 @@ function cambiarMoneda() {
 //////////////<--------------------- INMUEBLES INICIO -------------------------->/////////////////////
 //// MOSTRAR INMUEBLES
 function mostrarInmuebles(arrayParaBuscar) {
-
+    actualizarCalificacionesInmuebles();
     let listaMostrar = new Array;
     if (arrayParaBuscar == undefined) {  //para mostrar muebles SIN busqueda
         listaMostrar = listaInmuebles;
@@ -591,6 +598,7 @@ function mostrarInmuebles(arrayParaBuscar) {
             mostrar.innerHTML += `<table border=1><tr><td><img id="img${element.id}" src="${element.fotos[fotoAct]}"></td><tr><table>
             <table border=1><tr><td>Titulo: ${element.titulo}</td><tr>
             <tr><td>Descripcion: ${element.descripcion}</td><tr>
+            <tr><td>Calificacion: ${element.califiActual}</td><tr>
             <tr><td>Precio por noche: ${moneda}<span id="precio${element.id}">${Number(element.precioPorNoche) / coti}<span></td><tr> 
             <tr><td>Ciudad: ${element.ciudad}</td><tr><table>`
         }
@@ -599,6 +607,7 @@ function mostrarInmuebles(arrayParaBuscar) {
             mostrar.innerHTML += `<table border=1><tr><td><img id="img${element.id}" src="${element.fotos[fotoAct]}"></td><table>
             <table border=1><tr><td>Titulo: ${element.titulo}</td><tr>
             <tr><td>Descripcion: ${element.descripcion}</td><tr>
+            <tr><td>Calificacion: ${element.califiActual}</td><tr>
             <tr><td>Precio por noche: ${moneda}<span id="precio${element.id}">${Number(element.precioPorNoche) / coti}<span></td><tr>
             <tr><td>Ciudad: ${element.ciudad}</td><tr>            
             <tr><td><input type="button" class="verMas" Value="Ver Más" name="${element.id}">
@@ -609,20 +618,45 @@ function mostrarInmuebles(arrayParaBuscar) {
             <input type="button" name="${element.id}" class="realizarReserva" value="Realizar reserva">
             <div id="divConfirmar${element.id}" style="display:none"></div></div></td><table>`;
         }
-        if (tipoUsuario == "Anfitrion" && globalUser == element.usuarioAnfitrion) {
+        if (tipoUsuario === "Anfitrion" && globalUser == element.usuarioAnfitrion) {
             mostrar.innerHTML += `<table border=1><tr><td><img id="img${element.id}" src="${element.fotos[fotoAct]}"></td><tr><table>
             <table border=1><tr><td>Titulo: ${element.titulo}</td><tr>
             <tr><td>Descripcion: ${element.descripcion}</td><tr>
+            <tr><td>Calificacion: ${element.califiActual}</td><tr>
             <tr><td>Precio por noche: ${moneda}<span id="precio${element.id}">${Number(element.precioPorNoche) / coti}<span></td><tr>
-            <tr><td>Ciudad: ${element.ciudad}</td><tr><table>`
-
+            <tr><td>Ciudad: ${element.ciudad}</td><tr><input type="button" class="btnHab" name="${element.id}" value="habilitar"><input type="button" class="btnDesab" name="${element.id}" value="desabilitar"><span id="span${element.id}"></span><table>`
+            
         }
         habilitarbotones();
         //FALTA AGREGAR BOTONES DE HABILITAR Y DESHABILITAR
     }
 }
 
+function habilitar() {
+
+    let name = this.name;
+    listaInmuebles.forEach(element => {
+        if(element.usuarioAnfitrion === globalUser){element.estado = "on"} 
+        });
+    document.querySelector(`#span${name}`).innerHTML = "Inmueble Habilitado";
+}
+function inhabilitar() {
+    let name = this.name
+    listaInmuebles.forEach(element => {
+    if(element.usuarioAnfitrion === globalUser){element.estado = "off"} 
+    });
+    document.querySelector(`#span${name}`).innerHTML = "Inmueble Desabilitado";
+    
+}
+
 function habilitarbotones() {
+    document.querySelectorAll(".btnHab").forEach(element => {
+        element.addEventListener("click", habilitar);
+    });
+    document.querySelectorAll(".btnDesab").forEach(element => {
+        element.addEventListener("click", inhabilitar);
+    });
+    
     document.querySelectorAll(".fotoSiguiente").forEach(element => {
         element.addEventListener("click", fotoSiguiente);
     });
@@ -711,8 +745,7 @@ function calificarInmueble() {
     let idInmueble = this.name;
     let calificacionActual = Number(document.querySelector(`#selCalificar${idInmueble}`).value);
     listaInmuebles[idInmueble].calificaciones.push(calificacionActual);
-    listaInmuebles[idInmueble].calificacionActual = (calculadoraDeCalificaciones(idInmueble) / listaInmuebles[idInmueble].calificaciones.length);
-
+    listaInmuebles[idInmueble].calificacionActual = Number((calculadoraDeCalificaciones(idInmueble) / listaInmuebles[idInmueble].calificaciones.length)).toFixed(1);
     mostrarInmuebles();
     mostrarReservas();
 }
@@ -892,24 +925,10 @@ function calculadoraDeCalificaciones(codigoInmueble) {
         suma = suma + element;
     }
 
-    sumaPro = Number(suma).toFixed(2);
-    return sumaPro;
+    return suma;
 }
 /*
 
-function habilitar() {
 
-    let name = this.name;
-    listaInmuebles.forEach(element => {
-        if (element.id === name) { element.estado = "on" }
-    });
-}
-function inhabilitar() {
-
-    let name = this.name;
-    listaInmuebles.forEach(element => {
-        if (element.id === name) { element.estado = "off" }
-    });
-}
 */
 
