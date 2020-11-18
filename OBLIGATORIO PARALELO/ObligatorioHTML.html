@@ -8,31 +8,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Obligatorio ORT</title>
     <link rel="stylesheet" type="text/css" href="css/estilo.css" />
-    
+
 </head>
 
 <body>
     <p id="resultados">
-        <div id="divResultadoLogin" class="Visitante Huesped Anfitrion Administrador"></div>
-        <div id="divResultadoRegistro" class="Visitante Administrador"></div>
-        <div id="divResultadoCotizacion" class="Administrador"></div>
-        <div id="divResultadoBusqueda" class="Visitante Huesped Anfitrion Administrador"></div>
+    <div id="divResultadoLogin" class="Visitante Huesped Anfitrion Administrador"></div>
+    <div id="divResultadoRegistro" class="Visitante Administrador"></div>
+    <div id="divResultadoCotizacion" class="Administrador"></div>
+    <div id="divResultadoBusqueda" class="Visitante Huesped Anfitrion Administrador"></div>
     </p>
-    <p id="usuario-actual-tipo"></p>
-    <p id="usuario-actual-nombre"></p>
-    <br>
+    <p class="a">Nombre Usuario Activo:</p>
+    <p class="a" id="usuario-actual-nombre"></p>
+    <p class="a">Tipo Usuario Activo:</p>
+    <p class="a" id="usuario-actual-tipo"></p>
+
     <hr>
     <!--- COMIENZO DE BARRA SUPERIOR RELACIONADAS A LA VINCULACION DE USUARIO --->
-    <div id="elementosAcceso" class="Visitante">ESTA PARTE ES LA QUE CONTIENE LOS ELEMENTOS DE ACCESO<br>
+    <div id="elementosAcceso" class="Visitante">
+        <h3>ESTA PARTE ES LA QUE CONTIENE LOS ELEMENTOS DE ACCESO</h3>
         <hr>
 
-        ELEMENTOS DE LOGIN <br>
+        <h3>ELEMENTOS DE LOGIN </h3>
         Usuario:<input class="Visitante texto" type="text" style="display: block;width: 200px;" id="txtLoginUser"
-            placeholder="Ingrese usuario">
-        Contraseña:<input class="Visitante texto" type="password" style="display: block;width: 200px;"
-            id="txtLoginPassword" placeholder="Ingrese contraseña">
+            placeholder="Ingrese usuario"> Contraseña:
+        <input class="Visitante texto" type="password" style="display: block;width: 200px;" id="txtLoginPassword"
+            placeholder="Ingrese contraseña">
+        <br>
         <input type="button" style="display: inline;" id="btnAcceso" value="Acceder">
-        
+
     </div>
 
     <div class="Huesped Administrador Anfitrion">
@@ -41,24 +45,22 @@
 
 
     <div id="divReg" class="Visitante Administrador">
-        <br>
-        ELEMENTOS DE REGISTRO
-        <br>
-
-        Usuario<input class="texto" type="text" style="display: block;width: 200px;" id="txtRegistroNomUsu"
-            placeholder="Ingrese Usuario">
-        Nombre<input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroNom"
-            placeholder="Ingrese Nombre">
-        Apellido<input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroApe"
-            placeholder="Ingrese Apellido">
-        Email:<input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroEmail"
-            placeholder="Ingrese Email">
-        Teléfono<input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroTel"
-            placeholder="Ingrese Teléfono">
-        Contraseña<input type="password" class="texto" style="display: block;width: 200px;" id="txtRegistroContraseña"
-            placeholder="Ingrese Contraseña">
-        Reingrese Contraseña<input type="password" class="texto" style="display: block; width: 200px;"
-            id="txtRegistroContraseñaComp" placeholder="Reingrese Contraseña">
+        <HR>
+        <h3>ELEMENTOS DE REGISTRO</h3>
+        <HR> Usuario
+        <input class="texto" type="text" style="display: block;width: 200px;" id="txtRegistroNomUsu"
+            placeholder="Ingrese Usuario"> Nombre
+        <input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroNom"
+            placeholder="Ingrese Nombre"> Apellido
+        <input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroApe"
+            placeholder="Ingrese Apellido"> Email:
+        <input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroEmail"
+            placeholder="Ingrese Email"> Teléfono
+        <input type="text" class="texto" style="display: block;width: 200px;" id="txtRegistroTel"
+            placeholder="Ingrese Teléfono"> Contraseña
+        <input type="password" class="texto" style="display: block;width: 200px;" id="txtRegistroContraseña"
+            placeholder="Ingrese Contraseña"> Reingrese Contraseña<input type="password" class="texto"
+            style="display: block; width: 200px;" id="txtRegistroContraseñaComp" placeholder="Reingrese Contraseña">
         <br>
         <div class="Administrador">
             <input type="button" style="display: block;" id="btnAltaAnfitrion" value="Dar de alta Anfitrion">
@@ -66,14 +68,14 @@
         <div class="Visitante">
             <input type="button" id="btnRegistro" style="display: block;" value="Registrarse">
         </div>
-        
+
     </div>
     <br>
     <HR>
     <!--- FIN DE BARRA SUPERIOR RELACIONADAS A LA VINCULACION DE USUARIO --->
 
     <!---- INICIO BARRA COTIZACIONES ORDENAMIENTOS Y BUSQUEDA -->
-    SECCION INMUEBLES
+    <h3> SECCION INMUEBLES</h3>
     <hr>
     <div id="divCotizar" class="Administrador">
         <label for="selCotizar">Ingrese la cotización del dólar<input type="text" id="txtCotizar"
@@ -82,30 +84,33 @@
         <div id="divResuladoCotizacion" class="Administrador"></div>
     </div>
     Seleccione moneda
-    <div id="divCotizacion" class="Visitante Anfitrion Huesped"></div>
+    <div id="divCotizacion" class="Visitante Anfitrion Huesped"></div><br>
 
 
 
 
     <div class="Visitante Huesped">
         <!--ORDENAR-->
-        Ordenar por precio por noche. 
+        Ordenar por precio por noche.
         <br>
         <select id="selOrdenar" style="display: inline;">
             <option value="Seleccione una Opción">Seleccione una opción</option>
             <option value="Ascendente">Ascendente</option>
             <option value="Descendente">Descendente</option>
         </select>
+
     </div>
 
-
+    <br>
     <!--- BUSQUEDA -->
     <div class="Visitante Huesped Anfitrion">
         <input type="text" class="texto" id="txtBusqueda" style="display: inline; width: 200px;"
-            placeholder="Ingrese su busqueda aqui">
+            placeholder="Ingrese su busqueda aqui"> <br>
+
+        <input type="button" id="btnBuscar" value="Buscar"> <br>
         <br>
-        <input type="button" id="btnBuscar" value="Buscar">
         <span id="spanBusqueda"></span>
+
     </div>
 
     <div>
@@ -134,7 +139,7 @@
             <input type="button" id="btnAntFoto" value=" << ">
         <input type="button" id="btnSigFoto" value=" >> ">           
         -->
-                
+
     </div>
 
     <div id="divReserva" class="Huesped">
@@ -175,7 +180,7 @@
 
     <script type="text/JavaScript" src="js/class.js"></script>
     <script type="text/JavaScript" src="js/init.js"></script>
-    
+
 </body>
 
 </html>
