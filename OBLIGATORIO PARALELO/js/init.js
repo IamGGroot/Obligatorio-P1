@@ -730,16 +730,9 @@ function cambiarMoneda() {
 
 //////////////<--------------------- INMUEBLES INICIO -------------------------->/////////////////////
 //// MOSTRAR INMUEBLES
-function mostrarInmuebles(arrayParaBuscar) {
-    //actualizarCalificacionesInmuebles();
-    let listaMostrar = new Array;
-    if (arrayParaBuscar == undefined) { //para mostrar muebles SIN busqueda
-        listaMostrar = listaInmuebles;
-    }
-    if (arrayParaBuscar !== undefined) { //para mostrar muebles CON busqueda
-        listaMostrar = arrayParaBuscar;
-    }
-
+function mostrarInmuebles() {
+    actualizarCalificacionesInmuebles();
+    
     let tipoUsuario = globalTipoUser;
     let mostrar = document.querySelector("#mostrarInmuebles");
     let coti = 0;
@@ -747,22 +740,22 @@ function mostrarInmuebles(arrayParaBuscar) {
     mostrar.setAttribute("style", "display:block");
     mostrar.innerHTML = "";
 
-    listaMostrar.sort((function (a, b) {
+    listaInmuebles.sort((function (a, b) {
         if (Number(a.calificacionActual) < Number(b.calificacionActual)) { return 1; }
         if (Number(a.calificacionActual) > Number(b.calificacionActual)) { return -1; }
         if (Number(a.calificacionActual) === Number(b.calificacionActual)) { return 0; }
     }));
-                    //ESTO DEJO DE ANDAR Y NO ENTENDI PORQUE PARECE QUE PASA PARAMETROS AUNQUE NO SE BUSQUE 
+                    
     if (globalTipoUser === "Visitante") {
         if (document.querySelector("#selOrdenar").value === "Ascendente") {
-            listaMostrar.sort((function (a, b) {
+            listaInmuebles.sort((function (a, b) {
                 if (Number(a.precioPorNoche) > Number(b.precioPorNoche)) { return 1; }
                 if (Number(a.precioPorNoche) < Number(b.precioPorNoche)) { return -1; }
                 if (Number(a.precioPorNoche) === Number(b.precioPorNoche)) { return 0; }
             }));
         }
         if (document.querySelector("#selOrdenar").value === "Descendente") {
-            listaMostrar.sort((function (a, b) {
+            listaInmuebles.sort((function (a, b) {
                 if (Number(a.precioPorNoche) < Number(b.precioPorNoche)) { return 1; }
                 if (Number(a.precioPorNoche) > Number(b.precioPorNoche)) { return -1; }
                 if (Number(a.precioPorNoche) === Number(b.precioPorNoche)) { return 0; }
@@ -777,8 +770,8 @@ function mostrarInmuebles(arrayParaBuscar) {
         coti = cotizacion;
     }
 
-    for (let i = 0; i < listaMostrar.length; i++) {
-        let element = listaMostrar[i];
+    for (let i = 0; i < listaInmuebles.length; i++) {
+        let element = listaInmuebles[i];
         let fotoAct = element.fotoActual;
         if (tipoUsuario === "Visitante" && element.estado == "on") {
 
@@ -1050,9 +1043,82 @@ function buscador() {
         limpiarDivs();
         document.querySelector("#divResultadoBusqueda").innerHTML = `${mensaje}`;
     }
-    mostrarInmuebles(arrayResultado);
 
+    //repetimos codigo mostrarInmuebles utilizando array resultado
+
+    actualizarCalificacionesInmuebles();
+    
+    let tipoUsuario = globalTipoUser;
+    let mostrar = document.querySelector("#mostrarInmuebles");
+    let coti = 0;
+
+    mostrar.setAttribute("style", "display:block");
+    mostrar.innerHTML = "";
+
+    arrayResultado.sort((function (a, b) {
+        if (Number(a.calificacionActual) < Number(b.calificacionActual)) { return 1; }
+        if (Number(a.calificacionActual) > Number(b.calificacionActual)) { return -1; }
+        if (Number(a.calificacionActual) === Number(b.calificacionActual)) { return 0; }
+    }));
+                    
+    if (globalTipoUser === "Visitante") {
+        if (document.querySelector("#selOrdenar").value === "Ascendente") {
+            arrayResultado.sort((function (a, b) {
+                if (Number(a.precioPorNoche) > Number(b.precioPorNoche)) { return 1; }
+                if (Number(a.precioPorNoche) < Number(b.precioPorNoche)) { return -1; }
+                if (Number(a.precioPorNoche) === Number(b.precioPorNoche)) { return 0; }
+            }));
+        }
+        if (document.querySelector("#selOrdenar").value === "Descendente") {
+            arrayResultado.sort((function (a, b) {
+                if (Number(a.precioPorNoche) < Number(b.precioPorNoche)) { return 1; }
+                if (Number(a.precioPorNoche) > Number(b.precioPorNoche)) { return -1; }
+                if (Number(a.precioPorNoche) === Number(b.precioPorNoche)) { return 0; }
+            }));
+        }
+    }
+
+    if (moneda === "$") {
+        coti = 1;
+    }
+    if (moneda === "U$S") {
+        coti = cotizacion;
+    }
+
+    for (let i = 0; i < arrayResultado.length; i++) {
+        let element = arrayResultado[i];
+        let fotoAct = element.fotoActual;
+        if (tipoUsuario === "Visitante" && element.estado == "on") {
+
+            mostrar.innerHTML += `<br><table border=2><tr><td><img id="img${element.id}" src="${element.fotos[fotoAct]}"></td><tr><table>
+            <table border=2><tr><td>Titulo: ${element.titulo}</td><tr>
+            <tr><td>Descripción: ${element.descripcion}</td><tr>
+            <tr><td>Calificación: ${Number(element.calificacionActual).toFixed(1)}</td><tr>
+            <tr><td>Precio por noche: ${moneda}<span id="precio${element.id}">${Number(element.precioPorNoche) / coti}<span></td><tr> 
+            <tr><td>Ciudad: ${element.ciudad}</td><tr><table><br>`
+        }
+        if (tipoUsuario === "Huesped" && element.estado == "on") {
+
+            mostrar.innerHTML += `<br><table border=2><tr><td><img id="img${element.id}" src="${element.fotos[fotoAct]}"></td><table>
+            <table border=2><tr><td>Titulo: ${element.titulo}</td><tr>
+            <tr><td>Descripción: ${element.descripcion}</td><tr>
+            <tr><td>Calificación: ${Number(element.calificacionActual).toFixed(1)}</td><tr>
+            <tr><td>Precio por noche: ${moneda}<span id="precio${element.id}">${Number(element.precioPorNoche) / coti}<span></td><tr>
+            <tr><td>Ciudad: ${element.ciudad}</td><tr>            
+            <tr><td><input type="button" class="verMas" Value="Ver Más" name="${element.id}">
+            <div id="divVerMas${element.id}" style="display:none">
+            <input type="button" name="${element.id}" class="fotoSiguiente" value=" >> ">
+            <input type="button" name="${element.id}" class="fotoAnterior" value=" << ">
+            <input type="text" id="txtReserva${element.id}" placeholder="Ingrese cantidad de noches">
+            <input type="button" name="${element.id}" class="realizarReserva" value="Realizar reserva">
+            <div id="divConfirmar${element.id}" style="display:none"></div></div></td><table><br>`;
+        }
+        habilitarbotones();
+
+    }
 }
+
+
 
 //////////////<--------------------- INMUEBLES FIN ----------------------------->/////////////////////
 
