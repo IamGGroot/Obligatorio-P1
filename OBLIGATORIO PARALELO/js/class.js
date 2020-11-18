@@ -1,5 +1,6 @@
 class Usuarios {
   constructor() {
+    this.id;
     this.nombreUsu;
     this.nombre;
     this.apellido;
@@ -8,7 +9,8 @@ class Usuarios {
     this.clave;
     this.tipo;
     this.reservas;
-    this.inmuebles = new Array;
+    this.inmuebles = new Array; //si es anfitrion el inmueble es de el
+                                //si es huesped es lo reservado
   }
 }
 
@@ -26,8 +28,9 @@ class Inmuebles {
     this.fotos = new Array();
     this.fotoActual;
     this.buscado;
+    this.calificadoPor = new Array; //id usuario que calificó este inmueble
   }
 }
-
+ 
 
 console.log("Class cargado")
