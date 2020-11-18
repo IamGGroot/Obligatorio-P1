@@ -36,23 +36,23 @@ function cargarListaFotos() {
 let listaUsuarios = new Array();
 let listaPrecargaUsuarios =
     [
-        { id: 0, nombreUsu: "agu22", nombre: "Agustín", apellido: "Rodriguez", email: "agu22@gmail.com", celular: "099123456", clave: "bSaDfklj123", tipo: "Huesped", inmuebles: [0] },
-        { id: 1, nombreUsu: "AlmiSua345", nombre: "Almicar", apellido: "Vazques", email: "almicar@hotmail.com", celular: "096234654", clave: "Almicar1995", tipo: "Huesped", inmuebles: [1] },
+        { id: 0, nombreUsu: "agu22", nombre: "Agustín", apellido: "Rodriguez", email: "agu22@gmail.com", celular: "099123456", clave: "bSaDfklj123", tipo: "Huesped", inmuebles: [0,3,8,18] },
+        { id: 1, nombreUsu: "AlmiSua345", nombre: "Almicar", apellido: "Vazques", email: "almicar@hotmail.com", celular: "096234654", clave: "Almicar1995", tipo: "Huesped", inmuebles: [1,4,9,10,11,12,13,14,18] },
         { id: 2, nombreUsu: "Camiiii_ok", nombre: "Camila", apellido: "Carrasco", email: "camila@zoho.com", celular: "095236547", clave: "Camilita123", tipo: "Anfitrion", inmuebles: [7, 8, 15, 20] },
-        { id: 3, nombreUsu: "Este_rodriguez", nombre: "Esteban", apellido: "Quito", email: "estebanquito@gmail.com", celular: "099456456", clave: "Quitoroto456", tipo: "Huesped", inmuebles: [1, 3] },
-        { id: 4, nombreUsu: "Américo_V", nombre: "Dardo", apellido: "Fuseneco", email: "dardo2020@yahoo.com", celular: "099222222", clave: "YMari4Elen4", tipo: "Huesped", inmuebles: [2, 3] },
+        { id: 3, nombreUsu: "Este_rodriguez", nombre: "Esteban", apellido: "Quito", email: "estebanquito@gmail.com", celular: "099456456", clave: "Quitoroto456", tipo: "Huesped", inmuebles: [1,4,6,9,11,13,15,17,19] },
+        { id: 4, nombreUsu: "Américo_V", nombre: "Dardo", apellido: "Fuseneco", email: "dardo2020@yahoo.com", celular: "099222222", clave: "YMari4Elen4", tipo: "Huesped", inmuebles: [1,3,4,7,10,12,13,14,16,18,19,20] },
         { id: 5, nombreUsu: "admin", nombre: "Administrador", apellido: "admin", email: "admin@hotmail.com", celular: "097111111", clave: "1234", tipo: "Administrador", inmuebles: [] },
         { id: 6, nombreUsu: "Pepe_1", nombre: "José", apellido: "Gomez", email: "josesito@gmail.com", celular: "094446456", clave: "EncimadeRacing27", tipo: "Anfitrion", inmuebles: [19, 6, 18, 17, 9, 13] },
         { id: 7, nombreUsu: "Homer.78", nombre: "Homero", apellido: "Simpson", email: "homerojsimpson@gmail.com", celular: "099777756", clave: "Marge1967", tipo: "Anfitrion", inmuebles: [10, 11, 6] },
         { id: 8, nombreUsu: "Robert_63", nombre: "Roberto", apellido: "Carlos", email: "robert@gmail.com", celular: "099888888", clave: "1millondeAmigos", tipo: "Anfitrion", inmuebles: [2, 3, 1] },
         { id: 9, nombreUsu: "R2D2", nombre: "Arturo", apellido: "Luro", email: "arturoduro@hotmail.com", celular: "099199956", clave: "unaClavede8mildigitos", tipo: "Anfitrion", inmuebles: [13, 16, 0, 9, 8] },
-        { id: 10, nombreUsu: "DebyBolso", nombre: "Débora", apellido: "Lopez", email: "debielo@adinet.com", celular: "099557456", clave: "mwBk5255", tipo: "Huesped", inmuebles: [0] },
-        { id: 11, nombreUsu: "Pablosky27", nombre: "Pablo", apellido: "Marmol", email: "pablomarmol@outlook.com", celular: "099651456", clave: "randoMpasSword99", tipo: "Huesped", inmuebles: [1, 2] },
-        { id: 12, nombreUsu: "Marge96", nombre: "Marjorie", apellido: "Simpson", email: "MargeS@gmail.com", celular: "099095430", clave: "sinFonica269", tipo: "Huesped", inmuebles: [0] },
-        { id: 13, nombreUsu: "Liiisa", nombre: "Lucía", apellido: "Diaz", email: "luciaD@zoho.com", celular: "099231576", clave: "Millhouse789", tipo: "Huesped", inmuebles: [1, 3, 0] },
+        { id: 10, nombreUsu: "DebyBolso", nombre: "Débora", apellido: "Lopez", email: "debielo@adinet.com", celular: "099557456", clave: "mwBk5255", tipo: "Huesped", inmuebles: [0,2,6,8,9,12,14,15,16,17,19] },
+        { id: 11, nombreUsu: "Pablosky27", nombre: "Pablo", apellido: "Marmol", email: "pablomarmol@outlook.com", celular: "099651456", clave: "randoMpasSword99", tipo: "Huesped", inmuebles: [1,4,7,10,13,16,19] },
+        { id: 12, nombreUsu: "Marge96", nombre: "Marjorie", apellido: "Simpson", email: "MargeS@gmail.com", celular: "099095430", clave: "sinFonica269", tipo: "Huesped", inmuebles: [0,1,3,4,5,7,8,9,13,15,16,17,18,19,20] },
+        { id: 13, nombreUsu: "Liiisa", nombre: "Lucía", apellido: "Diaz", email: "luciaD@zoho.com", celular: "099231576", clave: "Millhouse789", tipo: "Huesped", inmuebles: [0,3,6,7,9,12,14,15,18,20] },
         { id: 14, nombreUsu: "GabitomanyaCAP", apellido: "Figueredo", nombre: "Gabriel", email: "gaby22@gmail.com", celular: "099194456", clave: "CacaHuate44", tipo: "Anfitrion", inmuebles: [12, 14, 4, 5] },
-        { id: 15, nombreUsu: "Nachocapo1", apellido: "Silva", nombre: "Juan Ignacio", email: "juancho@yahoo.com", celular: "099658456", clave: "bolsoAmuerte1899", tipo: "Huesped", inmuebles: [2] },
-        { id: 16, nombreUsu: "Rickymaravilla", apellido: "Perez", nombre: "Ricardo", email: "ricky@adinet.com", celular: "099858456", clave: "r1ckYmorty", tipo: "Huesped", inmuebles: [1, 3] }
+        { id: 15, nombreUsu: "Nachocapo1", apellido: "Silva", nombre: "Juan Ignacio", email: "juancho@yahoo.com", celular: "099658456", clave: "bolsoAmuerte1899", tipo: "Huesped", inmuebles: [2,5,6,8,10,11,14,15,17,20] },
+        { id: 16, nombreUsu: "Rickymaravilla", apellido: "Perez", nombre: "Ricardo", email: "ricky@adinet.com", celular: "099858456", clave: "r1ckYmorty", tipo: "Huesped", inmuebles: [2,4,5,8,11,14,16,17,20] }
     ];
 
 function precargaUsuarios() {
@@ -82,12 +82,9 @@ function precargaUsuarios() {
 
         for (let p = 0; p < element.inmuebles.length; p++) {
             relacionarUsuarioConInmueble(i, p)
-
         }
-
     }
 }
-
 
 //// PRECARGA INMUEBLES
 let listaInmuebles = new Array();
@@ -100,102 +97,102 @@ let listaPrecargaInmuebles =
     {
         id: 1, estado: "off", titulo: "Dionisio Lopez Y Av. Italia", descripcion: "Alquiler de casa en zona Buceo Dionisio Lopez y Av. Italia todo en planta baja, sin gtos. comunes.",
         ciudad: "Montevideo", precioPorNoche: 2500, usuarioAnfitrion: "Camiiii_ok", calificaciones: [2, 3, 3, 2, 2], calificacionActual: 2.2, fotos: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
-        , fotoActual: 0, buscado: "no", calificadoPor: [1, 4, 13, 16, 11],
+        , fotoActual: 0, buscado: "no", calificadoPor: [3, 1, 4, 11, 12],
     },
     {
         id: 2, estado: "on", titulo: "De categoría Impecable", descripcion: "Impecable, lista para ocupar en el corazon de la Ciudad Vieja a pasos de la Plaza Matriz, Plaza Independencia, bancos, redes de cobranza y organismos publicos.",
         ciudad: "Montevideo", precioPorNoche: 3500, usuarioAnfitrion: "Camiiii_ok", calificaciones: [2, 3, 4], calificacionActual: 3, fotos: [24, 25, 26, 27, 28, 29]
-        , fotoActual: 0, buscado: "no", calificadoPor: [4, 11, 15],
+        , fotoActual: 0, buscado: "no", calificadoPor: [16, 15, 10],
     },
     {
         id: 3, estado: "on", titulo: "Apartamento a estrenar con estacionamiento y patio privado", descripcion: "Un excelente punto para vivir. Consiste de 1 dormitorio, cocina-comedor, baño, patio. Todos los ambientes tienen ventanales al exterior.",
         ciudad: "Montevideo", precioPorNoche: 1700, usuarioAnfitrion: "Camiiii_ok", calificaciones: [1, 2, 3, 2], calificacionActual: 2, fotos: [30, 31, 32, 33, 34]
-        , fotoActual: 0, buscado: "no", calificadoPor: [16, 13, 4, 3],
+        , fotoActual: 0, buscado: "no", calificadoPor: [13, 12, 4, 0],
     },
     {
         id: 4, estado: "on", titulo: "Casa en Punta Negra ´EL ESKP´", descripcion: "Casa en Punta Negra. Ambiente principal luminoso comprende living comedor con aire acondicionado y cama marinera y kitchenette; dormitorio matrimonial con placard empotrado y ventilador de techo y baño completo. ",
         ciudad: "Punta Negra", precioPorNoche: 2200, usuarioAnfitrion: "Robert_63", calificaciones: [3, 3, 3, 3, 2, 4], calificacionActual: 3, fotos: [35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [1, 3, 4, 11, 12, 16],
     },
     {
         id: 5, estado: "off", titulo: "Alquiler temporal en Piriápolis", descripcion: "Cómoda construcción ideal para sus vacaciones, con increíbles vistas. Comodidades para 10 personas, distribuidas en dos plantas. ",
         ciudad: "Piriápolis", precioPorNoche: 4800, usuarioAnfitrion: "Robert_63", calificaciones: [4, 3, 4], calificacionActual: 3.66, fotos: [47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [16, 15, 12],
     },
     {
         id: 6, estado: "on", titulo: "Casa en Bella Vista ´LA BLANCA´", descripcion: "Ubicada en el Balneario Bella Vista, en un amplio y en ajardinado terreno, en un entorno de buenas construcciones. A tan solo 10 minutos de Piriápolis y a minutos de los servicios en Balneario Las Flores.",
         ciudad: "Bella Vista", precioPorNoche: 5100, usuarioAnfitrion: "Pepe_1", calificaciones: [3, 3, 2, 2], calificacionActual: 2.5, fotos: [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [3, 13, 10, 15],
     },
     {
         id: 7, estado: "on", titulo: "Apto en Rambla con Amenities. Bolivia y Gonzalez Moreno", descripcion: "Muy lindo depto en Rambla Costanera con amenities",
         ciudad: "Colonia del Sacramento", precioPorNoche: 4500, usuarioAnfitrion: "Pepe_1", calificaciones: [2, 3, 3, 4], calificacionActual: 3, fotos: [71, 72, 73, 74, 75, 76, 77, 78, 79, 80]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [13, 4, 11, 12],
     },
     {
         id: 8, estado: "off", titulo: "Hermoso apartamento en el corazón de paysandu", descripcion: "Apartamento en excelentes condiciones, en la mejor ubicacion de paysandu, muy amplio. Cuenta con gran balcon con vista al rio uruguay. Tambien se evalua venta, consulte no molesta. Dueño directo!",
         ciudad: "Paysandú", precioPorNoche: 1800, usuarioAnfitrion: "Pepe_1", calificaciones: [2, 1, 3, 2, 1], calificacionActual: 1.8, fotos: [81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [12, 0, 16, 15, 10],
     },
     {
         id: 9, estado: "on", titulo: "Excelente local comercial en alquiler", descripcion: "Excelente local en la ciudad de Salto ubicado en calle Chiazzaro cercano a zona de Restaurantes. Cómodo y luminoso. Amplio y en un excelente estado, cuenta con un baño, kitchinette y amplia oficina con blindex, y patio interior. Muy buena vidriera, ideal para comercio.",
         ciudad: "Salto", precioPorNoche: 1500, usuarioAnfitrion: "Pepe_1", calificaciones: [2, 3, 1, 2, 3], calificacionActual: 2.2, fotos: [92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [3, 1, 13, 10],
     },
     {
         id: 10, estado: "on", titulo: "CASA 2 DORMITORIOS. Próximo a Rambla y 28", descripcion: "CASA 2 Dormitorios muy buena ubicación, a 1 cuadra del arroyo, 1 del bus y super. Amplio estar comedor con cocina integrada, baño completo. terreno esquina totalmente cercado",
         ciudad: "Parque del Plata", precioPorNoche: 3000, usuarioAnfitrion: "Homer.78", calificaciones: [3, 3, 3, 4], calificacionActual: 3.25, fotos: [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [1, 4, 11, 15],
     },
     {
         id: 11, estado: "on", titulo: "Alquiler de Chacra en Durazno a 5 min del centrocasa 11", descripcion: "Se alquila chacra amueblada, 3 dormitorios más escritorio, 2 baños, cocina con comedor definida. Living con estufa a leña, parque con piscina. Muy buena vista, sobre ruta 14 a 5 minutos de Durazno.",
         ciudad: "Durazno", precioPorNoche: 3200, usuarioAnfitrion: "Homer.78", calificaciones: [2, 4, 3, 4], calificacionActual: 3.25, fotos: [116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [3, 16, 15, 1],
     },
     {
         id: 12, estado: "off", titulo: "Chacra - Balneario Buenos Aires, VillaLagos. Barrio Privado,", descripcion: "Espectacular Chacra con vista al mar, 7 dormitorios. Terraza al frente con parrillero y solárium . Piscina y piscina para niños. Sala de Estar. Dependencia de servicio. Estufa a leña y hogar exterior. Villalagos Se trata del plan perfecto: la privacidad de una moderna y lujosa residencia, inmersa en un entorno natural paradisíaco, a pasos de la playa y que no se priva de la cercanía de bares, restaurantes y la energía de La Barra y de José Ignacio. ",
         ciudad: "José Ignacio", precioPorNoche: 7600, usuarioAnfitrion: "Robert_63", calificaciones: [4, 3, 5, 2], calificacionActual: 4, fotos: [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [1, 13, 10, 4],
     },
     {
         id: 13, estado: "off", titulo: "ALQUILER / VENTA EDIFICIO PARAISO 1 DE LA COSTA CHUY", descripcion: "Consta de 4 mono ambientes con parrilla. 1 departamento para 4 1 departamento matrimonial 1 departamento matrimonial 1 depart. Matrimonio + 1 1 depart. Matrimonio 1 departamento matrimonio 1 departamento 4 solteros 4 depart motrim+ 2 + parrilla Primer piso 1 departamento para 4 1 departamento para 8 Segundo piso 2 departamento para 4 2 depart.",
         ciudad: "Chuy", precioPorNoche: 1750, usuarioAnfitrion: "Homer.78", calificaciones: [2, 3, 3, 3, 3], calificacionActual: 2.8, fotos: [140, 141, 142, 143, 144]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [1, 3, 4, 11, 12],
     },
     {
         id: 14, estado: "off", titulo: "CASA 3 dormitorios, 3 baños, parrillero, hogar, equipada!", descripcion: "LO QUE NO HAY!!! CASA EN LA PEDRERA, ROCHA DIVINA, COMPLEJO CERRADO, POCOS AÑOS DE CONSTRUIDA. 3 CUADRAS DE LA RAMBLA! , A 1 cuadra de la principal TOTALMENTE EQUIPADA hasta con ropa de cama!!! Capacidad para 8 personas!. 1 cama matrimonial y 6 camas simples.",
         ciudad: "La pedrera", precioPorNoche: 6200, usuarioAnfitrion: "Homer.78", calificaciones: [4, 3, 3, 4, 3, 3], calificacionActual: 3.33, fotos: [145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [4, 1, 13, 16, 15, 10],
     },
     {
         id: 15, estado: "on", titulo: "Casa para 5 personas Punta Rubia rocha", descripcion: "Eco Casa Contêiner a estrenar, esta ubicada en Punta Rubia departamento de Rocha, a menos de 1 Km. del centro de la Pedrera, al cual puedes llegar tanto en vehículo, bicicleta o caminando. Equipada para 5 personas, cuenta con dos dormitorios, uno con cama matrimonial y el otro con tres camas, baño con cabina y calefón que también alimenta la cocina, en el estar cuenta con aire acondicionado y para los dias mas frescos podes disfrutar de la estufa a leña, todo en una misma planta. Todas las aberturas cuentan con mosquitero",
         ciudad: "Punta Rubia", precioPorNoche: 5500, usuarioAnfitrion: "R2D2", calificaciones: [3, 3, 3, 3, 4], calificacionActual: 3.2, fotos: [157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [12, 3, 13, 10, 15],
     },
     {
         id: 16, estado: "on", titulo: "Oportunidad, no paga gastos comunes. Cerca de todo", descripcion: "Santiago Gadea y Maipú a una cuadra de Dr. Luis Alberto de Herrera, excelente ubicación, con una red de servicios muy próxima. Apartamento en planta baja, es el primer apartamento del corredor, tiene patio frontal con parrillero, al mismo da el living comedor, cocina definida con estar diario, baño a nuevo, dormitorio en planta baja. En planta alta tiene un gran dormitorio y la salida a la terraza. No paga gastos comunes, contador de agua independiente. ",
         ciudad: "Montevideo", precioPorNoche: 2550, usuarioAnfitrion: "R2D2", calificaciones: [2, 4, 3, 3, 2], calificacionActual: 2.6, fotos: [169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [10, 4, 11, 12],
     },
     {
         id: 17, estado: "off", titulo: "Alquiler Apartamento 1 Dormitorio A Estrenar Centro", descripcion: "Hermoso Apartamento a Estrenar! Ubicado sobre Soriano, esquina Aquiles Lanza, a pasos de 18 de Julio. Amplio Living comedor con balcón al frente. Cocina integrada con placares. Dormitorio con Gran vista al Río. Planta de 55 m2, amplios ambientes. Único!!",
         ciudad: "Montevideo", precioPorNoche: 3450, usuarioAnfitrion: "R2D2", calificaciones: [2, 3, 3, 2, 3], calificacionActual: 2.8, fotos: [181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [12, 3, 16, 15, 10],
     },
     {
         id: 18, estado: "on", titulo: "Departamento - Treinta y Tres, Manuel Lavalleja al 1500", descripcion: "Excelente apartamento a media cuadra de la Plaza 19 de Abril, muy luminoso, dos dormitorios con placares, dos baños, terraza lavadero. Sin Gastos Comunes. Contrato a dos años",
         ciudad: "Treinta y Tres", precioPorNoche: 4750, usuarioAnfitrion: "R2D2", calificaciones: [2, 2, 2, 2, 2], calificacionActual: 2.6, fotos: [193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [1, 13, 12, 4, 0],
     },
     {
         id: 19, estado: "on", titulo: "carrasco alquiler con muebles 2 dormitorios", descripcion: "Divino apartamento en Faros de Carrasco equipado full. Living comedor, 2 dormitorios, 2 baños (1 en suite), cocina definida, terraza lavadero. Calefacción y agua caliente por caldereta a gas. Vigilancia las 24 hs, circuito cerrado de cámaras. Amenities: Piscina abierta y cerrada Gimnasio con sauna. Jacuzzi Spa Hidromasaje Salón de eventos Barbacoa. Un lugar de cochera. El precio ya incluye wifi, electricidad, gastos comunes, uso de amenities.",
         ciudad: "Montevideo", precioPorNoche: 8800, usuarioAnfitrion: "Robert_63", calificaciones: [4, 3, 5, 3, 5], calificacionActual: 4, fotos: [204, 205, 206, 207, 208, 209, 210, 211]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [3, 10, 11, 12, 4],
     },
     {
         id: 20, estado: "off", titulo: "Espectacular vista limpia a la rambla, doble frente", descripcion: "Comodísimo apartamento con vista super limpia a la rambla. 3er Piso con ascensor. 4 dormitorios, todos al frente por calle Cabildo, 3 baños completos, cocina integrada al living-comedor, lo que hace que en cualquier lado del living y la cocina, se esté disfrutando la vista. Regatas, cruceros, amaneceres, puestas de sol, etc.",
         ciudad: "Punta del Este", precioPorNoche: 8500, usuarioAnfitrion: "Marge96", calificaciones: [4, 3, 5, 4, 4], calificacionActual: 4, fotos: [212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223]
-        , fotoActual: 0, buscado: "no", calificadoPor: [, , ,],
+        , fotoActual: 0, buscado: "no", calificadoPor: [4, 13, 16, 15, 12],
     },];
 
 
@@ -240,11 +237,10 @@ function precargaImuebles() {
         }
     });
 }
-function actualizarCalificacionesInmuebles()
-{
+function actualizarCalificacionesInmuebles() {
     for (let i = 0; i < listaInmuebles.length; i++) {
-        listaInmuebles[i].calificacionActual = Number((calculadoraDeCalificaciones(i) / listaInmuebles[i].calificaciones.length)).toFixed(1);   
-        
+        listaInmuebles[i].calificacionActual = Number((calculadoraDeCalificaciones(i) / listaInmuebles[i].calificaciones.length)).toFixed(1);
+
     }
 }
 
@@ -593,7 +589,7 @@ function mostrarInmuebles(arrayParaBuscar) {
     for (let i = 0; i < listaMostrar.length; i++) {
         let element = listaMostrar[i];
         let fotoAct = element.fotoActual;
-        if (tipoUsuario == "Visitante" && element.estado == "on") {
+        if (tipoUsuario === "Visitante" && element.estado == "on") {
 
             mostrar.innerHTML += `<table border=1><tr><td><img id="img${element.id}" src="${element.fotos[fotoAct]}"></td><tr><table>
             <table border=1><tr><td>Titulo: ${element.titulo}</td><tr>
@@ -602,7 +598,7 @@ function mostrarInmuebles(arrayParaBuscar) {
             <tr><td>Precio por noche: ${moneda}<span id="precio${element.id}">${Number(element.precioPorNoche) / coti}<span></td><tr> 
             <tr><td>Ciudad: ${element.ciudad}</td><tr><table>`
         }
-        if (tipoUsuario == "Huesped" && element.estado == "on") {
+        if (tipoUsuario === "Huesped" && element.estado == "on") {
 
             mostrar.innerHTML += `<table border=1><tr><td><img id="img${element.id}" src="${element.fotos[fotoAct]}"></td><table>
             <table border=1><tr><td>Titulo: ${element.titulo}</td><tr>
@@ -625,10 +621,10 @@ function mostrarInmuebles(arrayParaBuscar) {
             <tr><td>Calificacion: ${element.califiActual}</td><tr>
             <tr><td>Precio por noche: ${moneda}<span id="precio${element.id}">${Number(element.precioPorNoche) / coti}<span></td><tr>
             <tr><td>Ciudad: ${element.ciudad}</td><tr><input type="button" class="btnHab" name="${element.id}" value="habilitar"><input type="button" class="btnDesab" name="${element.id}" value="desabilitar"><span id="span${element.id}"></span><table>`
-            
+
         }
         habilitarbotones();
-        //FALTA AGREGAR BOTONES DE HABILITAR Y DESHABILITAR
+
     }
 }
 
@@ -636,17 +632,17 @@ function habilitar() {
 
     let name = this.name;
     listaInmuebles.forEach(element => {
-        if(element.usuarioAnfitrion === globalUser){element.estado = "on"} 
-        });
+        if (element.usuarioAnfitrion === globalUser) { element.estado = "on" }
+    });
     document.querySelector(`#span${name}`).innerHTML = "Inmueble Habilitado";
 }
 function inhabilitar() {
     let name = this.name
     listaInmuebles.forEach(element => {
-    if(element.usuarioAnfitrion === globalUser){element.estado = "off"} 
+        if (element.usuarioAnfitrion === globalUser) { element.estado = "off" }
     });
     document.querySelector(`#span${name}`).innerHTML = "Inmueble Desabilitado";
-    
+
 }
 
 function habilitarbotones() {
@@ -656,7 +652,7 @@ function habilitarbotones() {
     document.querySelectorAll(".btnDesab").forEach(element => {
         element.addEventListener("click", inhabilitar);
     });
-    
+
     document.querySelectorAll(".fotoSiguiente").forEach(element => {
         element.addEventListener("click", fotoSiguiente);
     });
