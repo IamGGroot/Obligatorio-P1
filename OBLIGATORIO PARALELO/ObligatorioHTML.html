@@ -85,11 +85,11 @@
         <input type="button" id="btnCotizar" value="Ingresar nueva cotización">
         <div id="divResuladoCotizacion" class="Administrador"></div>
     </div>
-    Seleccione moneda
-    <div id="divCotizacion" class="Visitante Anfitrion Huesped"></div>
-    <input type="button" id="btnMoneda" Value="Cambiar moneda">`<br>
-
-
+    <div class="Visitante Huesped">
+        Seleccione moneda
+        <div id="divCotizacion" class="Visitante Huesped"></div>
+        <input type="button" id="btnMoneda" Value="Cambiar moneda">`<br>
+    </div>
     <div class="Visitante Huesped">
         <!--ORDENAR-->
         Ordenar por precio por noche
@@ -103,9 +103,10 @@
 
     </div>
 
+
     <br>
     <!--- BUSQUEDA -->
-    <div class="Visitante Huesped Anfitrion">
+    <div class="Visitante Huesped">
         <input type="text" class="texto" id="txtBusqueda" style="display: inline; width: 200px;"
             placeholder="Ingrese su busqueda aqui"> <br>
 
@@ -133,18 +134,19 @@
 
     <div id="divRegistrarInmueble" class="Anfitrion">
         <h3> REGISTRO DE NUEVO INMUEBLE </h3>
-        <span id="spanEstadoRegInmueble"></span>
-        <label for="selRegInm">Ingrese Estado</label><select id="selRegInm">
+
+        <label for="selRegInm">Ingrese Estado </label><select id="selRegInm">
             <option value="on">Habilitado</option>
             <option value="off">Inhabilitado</option>
         </select><br>
-        <label for="txtTitulo">Ingrese Titulo</label><input id="txtTitulo" type="text"><br>
-        <label for="txtDescripcion">Ingrese Descripcion</label><input id="txtDescripcion" type="text"><br>
+        <label for="txtTitulo">Ingrese Titulo </label><input id="txtTitulo" type="text"><br>
+        <label for="txtDescripcion">Ingrese Descripcion </label><input id="txtDescripcion" type="text"><br>
         <label for="txtCiudad">Ingrese Ciudad </label><input id="txtCiudad" type="text"><br>
-        <label for="txtPrecioPorNoche">Ingrese Precio por noche<input id="txtPrecioPorNoche" type="text"><br>
-            <div id="regFotos" class="Anfitrion">
-            </div>
-            <input type="button" id="btnRegistrarInmueble" value="Registrar inmueble">
+        <label for="txtPrecioPorNoche">Ingrese Precio por noche <input id="txtPrecioPorNoche" type="text"><br>
+            <input type="button" id="btnAgregarFotos" value="Agregar Fotos"><br>
+            <input type="button" id="btnRegistrarInmueble" value="Registrar inmueble"><br>
+            <span id="spanEstadoRegInmueble"></span>
+            <div id="divFotos" class="Anfitrion"></div>
 
     </div>
     <div id="divMostrarInmuebles" class="Visitante Anfitrion Huesped Administrador"></div>
@@ -154,7 +156,7 @@
     <br>
     <div id="divVerMas" class="Huesped">
     </div>
-    
+
     <div id="divReserva" class="Huesped">
         <input type="text" class="texto" style="display: inline; width: 200px;" id="txtDiasReserva"
             placeholder="Ingrese numero dias a reservar">

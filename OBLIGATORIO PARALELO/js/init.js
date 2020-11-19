@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnRegistrarInmueble").addEventListener("click", registrarInmueble);
     document.querySelector("#btnOrdenar").addEventListener("click", mostrarInmuebles);
     document.querySelector("#btnBuscar").addEventListener("click", buscador);
+    document.querySelector("#btnAgregarFotos").addEventListener("click", mostrarFotosRegistrarInmueble);
 
     cargarListaFotos();
     precargaImuebles();
@@ -475,7 +476,7 @@ function ingreso(tipoUsuario, usuario) {
     globalUser = usuario;
     document.getElementById("usuario-actual-tipo").innerHTML = tipoUsuario; // se muestra en pantalla el nombre de usuario, el tipo de usuario actual
     document.getElementById("usuario-actual-nombre").innerHTML = usuario;
-    
+
     document.querySelectorAll("div").forEach(element => { // se ocultan todos los div y se muestran solos que coincidan con la clase que coincida con el tipo de usr actual y se envia un mensaje de que se logro ingresar
         element.setAttribute("style", "display:none");
     });
@@ -491,6 +492,8 @@ function ingreso(tipoUsuario, usuario) {
 
     }
     if (globalTipoUser === "Anfitrion") {
+        moneda = "$";
+        document.getElementById("moneda-actual").innerHTML = moneda;
         document.querySelectorAll(".Anfitrion").forEach(element => {
             element.setAttribute("style", "display:block");
         });
@@ -518,6 +521,8 @@ function salir() {
         element.innerHTML = "";
     });
     ingreso("Visitante", "Visitante");
+    moneda = "$";
+    document.getElementById("moneda-actual").innerHTML = moneda;
     limpiarDivs();
     document.querySelector("#divResultadoLogin").innerHTML = `Has cerrado sesion con éxito!`;
 }
@@ -712,20 +717,16 @@ function selectCotizacion(usr) {
     let divCotizacion = document.querySelector("#divCotizacion");
 
     if (usr === "Visitante" || usr === "Huesped") {
-        divCotizacion.innerHTML = `<select id="selectCot"><option value="$">$</option><option value="U$S">U$S</option></select>`
-        
-        ;
+        divCotizacion.innerHTML = `<select id="selCoti" ><option value="$">$</option><option value="U$S">U$S</option></select>`;
         document.querySelector("#btnMoneda").addEventListener("click", cambiarMoneda);
     }
-    if (usr === "Anfitrion") { divCotizacion.innerHTML = `<select><option value="$">$</option></select>`; }
-    if (usr === "Administrador") { divCotizacion.innerHTML = ""; }
+
     document.getElementById("moneda-actual").innerHTML = moneda;
 }
 
 function cambiarMoneda() {
-    if (moneda == "$") {
-        moneda = "U$S";
-    } else { moneda = "$" }
+    let nuevaMoneda = document.querySelector("#selCoti").value;
+    moneda = nuevaMoneda;
     document.getElementById("moneda-actual").innerHTML = moneda;
     mostrarInmuebles();
 
@@ -863,7 +864,7 @@ function habilitarbotones() {
 function realizarReserva() {
     let idInmueble = this.name;
     let costoTotal = (Number(document.querySelector(`#txtReserva${idInmueble}`).value) * Number(document.querySelector(`#precio${idInmueble}`).textContent));
-    
+
     document.querySelector(`#divConfirmar${idInmueble}`).innerHTML = `El costo total es de ${moneda} ${costoTotal} <input type="button" name="${idInmueble}" class="confirmaReserva" value="Confimar">`;
     document.querySelector(`#divConfirmar${idInmueble}`).removeAttribute("style");
     document.querySelectorAll(".confirmaReserva").forEach(element => {
@@ -876,6 +877,7 @@ function confirmaReserva() {
     let idInmueble = this.name;
     let idUser = obtenerNumeroDeUser();
     relacionarUsuarioConInmueble(idUser, idInmueble)
+
 }
 
 function obtenerNumeroDeUser() {
@@ -917,7 +919,7 @@ function mostrarReservas() {
     let numeroUser = obtenerNumeroDeUser();
     let divMostrar = document.querySelector("#divReservas");
     let divInmuebles = document.querySelector("#divMostrarInmuebles");
-    divInmuebles.innerHTML ="";
+    divInmuebles.innerHTML = "";
     divMostrar.innerHTML = "";
     divMostrar.innerHTML += `<h3> MIS RESERVAS </h3>`;
     let coti = 0;
@@ -935,7 +937,11 @@ function mostrarReservas() {
         <tr><td>Ciudad: ${element.ciudad}</td></tr>
         <tr><td>Título: ${element.titulo}</td></tr>
         <tr><td>Calificación: ${element.calificacionActual}</td></tr>
-        <tr><td><img id="img${element.id}" src="${element.fotos[element.fotoActual]}"></tr></td><td><select id="selCalificar${element.id}"><option value="Seleccione una Opción">Seleccione una opción</option><option value="1">1</option> <option value="2" >2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option></select><input type="button" class="calificarInmueble" name="${element.id}" value="calificar"></td></tr><table><br>`
+        <tr><td><img id="img${element.id}" src="${element.fotos[element.fotoActual]}"></tr></td>
+        <td><select id="selCalificar${element.id}">
+        <option value="Seleccione una Opción">Seleccione una opción</option><option value="1">1</option> 
+        <option value="2" >2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option>
+        </select><input type="button" class="calificarInmueble" name="${element.id}" value="calificar"></td></tr><table><br>`
     }
     document.querySelectorAll(`.calificarInmueble`).forEach(element => {
         element.addEventListener("click", calificarInmueble);
@@ -958,29 +964,44 @@ function registrarInmueble() {
     let validarFotos = false;
     let validarCamposDeTexto = false;
     let contador = 0;
-    document.querySelectorAll(".checkboxRegistro").forEach(element => { if (element.checked) { contador = contador + 1 } });
-    if (contador > 2) {
-        validarFotos = true;
-        if (document.querySelector("#txtTitulo").value) {
-            if (verificarTextoNoVacio(document.querySelector("#txtDescripcion").value)) { if (verificarTextoNoVacio(document.querySelector("#txtCiudad").value)) { if (verificarEsNum(document.querySelector("#txtPrecioPorNoche").value)) { validarCamposDeTexto = true; } } }
+    document.querySelectorAll(".checkboxRegistro").forEach(element => {
+        if (element.checked) {
+            contador = contador + 1
         }
-    } else { mensaje = "Seleccione al menos 3 fotos y rellene los campos de texto de título, ciudad, descipción y precio." }
+    });
+    if (verificarTextoNoVacio(document.querySelector("#txtTitulo").value)) {
+        if (verificarTextoNoVacio(document.querySelector("#txtDescripcion").value)) {
+            if (verificarTextoNoVacio(document.querySelector("#txtCiudad").value)) {
+                if (verificarEsNum(document.querySelector("#txtPrecioPorNoche").value)) {
+                    validarCamposDeTexto = true;
+                    if (contador > 2) {
+                        validarFotos = true;
+                    } else { mensaje = "Seleccione al menos 3 fotos"; }
+                } else { mensaje = "Complete Precio por Noche"; }
+            } else { mensaje = "Complete Ciudad"; }
+        } else { mensaje = "Complete Descripción"; }
+    } else { mensaje = "Complete Título"; }
 
     if (validarCamposDeTexto && validarFotos) {
         let nuevoInmueble = new Inmuebles
         nuevoInmueble.id = `inmueble${listaInmuebles.length}`
+        nuevoInmueble.estado = document.querySelector("#selRegInm").value;
         nuevoInmueble.titulo = document.querySelector("#txtTitulo").value;
         nuevoInmueble.descripcion = document.querySelector("#txtDescripcion").value;
         nuevoInmueble.ciudad = document.querySelector("#txtCiudad").value;
         nuevoInmueble.precioPorNoche = document.querySelector("#txtPrecioPorNoche").value;
         nuevoInmueble.usuarioAnfitrion = document.querySelector("#usuario-actual-nombre").textContent; //QUE ES TEXT CONTENT?
-        nuevoInmueble.estado = document.querySelector("#selRegInm").value;
+        nuevoInmueble.calificaciones = [];
+        nuevoInmueble.calificacionActual = [];
+
         let fotosSeleccionadas = new Array();
         for (let i = 0; i < document.querySelectorAll(".checkboxRegistro").length; i++) {
             let element = document.querySelectorAll(".checkboxRegistro")[i];
             if (element.checked) { fotosSeleccionadas.push(i); }
         }
         nuevoInmueble.fotos = fotosSeleccionadas;
+        nuevoInmueble.calificadoPor = [];
+        //nuevoInmueble.fotoActual = ; Hay que ver como hacer para que traiga la primer foto agregada
         listaInmuebles.push(nuevoInmueble);
         mensaje = "Inmueble agregado con éxito!"
     }
@@ -989,14 +1010,15 @@ function registrarInmueble() {
 }
 
 function mostrarFotosRegistrarInmueble() {
-    let imagenes = `<br><table border=2>`;
+    let imagenes = `<br>Marque las fotos a agregar al inmueble (mín 3)<br><br><table border=2>`;
 
     for (let i = 0; i < listaFotos.length; i++) {
-        let element = listaFotos[i];
-        imagenes += `<tr><td><input class="checkboxRegistro" value="${i}" type="checkbox">Imagen ${i}<img class="miniatura" src="${element}"></td></tr>`;
+        let element = listaFotos[i];                    ///esta generando con id mal no se visualiza cuando se registra con exito dps
+        imagenes += `<tr><td><input class="checkboxRegistro" value="${i}" type="checkbox">Imagen ${i}
+        <img class="miniatura" src="${element}"></td></tr>`;
+        imagenes += `</table><br>`;
+        document.querySelector("#divFotos").innerHTML = imagenes;
     }
-    imagenes += `</table><br>`;
-    document.querySelector("#regFotos").innerHTML = imagenes;
 }
 
 function buscador() {
@@ -1205,3 +1227,4 @@ function calculadoraDeCalificaciones(codigoInmueble) {
 
     return suma;
 }
+console.log("Init cargado")
