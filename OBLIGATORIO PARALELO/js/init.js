@@ -10,12 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnAgregarFotos").addEventListener("click", mostrarFotosRegistrarInmueble);
     document.querySelector("#btnReporteInmueble").addEventListener("click", mostrarReporteInmueble);
     document.querySelector("#btnMostrarReservas").addEventListener("click", mostrarReservas);
-    document.querySelector("#btnmosinm").addEventListener("click", mostrarInmuebles);
-    btnmosinm
+    document.querySelector("#btnMosInm").addEventListener("click", mostrarInmuebles);
+    
     cargarListaFotos();
     precargaImuebles();
     precargaUsuarios();
-    limpiarinput();
+    limpiarInput();
     ingreso("Visitante", "Visitante");
 });
 
@@ -390,7 +390,6 @@ let listaPrecargaInmuebles = [{
 ];
 
 
-//PARA CALIFICAR SE NECESITA UN ARRAY EN UN ATRIBUTO DE CADA INMUEBLE PARA SABER QUE USUARIO CALIFICO QUE INMUEBLE
 function precargaImuebles() {
     listaPrecargaInmuebles.forEach(element => {
         let id = element.id;
@@ -529,7 +528,7 @@ function salir() {
     document.getElementById("moneda-actual").innerHTML = moneda;
     limpiarDivs();
     document.querySelector("#divResultadoLogin").innerHTML = `Has cerrado sesion con éxito!`;
-    limpiarinput();
+    limpiarInput();
 }
 //// REGISTRO
 function registro() {
@@ -953,7 +952,7 @@ function mostrarReservas() {
         <td><select id="selCalificar${element.id}">
         <option value="Seleccione una Opción">Seleccione una opción</option><option value="1">1</option> 
         <option value="2" >2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option>
-        </select><input type="button" class="calificarInmueble" name="${element.id}" value="calificar"></td></tr><table><br>`
+        </select><input type="button" class="calificarInmueble" name="${element.id}" value="Calificar"></td></tr><table><br>`
     }
     document.querySelectorAll(`.calificarInmueble`).forEach(element => {
         element.addEventListener("click", calificarInmueble);
@@ -973,7 +972,7 @@ function calificarInmueble() {
         }
     }
         if (validacion && (element.id === idInmueble)) {
-            elementcalificaciones.push(calificacionActual);
+            element.calificaciones.push(calificacionActual);
             element.calificacionActual = Number((calculadoraDeCalificaciones(idInmueble) / listaInmuebles[idInmueble].calificaciones.length)).toFixed(1);
         }
         
@@ -1302,7 +1301,7 @@ listaInmuebles.forEach(element => {
 
 }
 
-function limpiarinput()
+function limpiarInput()
 {
     document.querySelectorAll("input").forEach(element => {
         if(element.type === "text")
