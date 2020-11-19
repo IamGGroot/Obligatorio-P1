@@ -121,16 +121,14 @@
     </div>
 
     <div id="divReporteInmueble" class="Administrador">
-        <input type="button" id="btnReporteInmueble" style="display: block;" value="Ver reporte de inmuebles">
-        <input type="text" class="texto" id="txtDesde" style="display: inline; width: 200px;"
-            placeholder="Ingrese numero desde">-
-        <input type="text" class="texto" id="txtHasta" style="display: inline; width: 200px;"
-            placeholder="Ingrese numera hasta">
+        <input type="button" id="btnReporteInmueble" value="Ver reporte de inmuebles">
+        <input type="text" class="texto" id="txtDesde" placeholder="Ingrese numero desde">-
+        <input type="text" class="texto" id="txtHasta" placeholder="Ingrese numera hasta">
     </div>
     <!----FIN BARRA COTIZACIONES ORDENAMIENTOS Y BUSQUEDA ---->
     <!---INICIO AQUI SE DESPLIEGAN LOS INMUEBLES -->
 
-    <div class="Huesped"><input type="button" value="Mostrar mis reservas" onclick="mostrarReservas()"></div>
+    <div class="Huesped"><input type="button" value="Mostrar mis reservas" id="btnMostrarReservas"></div>
 
     <div id="divRegistrarInmueble" class="Anfitrion">
         <h3> REGISTRO DE NUEVO INMUEBLE </h3>
@@ -149,6 +147,7 @@
             <div id="divFotos" class="Anfitrion"></div>
 
     </div>
+    <input type="button" value="mostrar inmuebles" id="btnmosinm">
     <div id="divMostrarInmuebles" class="Visitante Anfitrion Huesped Administrador"></div>
     <div id="divReservas" class="Huesped"></div>
     <!---FIN DE AQUI SE DESPILIEGAN LOS INMUEBLES-->
@@ -163,12 +162,7 @@
         <input type="button" id="btnConfirmarReserva" value="Confirmar Reserva">
         <input type="button" id="btnConsultarReserva" value="Consultar Reserva ">
     </div>
-    <div id="divCalificarReserva" class="Huesped">
-        <!--ESTE DIV SE HABILITA SI EL INMUEBLE NO TIENE CALIFICACION-->
-        <input type="text" style="display: inline; width: 200px;" id="txtCalificarReserva"
-            placeholder="Ingrese numero 1-5">
-        <input type="button" id="btnCalificarReserva" value="Calificar Reserva">
-    </div>
+
 
     <!---FIN INTERACCIONES CON LOS INMUEBLES-->
 

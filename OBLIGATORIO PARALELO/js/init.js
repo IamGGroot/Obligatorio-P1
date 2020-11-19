@@ -8,10 +8,14 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnOrdenar").addEventListener("click", mostrarInmuebles);
     document.querySelector("#btnBuscar").addEventListener("click", buscador);
     document.querySelector("#btnAgregarFotos").addEventListener("click", mostrarFotosRegistrarInmueble);
-
+    document.querySelector("#btnReporteInmueble").addEventListener("click", mostrarReporteInmueble);
+    document.querySelector("#btnMostrarReservas").addEventListener("click", mostrarReservas);
+    document.querySelector("#btnmosinm").addEventListener("click", mostrarInmuebles);
+    btnmosinm
     cargarListaFotos();
     precargaImuebles();
     precargaUsuarios();
+    limpiarinput();
     ingreso("Visitante", "Visitante");
 });
 
@@ -525,6 +529,7 @@ function salir() {
     document.getElementById("moneda-actual").innerHTML = moneda;
     limpiarDivs();
     document.querySelector("#divResultadoLogin").innerHTML = `Has cerrado sesion con éxito!`;
+    limpiarinput();
 }
 //// REGISTRO
 function registro() {
@@ -782,7 +787,9 @@ function mostrarInmuebles() {
         if (tipoUsuario === "Visitante" && element.estado == "on") {
 
             mostrar.innerHTML += `<br><table border=2><tr><td><img id="img${element.id}" src="${element.fotos[fotoAct]}"></td><tr><table>
-            <table border=2><tr><td>Titulo: ${element.titulo}</td><tr>
+            <table border=2>
+            <tr><td>id: ${element.id}</td><tr>
+            <tr><td>Titulo: ${element.titulo}</td><tr>
             <tr><td>Descripción: ${element.descripcion}</td><tr>
             <tr><td>Calificación: ${Number(element.calificacionActual).toFixed(1)}</td><tr>
             <tr><td>Precio por noche: ${moneda}<span id="precio${element.id}">${Number(element.precioPorNoche) / coti}<span></td><tr> 
@@ -791,7 +798,9 @@ function mostrarInmuebles() {
         if (tipoUsuario === "Huesped" && element.estado == "on") {
 
             mostrar.innerHTML += `<br><table border=2><tr><td><img id="img${element.id}" src="${element.fotos[fotoAct]}"></td><table>
-            <table border=2><tr><td>Titulo: ${element.titulo}</td><tr>
+            <table border=2>
+            <tr><td>id: ${element.id}</td><tr>
+            <tr><td>Titulo: ${element.titulo}</td><tr>
             <tr><td>Descripción: ${element.descripcion}</td><tr>
             <tr><td>Calificación: ${Number(element.calificacionActual).toFixed(1)}</td><tr>
             <tr><td>Precio por noche: ${moneda}<span id="precio${element.id}">${Number(element.precioPorNoche) / coti}<span></td><tr>
@@ -931,7 +940,10 @@ function mostrarReservas() {
     }
     for (let i = 0; i < listaUsuarios[numeroUser].inmuebles.length; i++) {
         let element = listaUsuarios[numeroUser].inmuebles[i];
-        divMostrar.innerHTML += `<br><table border=2><tr><td>Titulo: ${element.titulo}</td></tr>
+        
+        divMostrar.innerHTML += `<br><table border=2>
+        <tr><td>id: ${element.id}</td><tr>
+        <tr><td>Titulo: ${element.titulo}</td></tr>
         <tr><td>Descripción: ${element.descripcion}</td></tr>
         <tr><td>Precio por noche: ${moneda} ${Number(element.precioPorNoche) / coti}</td></tr>
         <tr><td>Ciudad: ${element.ciudad}</td></tr>
@@ -951,11 +963,28 @@ function mostrarReservas() {
 function calificarInmueble() {
     let idInmueble = this.name;
     let calificacionActual = Number(document.querySelector(`#selCalificar${idInmueble}`).value);
-    listaInmuebles[idInmueble].calificaciones.push(calificacionActual);
-    listaInmuebles[idInmueble].calificacionActual = Number((calculadoraDeCalificaciones(idInmueble) / listaInmuebles[idInmueble].calificaciones.length)).toFixed(1);
+    let validacion = true;
+    let idUser = obtenerNumeroDeUser();
+    listaInmuebles.forEach(element => {
+        for (let i = 0; i < element.calificadoPor.length; i++) {
+            let user = element.calificadoPor[i];       
+        if(user === idUser){
+            validacion = false;
+        }
+    }
+        if (validacion && (element.id === idInmueble)) {
+            elementcalificaciones.push(calificacionActual);
+            element.calificacionActual = Number((calculadoraDeCalificaciones(idInmueble) / listaInmuebles[idInmueble].calificaciones.length)).toFixed(1);
+        }
+        
+    });
+
+    
     limpiarDivs;
     mostrarInmuebles();
     mostrarReservas();
+
+
 }
 
 function registrarInmueble() {
@@ -1227,4 +1256,60 @@ function calculadoraDeCalificaciones(codigoInmueble) {
 
     return suma;
 }
+function mostrarReporteInmueble()
+{
+let min = Number.NEGATIVE_INFINITY;
+let max = Number.POSITIVE_INFINITY;
+let textoDesde = document.querySelector("#divReporteInmueble").children[1].value.trim();
+let textoHasta = document.querySelector("#divReporteInmueble").children[2].value.trim();
+let mostrar = document.querySelector("#divMostrarInmuebles");
+mostrar.innerHTML = "";
+    if(textoDesde.length>0)
+    {
+        if (!isNaN(textoDesde)) {
+    min = textoDesde;         
+        }
+    }
+    if(textoHasta.length>0)
+    {
+        if (!isNaN(textoHasta)) {
+    max = textoHasta;         
+        }
+    }
+
+listaInmuebles.forEach(element => {
+    let fotoAct = element.fotoActual;
+    if(Number(element.precioPorNoche)>min && Number(element.precioPorNoche)<max)
+{
+    mostrar.innerHTML += `<br><table border=2><tr><td><img id="img${element.id}" src="${element.fotos[fotoAct]}"></td><table>
+    <table border=2><tr><td>Titulo: ${element.titulo}</td><tr>
+    <tr><td>Descripción: ${element.descripcion}</td><tr>
+    <tr><td>Calificación: ${Number(element.calificacionActual).toFixed(1)}</td><tr>
+    <tr><td>Precio por noche: ${moneda}<span id="precio${element.id}">${Number(element.precioPorNoche)}<span></td><tr>
+    <tr><td>Ciudad: ${element.ciudad}</td><tr>            
+    <tr><td><input type="button" class="verMas" Value="Ver Más" name="${element.id}">
+    <div id="divVerMas${element.id}" style="display:none">
+    <input type="button" name="${element.id}" class="fotoAnterior" value=" << ">
+    <input type="button" name="${element.id}" class="fotoSiguiente" value=" >> "><br> 
+    <h3> Para reservar </h3><br> 
+    <input type="text" id="txtReserva${element.id}" style="width: 200px;" placeholder="Ingrese cantidad de noches"><br> 
+    <input type="button" name="${element.id}" class="realizarReserva" value="Realizar reserva"><br> 
+    <div id="divConfirmar${element.id}" style="display:none"></div></div></td><table><br>`;
+}
+});
+
+
+
+}
+
+function limpiarinput()
+{
+    document.querySelectorAll("input").forEach(element => {
+        if(element.type === "text")
+        {
+            element.innerHTML = "";
+        }
+    });
+}
+
 console.log("Init cargado")
