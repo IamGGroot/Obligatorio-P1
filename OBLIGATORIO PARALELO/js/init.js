@@ -545,27 +545,20 @@ function registro() {
     if (!verificarTextoNoVacio(nUser)) {
         mensaje += "Ingrese datos válidos en el campo de usuario"
     }
-
     if (!verificarTextoNoVacio(nNombre)) {
         mensaje += "Ingrese datos válidos en el campo de nombre.<br>"
     }
-
     if (!verificarTextoNoVacio(nApellido)) {
         mensaje += "Ingrese datos válidos en el campo de apellido.<br>"
     }
-
     if (!validacionEmail(nMail)) {
         mensaje += "Email no válido.<br>"
     }
-
     if (!validarCel(nTel)) {
         mensaje += "Teléfono no válido. Debe ser de 8 números.<br>"
     }
-
     if (!validacionPass(nPass, nPassComp)) { mensaje += "Las claves no coinciden o no es es valida. Recuerde incluir una mayuscula, una letra, un numero y la longitud de la clave debe ser mayor a 5 caracteres." }
-
     if (!verificarNoExisteUser(nUser)) { mensaje += "Ya existe otro usuario con ese nombre"; }
-
     if (verificarNoExisteUser(nUser) && verificarTextoNoVacio(nUser) &&
         verificarTextoNoVacio(nNombre) && verificarTextoNoVacio(nApellido) &&
         validacionEmail(nMail) && validarCel(nTel) && validacionPass(nPass, nPassComp)) {
@@ -591,16 +584,13 @@ function registro() {
     limpiarDivs();
     document.querySelector("#divResultadoRegistro").innerHTML = `${mensaje}`;
 }
-
 function verificarNoExisteUser(nUser) {
     let validacion = true;
     listaUsuarios.forEach(element => { // para cada entrada de listaUsuarios verifica si existe un nombre usuario igual que queremos registrar si lo encuentra no permite validar. 
         if (element.nombreUsu === nUser) { validacion = false; }
     });
     return validacion;
-
 }
-
 function verificarTextoNoVacio(texto) {
     let validacion = true;
     if (texto.trim().length <= 0) { validacion = false; }
@@ -727,7 +717,6 @@ function selectCotizacion(usr) {
 
     document.getElementById("moneda-actual").innerHTML = moneda;
 }
-
 function cambiarMoneda() {
     let nuevaMoneda = document.querySelector("#selCoti").value;
     moneda = nuevaMoneda;
@@ -736,7 +725,6 @@ function cambiarMoneda() {
 
 }
 //////////////<--------------------- COTIZACION FIN----------------------------->/////////////////////
-
 //////////////<--------------------- INMUEBLES INICIO -------------------------->/////////////////////
 //// MOSTRAR INMUEBLES
 function mostrarInmuebles() {
@@ -772,15 +760,13 @@ function mostrarInmuebles() {
             }));
         }
     }
-
     if (moneda === "$") {
         coti = 1;
     }
     if (moneda === "U$S") {
         coti = cotizacion;
     }
-
-    for (let i = 0; i < listaInmuebles.length; i++) {
+   for (let i = 0; i < listaInmuebles.length; i++) {
         let element = listaInmuebles[i];
         let fotoAct = element.fotoActual;
         if (tipoUsuario === "Visitante" && element.estado == "on") {
@@ -795,7 +781,6 @@ function mostrarInmuebles() {
             <tr><td>Ciudad: ${element.ciudad}</td><tr><table><br>`
         }
         if (tipoUsuario === "Huesped" && element.estado == "on") {
-
             mostrar.innerHTML += `<br><table border=2><tr><td><img id="img${element.id}" src="${element.fotos[fotoAct]}"></td><table>
             <table border=2>
             <tr><td>id: ${element.id}</td><tr>
@@ -820,15 +805,12 @@ function mostrarInmuebles() {
             <tr><td>Calificación: ${Number(element.calificacionActual).toFixed(1)}</td><tr>
             <tr><td>Precio por noche: ${moneda}<span id="precio${element.id}">${Number(element.precioPorNoche) / coti}<span></td><tr>
             <tr><td>Ciudad: ${element.ciudad}</td><tr><input type="button" class="btnHab" name="${element.id}" value="Habilitar"><input type="button" class="btnDesab" name="${element.id}" value="Deshabilitar"><span id="span${element.id}"></span><table><br>`
-
         }
         habilitarbotones();
 
     }
 }
-
 function habilitar() {
-
     let name = this.name;
     listaInmuebles.forEach(element => {
         if (element.usuarioAnfitrion === globalUser) { element.estado = "on" }
@@ -836,7 +818,6 @@ function habilitar() {
     limpiarDivs();
     document.querySelector(`#span${name}`).innerHTML = " Inmueble Habilitado";
 }
-
 function inhabilitar() {
     let name = this.name
     listaInmuebles.forEach(element => {
@@ -846,7 +827,6 @@ function inhabilitar() {
     document.querySelector(`#span${name}`).innerHTML = " Inmueble Deshabilitado";
 
 }
-
 function habilitarbotones() {
     document.querySelectorAll(".btnHab").forEach(element => {
         element.addEventListener("click", habilitar);
@@ -868,7 +848,6 @@ function habilitarbotones() {
         element.addEventListener("click", realizarReserva);
     });
 }
-
 function realizarReserva() {
     let idInmueble = this.name;
     let costoTotal = (Number(document.querySelector(`#txtReserva${idInmueble}`).value) * Number(document.querySelector(`#precio${idInmueble}`).textContent));
@@ -879,7 +858,6 @@ function realizarReserva() {
         element.addEventListener("click", confirmaReserva);
     });
 }
-
 function confirmaReserva() {
     //FALTA VALIDACION DE VACIO Y QUE NO SEA LETRA
     let idInmueble = this.name;
@@ -887,7 +865,6 @@ function confirmaReserva() {
     relacionarUsuarioConInmueble(idUser, idInmueble)
 
 }
-
 function obtenerNumeroDeUser() {
     let numeroUser = -1;
     for (let i = 0; i < listaUsuarios.length; i++) {
@@ -912,7 +889,6 @@ function fotoSiguiente() {
         imagen.src = listaInmuebles[idInmueble].fotos[listaInmuebles[idInmueble].fotoActual];
     }
 }
-
 function fotoAnterior() {
     let idInmueble = this.name;
     let imagen = document.querySelector(`#img${idInmueble}`)
@@ -922,7 +898,6 @@ function fotoAnterior() {
         imagen.src = listaInmuebles[idInmueble].fotos[listaInmuebles[idInmueble].fotoActual];
     }
 }
-
 function mostrarReservas() {
     let numeroUser = obtenerNumeroDeUser();
     let divMostrar = document.querySelector("#divReservas");
@@ -982,10 +957,7 @@ function calificarInmueble() {
     limpiarDivs;
     mostrarInmuebles();
     mostrarReservas();
-
-
 }
-
 function registrarInmueble() {
 
     let mensaje = "";
@@ -1036,7 +1008,6 @@ function registrarInmueble() {
     limpiarDivs();
     document.querySelector("#spanEstadoRegInmueble").innerHTML = mensaje;
 }
-
 function mostrarFotosRegistrarInmueble() {
     let imagenes = `<br>Marque las fotos a agregar al inmueble (mín 3)<br><br><table border=2>`;
 
@@ -1048,9 +1019,7 @@ function mostrarFotosRegistrarInmueble() {
         document.querySelector("#divFotos").innerHTML = imagenes;
     }
 }
-
 function buscador() {
-
     let arrayResultado = new Array;
     let tipoUserActual = globalTipoUser;
     let usuarioActual = globalUser;
@@ -1111,9 +1080,7 @@ function buscador() {
         limpiarDivs();
         document.querySelector("#divResultadoBusqueda").innerHTML = `${mensaje}`;
     }
-
     //repetimos codigo mostrarInmuebles utilizando array resultado
-
     actualizarCalificacionesInmuebles();
 
     let tipoUsuario = globalTipoUser;
@@ -1187,9 +1154,6 @@ function buscador() {
 
     }
 }
-
-
-
 //////////////<--------------------- INMUEBLES FIN ----------------------------->/////////////////////
 
 function txtNoTildesNiMayus(txt) {
@@ -1238,21 +1202,18 @@ function txtNoTildesNiMayus(txt) {
 
     return txtSintildesNiMayus;
 }
-
 function limpiarDivs() {
     document.querySelector("#divResultadoLogin").innerHTML = ``;
     document.querySelector("#divResultadoRegistro").innerHTML = ``;
     document.querySelector("#divResultadoCotizacion").innerHTML = ``;
     document.querySelector("#divResultadoBusqueda").innerHTML = ``;
 }
-
 function calculadoraDeCalificaciones(codigoInmueble) {
     let suma = 0;
     for (let i = 0; i < listaInmuebles[codigoInmueble].calificaciones.length; i++) {
         let element = listaInmuebles[codigoInmueble].calificaciones[i];
         suma = suma + element;
     }
-
     return suma;
 }
 function mostrarReporteInmueble()
@@ -1296,9 +1257,6 @@ listaInmuebles.forEach(element => {
     <div id="divConfirmar${element.id}" style="display:none"></div></div></td><table><br>`;
 }
 });
-
-
-
 }
 
 function limpiarInput()
@@ -1311,4 +1269,3 @@ function limpiarInput()
     });
 }
 
-console.log("Init cargado")
